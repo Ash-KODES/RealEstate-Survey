@@ -1,3 +1,5 @@
+import { questions } from "./questions";
+
 window.startSurvey = function() {
   document.getElementById('title-page').style.display = 'none';
   document.getElementById('survey-container').style.display = 'block';
@@ -21,23 +23,6 @@ function initializeDefaultResponses() {
 
 let responses = {};
 const sessionId = Date.now().toString(36) + Math.random().toString(36).substring(2);
-
-const questions = [
-  {
-      type: "image",
-      images: ['Images/Question1/1.jpg', 'Images/Question1/2.jpg', 'Images/Question1/5.jpg', 'Images/Question1/1.jpg', 'Images/Question1/2.jpg', 'Images/Question1/5.jpg'],
-      text: "How do you like the living room of this home?"
-  },
-  {
-      type: "text",
-      text: "Please describe your ideal living room."
-  },
-  {
-      type: "image",
-      images: ['Images/Question1/1.jpg', 'Images/Question1/2.jpg', 'Images/Question1/5.jpg'],
-      text: "Does this home suit your needs?"
-  }
-];
 
 let currentQuestion = 0;
 let currentImageIndex = 0;
