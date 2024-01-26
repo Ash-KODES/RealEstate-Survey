@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real Estate Survey</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://apis.google.com/js/api.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="title-page">
-        <h1>Welcome to the Real Estate Survey</h1>
-        <p>Please take a moment to share your thoughts on various properties.</p>
-        <button onclick="startSurvey()">Start Survey</button>
+      <h1>Welcome to the Real Estate Survey</h1>
+      <p>Please take a moment to share your thoughts on various properties.</p>
+      <button onclick="startSurvey()">Start Survey</button>
     </div>
-  
-    <div id="survey-container">
-        <div id="question-container">
-            <p id="question-text">Question will go here</p>
-        </div>
-        <div id="image-container">
-            <!-- Images will be loaded here by JavaScript -->
-        </div>
-        <div id="text-answer-container" style="display:none;">
-            <textarea id="text-answer" rows="4" cols="50"></textarea>
-        </div>
-        <div id="modal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="modal-image">
-            <div id="image-info">Image 1 of 5</div>
-            <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-            <a class="next" onclick="changeImage(1)">&#10095;</a>
-            <div id="caption"></div>
-        </div>
 
-      <div id="rating-container" style="display:none; text-align: center;">
-          <input type="range" id="image-rating" min="1" max="7" value="4" step="1">
-          <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-              <span style="font-size: 0.8em; color: grey;">Worst</span>
-              <span style="font-size: 0.8em; color: grey;">Best</span>
-          </div>
-          <p>Rating: <span id="rating-value">4</span>/7</p>
+    <div id="survey-container">
+      <div id="question-container">
+        <p id="question-text">Question will go here</p>
+      </div>
+      <div id="image-container">
+        <!-- Images will be loaded here by JavaScript -->
+      </div>
+      <div id="text-answer-container" style="display: none">
+        <textarea id="text-answer" rows="4" cols="50"></textarea>
+      </div>
+      <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image" />
+        <div id="image-info">Image 1 of 5</div>
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+        <div id="caption"></div>
       </div>
 
-
-
-        <div class="button-container">
-            <button id="prev-question-button" onclick="prevQuestion()">Previous Question</button>
-            <button id="next-question-button" onclick="nextQuestion()">Next Question</button>
+      <div id="rating-container" style="display: none; text-align: center">
+        <input
+          type="range"
+          id="image-rating"
+          min="1"
+          max="7"
+          value="4"
+          step="1"
+        />
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+          "
+        >
+          <span style="font-size: 0.8em; color: grey">Worst</span>
+          <span style="font-size: 0.8em; color: grey">Best</span>
         </div>
+        <p>Rating: <span id="rating-value">4</span>/7</p>
+      </div>
+
+      <div class="button-container">
+        <button id="prev-question-button" onclick="prevQuestion()">
+          Previous Question
+        </button>
+        <button id="next-question-button" onclick="nextQuestion()">
+          Next Question
+        </button>
+      </div>
     </div>
-  <script type="module" src="script.js"></script>
-  
-
-
-</body>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>

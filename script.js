@@ -1,10 +1,11 @@
-import { questions } from "./questions";
+import { questions } from "./questions.js";
 
 window.startSurvey = function() {
   document.getElementById('title-page').style.display = 'none';
   document.getElementById('survey-container').style.display = 'block';
   initializeDefaultResponses(); // Initialize default responses for image questions
   displayQuestion();
+  console.log("Here start survey")
 };
 
 
