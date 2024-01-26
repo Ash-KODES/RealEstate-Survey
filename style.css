@@ -318,3 +318,14 @@ button:disabled {
         margin: 5px 0; /* Adjust vertical margin for mobile */
     }
 }
+
+
+#radio-container {
+    display: flex;
+    gap: 8px;
+}
+
+#scroll-container {
+    display: flex;
+    
+}

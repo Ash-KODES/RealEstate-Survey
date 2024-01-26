@@ -67,7 +67,7 @@ export const questions = [
   },
   {
     type: "text-scroll",
-    images: [
+    choices: [
       "$1-$7,799",
       "$7,800-$15,599",
       "$15,600-$20,799",
