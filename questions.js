@@ -134,15 +134,15 @@ export const questions = [
     text: "Country of Birth (Choose one or more that apply):",
   },
   {
-    type: "text-radio",
+    type: "text-radio-description",
     choices: [
       "Renter",
       "Outright Homeowner",
       "Homeowner with a mortgage",
       "Living with family",
       "In the process of buying a home or in temporary accommodation",
-      "Other (specify)",
     ],
+    description: ["Other (specify)"],
     text: "What is your current housing status?",
   },
   {
@@ -195,15 +195,145 @@ export const questions = [
   },
   {
     type: "image",
-    images: [
-      "Images/Question1/1.jpg",
-      "Images/Question1/2.jpg",
-      "Images/Question1/5.jpg",
-      "Images/Question1/1.jpg",
-      "Images/Question1/2.jpg",
-      "Images/Question1/5.jpg",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How appealing is the exterior and front yard of this home?",
+      "Rate how family-friendly this home appears, considering space, layout",
+      "How likely are you to buy a home in this style?",
     ],
-    text: "How do you like the living room of this home?",
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
+  },
+  {
+    type: "image",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How appealing is the exterior and front yard of this home?",
+      "Rate how family-friendly this home appears, considering space, layout",
+      "How likely are you to buy a home in this style?",
+    ],
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
+  },
+  {
+    type: "image",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How effectively do you think the space has been utilized in this apartment?",
+      "Rate the amount of natural light you perceive in this apartment from the images.",
+      "How appealing is the view from this apartment, based on the images?",
+      "How likely are you to buy an apartment in this style?",
+    ],
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
+  },
+  {
+    type: "image",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How effectively do you think the space has been utilized in this apartment?",
+      "Rate the amount of natural light you perceive in this apartment from the images.",
+      "How appealing is the view from this apartment, based on the images?",
+      "How likely are you to buy a home in this style?",
+    ],
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
+  },
+  {
+    type: "image",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How appealing is the exterior and front yard of this home?",
+      "Rate how family-friendly this home appears, considering space, layout",
+      "How likely are you to buy a home in this style?",
+    ],
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
+  },
+  {
+    type: "image",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How appealing is the exterior and front yard of this home?",
+      "Rate how family-friendly this home appears, considering space, layout",
+      "How likely are you to buy a home in this style?",
+    ],
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
+  },
+  {
+    type: "image",
+    images: ["Images/Question1/1.jpg"],
+    rating: [
+      "How appealing is the exterior and front yard of this home?",
+      "Rate how family-friendly this home appears, considering space, layout",
+      "How likely are you to buy a home in this style?",
+    ],
+    radiotext: {
+      text: "How much do you think the home is worth?",
+      choices: [
+        "Less than 200k",
+        "200 - 300k",
+        "300 - 500k",
+        "500 - 800k",
+        "800 - 1 million",
+        "1 million +",
+      ],
+    },
   },
   {
     type: "image",
