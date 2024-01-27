@@ -322,8 +322,10 @@ button:disabled {
 
 #radio-container {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    justify-content: space-around;
 }
+
 
 #scroll-container {
     display: flex;

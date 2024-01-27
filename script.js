@@ -18,6 +18,14 @@ function initializeDefaultResponses() {
         response: 4, // Default value for the slider
       };
     }
+    else
+    {
+      responses[index] = {
+        question_number : index,
+        question: question.text,
+        response : ""
+      }
+    }
   });
 }
 
@@ -86,23 +94,32 @@ function setRadioLabel(labelSet) {
   let selectedValue = "";
 
   labelSet.forEach((item, index) => {
+    const listDiv = document.createElement("div");
+    listDiv.style.cursor = "pointer";
+
     const inputElement = document.createElement("input");
     inputElement.type = "radio";
     inputElement.id = item;
     inputElement.value = item;
     inputElement.name = "radio-options";
+    inputElement.style.cursor = "pointer";
+
     const labelElement = document.createElement("label");
     labelElement.setAttribute("for", item);
     labelElement.textContent = item;
+    labelElement.style.cursor = "pointer"; 
 
     // event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
       selectedValue = this.value;
+      responses[currentQuestion].response = selectedValue;
       console.log("Selected Value:", selectedValue);
     });
 
-    radioContainer.appendChild(inputElement);
-    radioContainer.appendChild(labelElement);
+    listDiv.appendChild(inputElement);
+    listDiv.appendChild(labelElement);
+
+    radioContainer.appendChild(listDiv);
   });
 }
 
@@ -120,6 +137,7 @@ function setScrollList(listSet) {
   });
   scrollContainer.addEventListener("change", function () {
     selectedValue = scrollContainer.value;
+    responses[currentQuestion].response = selectedValue;
     console.log("Selected Value: ", selectedValue);
   });
 }
@@ -253,6 +271,8 @@ function submitResponses() {
     sessionid: sessionId,
     ...responses[key],
   }));
+
+  console.log(responseArray);
 
   const endpointUrl = "https://unisaresponsesflask.replit.app/insert-data";
 

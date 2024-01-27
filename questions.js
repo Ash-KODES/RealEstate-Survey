@@ -201,8 +201,8 @@ export const questions = [
       "Rate how family-friendly this home appears, considering space, layout",
       "How likely are you to buy a home in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
@@ -221,8 +221,8 @@ export const questions = [
       "Rate how family-friendly this home appears, considering space, layout",
       "How likely are you to buy a home in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
@@ -242,8 +242,8 @@ export const questions = [
       "How appealing is the view from this apartment, based on the images?",
       "How likely are you to buy an apartment in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
@@ -263,8 +263,8 @@ export const questions = [
       "How appealing is the view from this apartment, based on the images?",
       "How likely are you to buy a home in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
@@ -283,8 +283,8 @@ export const questions = [
       "Rate how family-friendly this home appears, considering space, layout",
       "How likely are you to buy a home in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
@@ -303,8 +303,8 @@ export const questions = [
       "Rate how family-friendly this home appears, considering space, layout",
       "How likely are you to buy a home in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
@@ -323,8 +323,8 @@ export const questions = [
       "Rate how family-friendly this home appears, considering space, layout",
       "How likely are you to buy a home in this style?",
     ],
+    text: "How much do you think the home is worth?",
     radiotext: {
-      text: "How much do you think the home is worth?",
       choices: [
         "Less than 200k",
         "200 - 300k",
