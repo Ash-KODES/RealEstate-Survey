@@ -357,3 +357,12 @@ button:disabled {
 #scroll-container {
   display: flex;
 }
+
+.scroll-list {
+  padding: 8px;
+}
+
+.scroll-list::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
+}

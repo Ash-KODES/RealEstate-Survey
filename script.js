@@ -163,7 +163,6 @@ function setRadioLabel(labelSet) {
         let selectedArray = [selectedValue];
         responses[currentQuestion].response = selectedArray;
       }
-    
     });
   });
 }
@@ -220,10 +219,12 @@ function setMultiRadioSet(labelSet) {
 function setScrollList(listSet) {
   const scrollContainer = document.getElementById("select-list");
   scrollContainer.innerHTML = "";
+  scrollContainer.classList.add("scroll-list");
   let selectedValue = "";
 
   listSet.forEach((item, index) => {
     const optionElement = document.createElement("option");
+    optionElement.classList.add("scroll-option");
     optionElement.value = item;
     optionElement.innerHTML = item;
 
@@ -308,31 +309,34 @@ function updateModalImageInfo(index) {
 }
 
 function nextQuestion() {
-  if (questions[currentQuestion].type === "text") {
-    let textResponse = document.getElementById("text-answer").value;
-    submitAnswer(textResponse); // Capture text question response
-  }
-  // Add datetime to the current question response
-  if (responses[currentQuestion]) {
-    responses[currentQuestion].datetime = new Date().toISOString();
-  }
-
-  if (currentQuestion === questions.length - 1) {
-    submitResponses();
-  } else {
-    currentQuestion++;
-    displayQuestion();
-  }
-
   const surveyContainer = document.getElementById("survey-container");
   surveyContainer.classList.add("fade-out");
+
   setTimeout(() => {
+    if (questions[currentQuestion].type === "text") {
+      let textResponse = document.getElementById("text-answer").value;
+      submitAnswer(textResponse); // Capture text question response
+    }
+
+    // Add datetime to the current question response
+    if (responses[currentQuestion]) {
+      responses[currentQuestion].datetime = new Date().toISOString();
+    }
+
+    if (currentQuestion === questions.length - 1) {
+      submitResponses();
+    } else {
+      currentQuestion++;
+      displayQuestion();
+    }
+
     surveyContainer.classList.remove("fade-out");
     surveyContainer.classList.add("fade-in");
+
     setTimeout(() => {
       surveyContainer.classList.remove("fade-in");
-    }, 500);
-  }, 500);
+    }, 400);
+  }, 400);
 }
 
 window.nextQuestion = nextQuestion;
@@ -341,18 +345,21 @@ window.prevQuestion = prevQuestion;
 function prevQuestion() {
   const surveyContainer = document.getElementById("survey-container");
   surveyContainer.classList.add("fade-out");
+
   setTimeout(() => {
     currentQuestion--;
     if (currentQuestion < 0) {
       currentQuestion = questions.length - 1;
     }
     displayQuestion();
+
     surveyContainer.classList.remove("fade-out");
     surveyContainer.classList.add("fade-in");
+
     setTimeout(() => {
       surveyContainer.classList.remove("fade-in");
-    }, 500);
-  }, 500);
+    }, 400);
+  }, 400);
 }
 
 document.getElementsByClassName("close")[0].onclick = closeModal;
