@@ -97,14 +97,16 @@ function setRadioLabel(labelSet) {
   const radioContainer = document.getElementById("radio-container");
   radioContainer.innerHTML = "";
   let selectedValue = "";
+  let textInput;
 
   labelSet.forEach((item, index) => {
     const listDiv = document.createElement("div");
-    listDiv.style.cursor = "pointer";
+    listDiv.classList.add("list-item");
 
     const inputElement = document.createElement("input");
     inputElement.type = "radio";
     inputElement.id = item;
+    inputElement.classList.add("input-box");
     inputElement.value = item;
     inputElement.name = "radio-options";
     inputElement.style.cursor = "pointer";
@@ -114,18 +116,55 @@ function setRadioLabel(labelSet) {
     labelElement.textContent = item;
     labelElement.style.cursor = "pointer";
 
-    // event listener for getting selected value as a response
-    inputElement.addEventListener("change", function () {
-      selectedValue = this.value;
-      let selectedArray = [selectedValue];
-      responses[currentQuestion].response = selectedArray;
-      // console.log("Selected Value:", selectedArray);
-    });
-
     listDiv.appendChild(inputElement);
     listDiv.appendChild(labelElement);
 
     radioContainer.appendChild(listDiv);
+
+    // event listener for getting selected value as a response
+    inputElement.addEventListener("change", function () {
+      selectedValue = this.value;
+
+      // Check if the selected value is "Other"
+      if (selectedValue === "Other") {
+        selectedValue = ""; // Reset selectedValue
+
+        // Remove any existing text input
+        if (textInput) {
+          radioContainer.lastChild.removeChild(textInput);
+          textInput = null;
+        }
+
+        // Create a new text input
+        textInput = document.createElement("input");
+        textInput.type = "text";
+        textInput.value = "";
+
+        listDiv.appendChild(textInput);
+
+        // Add event listener only if it's not already added
+        if (!textInput.hasEventListener) {
+          textInput.hasEventListener = true;
+
+          // Event listener for updating selectedValue
+          textInput.addEventListener("input", function () {
+            selectedValue = this.value;
+            console.log("inside", selectedValue);
+            let selectedArray = [selectedValue];
+            responses[currentQuestion].response = selectedArray;
+          });
+        }
+      } else {
+        // Remove any existing text input
+        if (textInput) {
+          radioContainer.lastChild.removeChild(textInput);
+          textInput = null;
+        }
+        let selectedArray = [selectedValue];
+        responses[currentQuestion].response = selectedArray;
+      }
+    
+    });
   });
 }
 
@@ -138,10 +177,12 @@ function setMultiRadioSet(labelSet) {
   labelSet.forEach((item, index) => {
     const listDiv = document.createElement("div");
     listDiv.style.cursor = "pointer";
+    listDiv.classList.add("list-item");
 
     const inputElement = document.createElement("input");
     inputElement.type = "checkbox";
     inputElement.id = item;
+    inputElement.classList.add("input-box");
     inputElement.value = item;
     inputElement.name = item;
     inputElement.style.cursor = "pointer";
