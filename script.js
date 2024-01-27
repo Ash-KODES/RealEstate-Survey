@@ -17,14 +17,12 @@ function initializeDefaultResponses() {
         question: question.text,
         response: 4, // Default value for the slider
       };
-    }
-    else
-    {
+    } else {
       responses[index] = {
-        question_number : index,
+        question_number: index,
         question: question.text,
-        response : ""
-      }
+        response: [],
+      };
     }
   });
 }
@@ -63,6 +61,13 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
   } else if (question.type === "text-radio") {
     setRadioLabel(question.choices);
+    document.getElementById("image-container").style.display = "none";
+    document.getElementById("text-answer-container").style.display = "none";
+    document.getElementById("rating-container").style.display = "none";
+    document.getElementById("text-scroll").style.display = "none";
+    document.getElementById("text-radio").style.display = "block";
+  } else if (question.type === "text-radio-multiple") {
+    setMultiRadioSet(question.choices);
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("rating-container").style.display = "none";
@@ -107,13 +112,61 @@ function setRadioLabel(labelSet) {
     const labelElement = document.createElement("label");
     labelElement.setAttribute("for", item);
     labelElement.textContent = item;
-    labelElement.style.cursor = "pointer"; 
+    labelElement.style.cursor = "pointer";
 
     // event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
       selectedValue = this.value;
-      responses[currentQuestion].response = selectedValue;
-      console.log("Selected Value:", selectedValue);
+      let selectedArray = [selectedValue];
+      responses[currentQuestion].response = selectedArray;
+      // console.log("Selected Value:", selectedArray);
+    });
+
+    listDiv.appendChild(inputElement);
+    listDiv.appendChild(labelElement);
+
+    radioContainer.appendChild(listDiv);
+  });
+}
+
+function setMultiRadioSet(labelSet) {
+  const radioContainer = document.getElementById("radio-container");
+  radioContainer.innerHTML = "";
+  let selectedValue = "";
+  let selectedArray = [];
+
+  labelSet.forEach((item, index) => {
+    const listDiv = document.createElement("div");
+    listDiv.style.cursor = "pointer";
+
+    const inputElement = document.createElement("input");
+    inputElement.type = "checkbox";
+    inputElement.id = item;
+    inputElement.value = item;
+    inputElement.name = item;
+    inputElement.style.cursor = "pointer";
+
+    const labelElement = document.createElement("label");
+    labelElement.setAttribute("for", item);
+    labelElement.textContent = item;
+    labelElement.style.cursor = "pointer";
+
+    // event listener for getting selected value as a response
+    inputElement.addEventListener("change", function () {
+      selectedValue = this.value;
+
+      if (this.checked) {
+        // If the radio button is checked, add it to the array
+        selectedArray.push(this.value);
+      } else {
+        // If the radio button is unchecked, remove it from the array
+        const index = selectedArray.indexOf(this.value);
+        if (index > -1) {
+          selectedArray.splice(index, 1);
+        }
+      }
+      responses[currentQuestion].response = selectedArray;
+      // console.log("Selected Value:", selectedArray);
     });
 
     listDiv.appendChild(inputElement);
@@ -135,11 +188,19 @@ function setScrollList(listSet) {
 
     scrollContainer.appendChild(optionElement);
   });
-  scrollContainer.addEventListener("change", function () {
+
+  // Remove existing event listener if any
+  scrollContainer.removeEventListener("change", handleSelectChange);
+
+  // Add a new event listener
+  scrollContainer.addEventListener("change", handleSelectChange);
+
+  function handleSelectChange() {
     selectedValue = scrollContainer.value;
-    responses[currentQuestion].response = selectedValue;
-    console.log("Selected Value: ", selectedValue);
-  });
+    let selectedArray = [selectedValue];
+    responses[currentQuestion].response = selectedArray;
+    // console.log("Selected Value: ", selectedArray);
+  }
 }
 
 function displayImages(imageSet) {
