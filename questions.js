@@ -134,7 +134,7 @@ export const questions = [
     text: "Country of Birth (Choose one or more that apply):",
   },
   {
-    type: "text-radio-description",
+    type: "text-radio",
     choices: [
       "Renter",
       "Outright Homeowner",
