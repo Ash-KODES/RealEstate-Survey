@@ -336,6 +336,7 @@ button:disabled {
   flex-direction: column;
   align-items: start;
   gap: 5px;
+  margin-bottom: 8px;
 }
 
 .list-item {
@@ -356,6 +357,8 @@ button:disabled {
 
 #scroll-container {
   display: flex;
+  padding-left: 10px;
+  margin-bottom : 12px;
 }
 
 .scroll-list {
