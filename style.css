@@ -36,7 +36,7 @@ body {
 
 .aggrement-content {
   width: 700px;
- 
+
   height: 400px;
   overflow: scroll;
 }
@@ -45,7 +45,7 @@ body {
   display: none;
   scroll-behavior: smooth;
 }
-#signature{
+#signature {
   width: 250px;
   outline: none;
   text-overflow: ellipsis;
@@ -54,7 +54,7 @@ body {
   padding: 0 5px;
   margin: 10px 0;
 }
-.check-container{
+.check-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -275,11 +275,16 @@ button:disabled {
 
 #rating-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 20px;
   text-align: center;
 }
+
+h3{
+  text-align: start;
+}
+
 
 #worst-label,
 #best-label {
@@ -413,14 +418,14 @@ button:disabled {
 }
 
 #question-number {
-  position: relative; 
+  position: relative;
   left: 500px;
   font-weight: bold;
-  font-size: 1.2em; 
+  font-size: 1.2em;
 }
 
 #sectionID {
-  position: relative; 
+  position: relative;
   font-weight: bold;
   font-size: 1.2em;
 }

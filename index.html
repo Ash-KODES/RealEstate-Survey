@@ -100,7 +100,7 @@
     </div>
 
     <div id="survey-container">
-      <div>
+      <div class="question-header">
         <span id="sectionID"></span>
         <span id="question-number"></span>
       </div>
@@ -121,28 +121,33 @@
         <a class="next" onclick="changeImage(1)">&#10095;</a>
         <div id="caption"></div>
       </div>
-
-      <div id="rating-container" style="display: none; text-align: center">
-        <input
-          type="range"
-          id="image-rating"
-          min="1"
-          max="7"
-          value="4"
-          step="1"
-        />
-        <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-          "
-        >
-          <span style="font-size: 0.8em; color: grey">Worst</span>
-          <span style="font-size: 0.8em; color: grey">Best</span>
+      <div
+        id="parent-rating-container"
+        style="display: none; text-align: center"
+      >
+        <div id="rating-container">
+          <input
+            type="range"
+            id="image-rating"
+            min="1"
+            max="7"
+            value="4"
+            step="1"
+          />
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px;
+            "
+          >
+            <span style="font-size: 0.8em; color: grey">Worst</span>
+            <span style="font-size: 0.8em; color: grey">Best</span>
+          </div>
+          <p>Rating: <span id="rating-value">4</span>/7</p>
         </div>
-        <p>Rating: <span id="rating-value">4</span>/7</p>
       </div>
+      <div id="parent-radio-container"></div>
 
       <div id="text-scroll" style="display: none; text-align: center">
         <div id="scroll-container">

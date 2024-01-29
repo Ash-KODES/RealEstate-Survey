@@ -50,52 +50,58 @@ let currentImageIndex = 0;
 function displayQuestion() {
   const question = questions[currentQuestion];
   const questionTextElement = document.getElementById("question-text");
-  questionTextElement.textContent = question.text;
+  questionTextElement.innerText = question.text;
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
   if (question.type === "image") {
     displayImages(question.images);
+    setRating();
     document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
-    document.getElementById("rating-container").style.display = "block";
+    document.getElementById("parent-rating-container").style.display = "block";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "none";
+    document.getElementById("parent-radio-container").style.display = "block";
   } else if (question.type === "text") {
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "";
-    document.getElementById("rating-container").style.display = "none";
+    document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "none";
+    document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "text-scroll") {
     setScrollList(question.choices);
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
-    document.getElementById("rating-container").style.display = "none";
+    document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "block";
     document.getElementById("text-radio").style.display = "none";
+    document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "text-radio") {
-    setRadioLabel(question.choices);
+    setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
-    document.getElementById("rating-container").style.display = "none";
+    document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
+    document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "text-radio-multiple") {
     setMultiRadioSet(question.choices);
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
-    document.getElementById("rating-container").style.display = "none";
+    document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
+    document.getElementById("parent-radio-container").style.display = "none";
   }
 
   const nextButton = document.getElementById("next-question-button");
   const prevButton = document.getElementById("prev-question-button");
 
   if (currentQuestion === questions.length - 1) {
-    nextButton.textContent = "Submit";
+    nextButton.innerText = "Submit";
   } else {
-    nextButton.textContent = "Next Question";
+    nextButton.innerText = "Next Question";
   }
 
   prevButton.disabled = currentQuestion === 0;
@@ -103,12 +109,34 @@ function displayQuestion() {
 }
 
 document.getElementById("image-rating").addEventListener("input", function () {
-  document.getElementById("rating-value").textContent = this.value;
+  document.getElementById("rating-value").innerText = this.value;
   submitAnswer(this.value); // Capture image question response
 });
 
-function setRadioLabel(labelSet) {
-  const radioContainer = document.getElementById("radio-container");
+function setRating() {
+  const radioQuest = questions[currentQuestion].radiotext.choices;
+  const ratingQuest = questions[currentQuestion].rating;
+  const ratingDiv = document.getElementById("rating-container");
+  const parentDiv = document.getElementById("parent-rating-container");
+  const parentRadioElement = document.getElementById("parent-radio-container");
+  parentRadioElement.innerHTML = "";
+  parentDiv.innerHTML = "";
+
+  parentDiv.style.display = "block";
+  ratingQuest.forEach((item) => {
+    let newRatingDiv = ratingDiv.cloneNode(true);
+
+    let questText = document.createElement("h3");
+    questText.innerText = item;
+    parentDiv.appendChild(questText);
+    parentDiv.appendChild(newRatingDiv);
+  });
+
+  setRadioLabel(radioQuest, "parent-radio-container");
+}
+
+function setRadioLabel(labelSet, parentDiv) {
+  const radioContainer = document.getElementById(parentDiv);
   radioContainer.innerHTML = "";
   let selectedValue = "";
   let textInput;
@@ -127,7 +155,7 @@ function setRadioLabel(labelSet) {
 
     const labelElement = document.createElement("label");
     labelElement.setAttribute("for", item);
-    labelElement.textContent = item;
+    labelElement.innerText = item;
     labelElement.style.cursor = "pointer";
 
     listDiv.appendChild(inputElement);
@@ -202,7 +230,7 @@ function setMultiRadioSet(labelSet) {
 
     const labelElement = document.createElement("label");
     labelElement.setAttribute("for", item);
-    labelElement.textContent = item;
+    labelElement.innerText = item;
     labelElement.style.cursor = "pointer";
 
     // event listener for getting selected value as a response
@@ -287,7 +315,7 @@ function displayImages(imageSet) {
     if (i === thumbnailCount - 1 && imageSet.length > 4) {
       const overlay = document.createElement("div");
       overlay.className = "thumbnail-overlay";
-      overlay.textContent = `+${imageSet.length - 4}`;
+      overlay.innerText = `+${imageSet.length - 4}`;
       thumbContainer.appendChild(overlay);
     }
     thumbnailsContainer.appendChild(thumbContainer);
@@ -319,7 +347,7 @@ function changeImage(step) {
 function updateModalImageInfo(index) {
   const totalImages = questions[currentQuestion].images.length;
   const imageInfo = document.getElementById("image-info");
-  imageInfo.textContent = `Image ${index + 1} of ${totalImages}`;
+  imageInfo.innerText = `Image ${index + 1} of ${totalImages}`;
 }
 
 function nextQuestion() {
@@ -390,19 +418,19 @@ function submitAnswer(answer) {
 }
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
-  questionNumber.textContent = `${currentQuestion}/50`;
+  questionNumber.innerText = `${currentQuestion}/50`;
 };
 
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
-  if (currentQuestion < 5) sectionIdDiv.textContent = "Section 1: Demographics";
+  if (currentQuestion < 5) sectionIdDiv.innerText = "Section 1: Demographics";
   else if (currentQuestion < 10)
-    sectionIdDiv.textContent = "Section 2: Investor Profile";
+    sectionIdDiv.innerText = "Section 2: Investor Profile";
   else if (currentQuestion < 50)
-    sectionIdDiv.textContent = "Section 3: Image presentation and perception";
+    sectionIdDiv.innerText = "Section 3: Image presentation and perception";
   else if (currentQuestion < 50)
-    sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 50) sectionIdDiv.textContent = "Section 5: Other";
+    sectionIdDiv.innerText = "Section 4: Cognitive Biases and Heuristics";
+  else if (currentQuestion < 50) sectionIdDiv.innerText = "Section 5: Other";
 };
 
 function submitResponses() {
