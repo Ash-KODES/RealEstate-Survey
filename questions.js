@@ -145,6 +145,7 @@ export const questions = [
     description: ["Other (specify)"],
     text: "What is your current housing status?",
   },
+  // section 2 : investor profile
   {
     type: "text-radio",
     choices: [
@@ -193,6 +194,8 @@ export const questions = [
     ],
     text: "When did you buy your first property?",
   },
+  // Section 3: Image presentation and perception
+  // Single-Family Detached Homes:­­­­
   {
     type: "image",
     images: [
@@ -311,7 +314,7 @@ export const questions = [
       ],
     },
   },
-  // urban
+  // Urban Apartments:
   {
     type: "image",
     images: [
@@ -412,7 +415,7 @@ export const questions = [
       ],
     },
   },
-  // townhouse
+  // Townhouses:
   {
     type: "image",
     images: [
@@ -529,7 +532,7 @@ export const questions = [
       ],
     },
   },
-  // Rural country homes
+  // Rural/Country Homes:
   {
     type: "image",
     images: [
@@ -644,7 +647,7 @@ export const questions = [
       ],
     },
   },
-  //Modern/Contemporary Homes:
+  // Modern/Contemporary Homes:
   {
     type: "image",
     images: [
@@ -738,7 +741,7 @@ export const questions = [
       ],
     },
   },
-  //Section 4: Cognitive Biases and Heuristics
+  // Section 4: Cognitive Biases and Heuristics
   {
     type: "image-multiple",
     images: [
@@ -756,6 +759,7 @@ export const questions = [
     choices: ["Style", "Amenities", "Colours ", "Other"],
     text: "Which elements did they like in the images they chose?",
   },
+  // only likert scale
   {
     type: "image",
     text: "How important is aesthetics in their decision making process?",
@@ -775,6 +779,7 @@ export const questions = [
     choices: ["Yes", "No"],
     text: "Have you seen any of these types of homes on TV or in shows?",
   },
+  // only likert scale
   {
     type: "image",
     text: "Does seeing these similar homes make you more or less likely to want to buy them?",
@@ -805,7 +810,7 @@ export const questions = [
     text: "Can you afford the homes you like?",
   },
   {
-    type: "image",
+    type: "image-multiple",
     text: "Which style of homes do you think are safe investments?",
   },
   // other
@@ -822,11 +827,17 @@ export const questions = [
     text: "What is the budget for your next real estate purchase?",
   },
   {
-    type: "text",
-    text: "Please describe your ideal living room.",
+    type: "percentage",
+    text: "How much would you consider going over your budget?",
   },
   {
-    type: "text",
-    text: "Please describe your ideal living room.",
+    type: "text-radio",
+    text: "Have you ever decided against seeing a property because it had poor photos?",
+    description: ["If yes, please explain"],
+  },
+  {
+    type: "images",
+    text: "Between given images,in which property you are more intrested in?",
+    description: ["please explain,why ?"],
   },
 ];
