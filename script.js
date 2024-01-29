@@ -2,10 +2,23 @@ import { questions } from "./questions.js";
 
 window.startSurvey = function () {
   document.getElementById("title-page").style.display = "none";
-  document.getElementById("survey-container").style.display = "block";
-  initializeDefaultResponses(); // Initialize default responses for image questions
-  displayQuestion();
+  document.getElementById("waiver-container").style.display = "block";
+
+  initializeDefaultResponses(); // Initialize default responses for image question
   console.log("Here start survey");
+};
+
+window.consentForm = function () {
+  const inputValue = document.getElementById("input-box");
+  const isChecked = document.getElementById("check-box");
+  if (!inputValue.value || !isChecked.checked) {
+    alert(
+      "please enter your name and aggree to terms and conditions to continue"
+    );
+  } else {
+    document.getElementById("survey-container").style.display = "block";
+    document.getElementById("waiver-container").style.display = "none";
+  }
 };
 
 // Initialize default responses for image questions
@@ -382,16 +395,14 @@ const setQuestionNumber = (currentQuestion) => {
 
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
-  if (currentQuestion < 5)
-    sectionIdDiv.textContent = "Section 1: Demographics";
+  if (currentQuestion < 5) sectionIdDiv.textContent = "Section 1: Demographics";
   else if (curremtQuestion < 10)
     sectionIdDiv.textContent = "Section 2: Investor Profile";
   else if (curremtQuestion < 50)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
   else if (curremtQuestion < 50)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (curremtQuestion < 50)
-    sectionIdDiv.textContent = "Section 5: Other";
+  else if (curremtQuestion < 50) sectionIdDiv.textContent = "Section 5: Other";
 };
 
 function submitResponses() {
@@ -417,3 +428,39 @@ function submitResponses() {
       .catch((error) => console.error("Error:", error));
   });
 }
+
+window.submitWaiver = function () {
+  const participantName = document.getElementById("signature").value;
+  const agreeTerms = document.getElementById("agree-terms").checked;
+
+  if (!participantName || !agreeTerms) {
+    alert(
+      "Please enter your name and agree to the terms and conditions to continue."
+    );
+    return;
+  }
+
+  const waiverData = {
+    participantName: participantName,
+    agreedToTerms: agreeTerms,
+  };
+
+  const waiverEndpointUrl =
+    "https://unisaresponsesflask.replit.app/insert-waiver";
+
+  fetch(waiverEndpointUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(waiverData),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log("Waiver submitted successfully:", data))
+    .catch((error) => console.error("Error submitting waiver:", error));
+
+  document.getElementById("waiver-container").style.display = "none";
+  document.getElementById("survey-container").style.display = "block";
+  initializeDefaultResponses();
+  displayQuestion();
+};
