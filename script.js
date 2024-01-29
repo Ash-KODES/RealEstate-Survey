@@ -38,7 +38,8 @@ function displayQuestion() {
   const question = questions[currentQuestion];
   const questionTextElement = document.getElementById("question-text");
   questionTextElement.textContent = question.text;
-  setQuestionNumber(currentQuestion+1);
+  setQuestionNumber(currentQuestion + 1);
+  sectionID(currentQuestion);
   if (question.type === "image") {
     displayImages(question.images);
     document.getElementById("image-container").style.display = "";
@@ -377,6 +378,20 @@ function submitAnswer(answer) {
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
   questionNumber.textContent = `${currentQuestion}/50`;
+};
+
+const sectionID = (currentQuestion) => {
+  const sectionIdDiv = document.getElementById("sectionID");
+  if (currentQuestion < 5)
+    sectionIdDiv.textContent = "Section 1: Demographics";
+  else if (curremtQuestion < 10)
+    sectionIdDiv.textContent = "Section 2: Investor Profile";
+  else if (curremtQuestion < 50)
+    sectionIdDiv.textContent = "Section 3: Image presentation and perception";
+  else if (curremtQuestion < 50)
+    sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
+  else if (curremtQuestion < 50)
+    sectionIdDiv.textContent = "Section 5: Other";
 };
 
 function submitResponses() {
