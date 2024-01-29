@@ -369,3 +369,10 @@ button:disabled {
   display: none;
   scroll-behavior: smooth;
 }
+
+#question-number {
+  position: relative; 
+  left: 750px;
+  font-weight: bold;
+  font-size: 1.2em; 
+}

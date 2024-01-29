@@ -38,7 +38,7 @@ function displayQuestion() {
   const question = questions[currentQuestion];
   const questionTextElement = document.getElementById("question-text");
   questionTextElement.textContent = question.text;
-
+  setQuestionNumber(currentQuestion+1);
   if (question.type === "image") {
     displayImages(question.images);
     document.getElementById("image-container").style.display = "";
@@ -374,6 +374,10 @@ function submitAnswer(answer) {
     response: answer,
   };
 }
+const setQuestionNumber = (currentQuestion) => {
+  const questionNumber = document.getElementById("question-number");
+  questionNumber.textContent = `${currentQuestion}/50`;
+};
 
 function submitResponses() {
   const responseArray = Object.keys(responses).map((key) => ({
