@@ -396,13 +396,13 @@ const setQuestionNumber = (currentQuestion) => {
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
   if (currentQuestion < 5) sectionIdDiv.textContent = "Section 1: Demographics";
-  else if (curremtQuestion < 10)
+  else if (currentQuestion < 10)
     sectionIdDiv.textContent = "Section 2: Investor Profile";
-  else if (curremtQuestion < 50)
+  else if (currentQuestion < 50)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
-  else if (curremtQuestion < 50)
+  else if (currentQuestion < 50)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (curremtQuestion < 50) sectionIdDiv.textContent = "Section 5: Other";
+  else if (currentQuestion < 50) sectionIdDiv.textContent = "Section 5: Other";
 };
 
 function submitResponses() {
