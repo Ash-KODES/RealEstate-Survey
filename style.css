@@ -372,7 +372,13 @@ button:disabled {
 
 #question-number {
   position: relative; 
-  left: 750px;
+  left: 500px;
+  font-weight: bold;
+  font-size: 1.2em; 
+}
+
+#sectionID {
+  position: relative; 
   font-weight: bold;
   font-size: 1.2em; 
 }
