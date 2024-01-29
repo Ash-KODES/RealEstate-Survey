@@ -423,14 +423,14 @@ const setQuestionNumber = (currentQuestion) => {
 
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
-  if (currentQuestion < 5) sectionIdDiv.innerText = "Section 1: Demographics";
-  else if (currentQuestion < 10)
-    sectionIdDiv.innerText = "Section 2: Investor Profile";
-  else if (currentQuestion < 50)
-    sectionIdDiv.innerText = "Section 3: Image presentation and perception";
-  else if (currentQuestion < 50)
-    sectionIdDiv.innerText = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 50) sectionIdDiv.innerText = "Section 5: Other";
+  if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
+  else if (currentQuestion < 12)
+    sectionIdDiv.textContent = "Section 2: Investor Profile";
+  else if (currentQuestion < 27)
+    sectionIdDiv.textContent = "Section 3: Image presentation and perception";
+  else if (currentQuestion < 41)
+    sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
+  else if (currentQuestion < 50) sectionIdDiv.textContent = "Section 5: Other";
 };
 
 function submitResponses() {
