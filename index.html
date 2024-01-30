@@ -107,12 +107,14 @@
       <div id="question-container">
         <p id="question-text">Question will go here</p>
       </div>
+      
       <div id="percentage" style="display: none">
         <div class="percentage-container">
           <input id="pecent-box" type="number" min="1" max="100" />
           <h3>Percentage</h3>
         </div>
       </div>
+
       <div id="image-container">
         <!-- Images will be loaded here by JavaScript -->
       </div>
@@ -164,7 +166,12 @@
       <div id="text-radio" style="display: none; text-align: center">
         <form id="radio-container"></form>
       </div>
-
+      <div id="image-desc" style="display: none;">
+        <div class="textarea-container">
+          <textarea name="" id="" cols="50" rows="10"></textarea> 
+        </div>
+      </div>
+      
       <div class="button-container">
         <button id="prev-question-button" onclick="prevQuestion()">
           Previous Question
@@ -172,8 +179,10 @@
         <button id="next-question-button" onclick="nextQuestion()">
           Next Question
         </button>
-      </div>
+      </div> 
 
+
+      </div>
       <div id="thank-you" style="display: none">
         <div
           style="display: flex; justify-content: center; align-items: center"

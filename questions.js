@@ -1891,7 +1891,7 @@ export const questions = [
     text: "What is the budget for your next real estate purchase?",
   },
   {
-    type: "percentage",
+    type: "text-radio",
     text: "How much would you consider going over your budget?",
   },
   {
@@ -1901,7 +1901,7 @@ export const questions = [
     description: ["If yes, please explain"],
   },
   {
-    type: "image",
+    type: "image-desc",
     images: [
       "Images/Section3/Question15/1.jpg",
       "Images/Section3/Question15/2.jpg",
