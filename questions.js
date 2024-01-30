@@ -141,8 +141,8 @@ export const questions = [
       "Homeowner with a mortgage",
       "Living with family",
       "In the process of buying a home or in temporary accommodation",
+      "Other (specify)",
     ],
-    description: ["Other (specify)"],
     text: "What is your current housing status?",
   },
   // section 2 : investor profile

@@ -56,7 +56,7 @@ function displayQuestion() {
   if (question.type === "image") {
     console.log("here",question.images);
     displayImages(question.images);
-    
+
     setRating();
     document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
@@ -83,6 +83,7 @@ function displayQuestion() {
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-container").style.display = "none";
     if (question.description) {
+      
       document.getElementById("text-answer-container").style.display = "";
     } else
       document.getElementById("text-answer-container").style.display = "none";
