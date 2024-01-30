@@ -328,8 +328,8 @@ function setMultipleImagesSet(imageSet) {
     imageElement.classList.add("image-preview");
 
     // Set larger size
-    imageElement.style.width = "150px";
-    imageElement.style.height = "150px";
+    imageElement.style.width = "350px";
+    imageElement.style.height = "250px";
 
     // Event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
@@ -563,7 +563,7 @@ function submitAnswer(answer) {
 }
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
-  questionNumber.innerText = `${currentQuestion}/50`;
+  questionNumber.innerText = ${currentQuestion}/102;
 };
 
 const sectionID = (currentQuestion) => {
@@ -571,13 +571,12 @@ const sectionID = (currentQuestion) => {
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
   else if (currentQuestion < 12)
     sectionIdDiv.textContent = "Section 2: Investor Profile";
-  else if (currentQuestion < 27)
+  else if (currentQuestion < 84)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
-  else if (currentQuestion < 41)
+  else if (currentQuestion < 92)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 50) sectionIdDiv.textContent = "Section 5: Other";
+  else if (currentQuestion < 102) sectionIdDiv.textContent = "Section 5: Other";
 };
-
 function submitResponses() {
   const responseArray = Object.keys(responses).map((key) => ({
     sessionid: sessionId,
