@@ -80,6 +80,12 @@ function displayQuestion() {
   } else if (question.type === "text-radio") {
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-container").style.display = "none";
+    if(question.description)
+    {
+     
+      document.getElementById("text-answer-container").style.display = "";
+    }
+    else
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
@@ -101,6 +107,14 @@ function displayQuestion() {
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
+    document.getElementById("parent-radio-container").style.display = "none";
+  }
+  else if (question.type === "percentage") {
+    document.getElementById("image-container").style.display = "none";
+    document.getElementById("text-answer-container").style.display = "";
+    document.getElementById("parent-rating-container").style.display = "none";
+    document.getElementById("text-scroll").style.display = "none";
+    document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
   }
 
