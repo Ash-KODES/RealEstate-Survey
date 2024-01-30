@@ -54,7 +54,9 @@ function displayQuestion() {
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
   if (question.type === "image") {
+    console.log("here",question.images);
     displayImages(question.images);
+    
     setRating();
     document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
