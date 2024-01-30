@@ -590,6 +590,13 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
+//testing
+window.addEventListener("keydown", function (event) {
+  if (event.key.toLowerCase() === "arrowleft") {
+    prevQuestion();
+  }
+});
+
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
