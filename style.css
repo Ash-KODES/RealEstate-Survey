@@ -35,6 +35,11 @@ body {
   width: 14px;
 }
 
+.percentage-container{
+  display: flex;
+  gap: 5px;
+}
+
 #waiver-container {
   max-width: 800px;
   margin: 20px auto; /* Center aligned with auto margin */

@@ -53,11 +53,22 @@ function displayQuestion() {
   questionTextElement.innerText = question.text;
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
+  if (question.type === "percentage") {
+    setPercentage();
+    document.getElementById("percentage").style.display = "block";
+    document.getElementById("image-container").style.display = "";
+    document.getElementById("text-answer-container").style.display = "none";
+    document.getElementById("parent-rating-container").style.display = "block";
+    document.getElementById("text-scroll").style.display = "none";
+    document.getElementById("text-radio").style.display = "none";
+    document.getElementById("parent-radio-container").style.display = "block";
+  }
   if (question.type === "image") {
     console.log("here", question.images);
     displayImages(question.images);
-
     setRating();
+    document.getElementById("percentage").style.display = "none";
+
     document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "block";
@@ -66,6 +77,8 @@ function displayQuestion() {
     document.getElementById("parent-radio-container").style.display = "block";
   } else if (question.type === "text") {
     document.getElementById("image-container").style.display = "none";
+    document.getElementById("percentage").style.display = "none";
+
     document.getElementById("text-answer-container").style.display = "";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
@@ -74,6 +87,8 @@ function displayQuestion() {
   } else if (question.type === "text-scroll") {
     setScrollList(question.choices);
     document.getElementById("image-container").style.display = "none";
+    document.getElementById("percentage").style.display = "none";
+
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "block";
@@ -82,10 +97,11 @@ function displayQuestion() {
   } else if (question.type === "text-radio") {
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-container").style.display = "none";
-    if (question.description) {
-      document.getElementById("text-answer-container").style.display = "";
-    } else
-      document.getElementById("text-answer-container").style.display = "none";
+    document.getElementById("percentage").style.display = "none";
+    // if (question.description) {
+    //   document.getElementById("text-answer-container").style.display = "";
+    // } else
+    //   document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
@@ -94,6 +110,7 @@ function displayQuestion() {
     setMultiRadioSet(question.choices);
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
+    document.getElementById("percentage").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
@@ -101,6 +118,7 @@ function displayQuestion() {
   } else if (question.type === "image-multiple") {
     setMultipleImagesSet(question.images);
     document.getElementById("image-container").style.display = "none";
+    document.getElementById("percentage").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
@@ -108,6 +126,7 @@ function displayQuestion() {
     document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "percentage") {
     document.getElementById("image-container").style.display = "none";
+    document.getElementById("percentage").style.display = "none";
     document.getElementById("text-answer-container").style.display = "";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
@@ -122,6 +141,15 @@ function displayQuestion() {
     nextButton.innerText = "Submit";
   } else {
     nextButton.innerText = "Next Question";
+  }
+
+  function setPercentage() {
+    let percentValue = 1;
+    let percentInput = document.getElementById("percent-box");
+    percentInput.addEventListener("input", function (e) {
+      percentValue = e.target.value;
+      responses[currentQuestion].response = percentValue;
+    });
   }
 
   prevButton.disabled = currentQuestion === 0;
