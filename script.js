@@ -563,7 +563,7 @@ function submitAnswer(answer) {
 }
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
-  questionNumber.innerText = ${currentQuestion}/102;
+  questionNumber.innerText = `${currentQuestion}/102`;
 };
 
 const sectionID = (currentQuestion) => {
