@@ -584,11 +584,11 @@ const setQuestionNumber = (currentQuestion) => {
 };
 
 //testing
-// window.addEventListener("keydown", function (event) {
-//   if (event.key.toLowerCase() === "arrowright") {
-//     nextQuestion();
-//   }
-// });
+window.addEventListener("keydown", function (event) {
+  if (event.key.toLowerCase() === "arrowright") {
+    nextQuestion();
+  }
+});
 
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
