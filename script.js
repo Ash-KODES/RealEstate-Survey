@@ -50,7 +50,11 @@ let currentImageIndex = 0;
 function displayQuestion() {
   const question = questions[currentQuestion];
   const questionTextElement = document.getElementById("question-text");
-  questionTextElement.innerText = question.text;
+  if (question.type === "image") {
+    questionTextElement.innerText = "";
+  } else {
+    questionTextElement.innerText = question.text;
+  }
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
   if (question.type === "percentage") {
@@ -210,10 +214,13 @@ function setRadioLabel(labelSet, parentDiv) {
   let selectedValue = "";
   let textInput;
 
+  const childDiv = document.createElement("div");
+  childDiv.classList.add("parent-radio-container");
+
   if (parentDiv === "parent-radio-container") {
     let h3 = document.createElement("h3");
     h3.innerText = questions[currentQuestion].text;
-    radioContainer.appendChild(h3);
+    childDiv.appendChild(h3);
   }
 
   labelSet.forEach((item, index) => {
@@ -236,7 +243,7 @@ function setRadioLabel(labelSet, parentDiv) {
     listDiv.appendChild(inputElement);
     listDiv.appendChild(labelElement);
 
-    radioContainer.appendChild(listDiv);
+    childDiv.appendChild(listDiv);
 
     // event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
@@ -250,7 +257,7 @@ function setRadioLabel(labelSet, parentDiv) {
 
         // Remove any existing text input
         if (textInput) {
-          radioContainer.lastChild.removeChild(textInput);
+          childDiv.lastChild.removeChild(textInput);
           textInput = null;
         }
 
@@ -287,7 +294,7 @@ function setRadioLabel(labelSet, parentDiv) {
         textAreaElement.style.display = "none";
         // Remove any existing text input
         if (textInput) {
-          radioContainer.lastChild.removeChild(textInput);
+          childDiv.lastChild.removeChild(textInput);
           textInput = null;
         }
         let selectedArray = [selectedValue];
@@ -295,6 +302,7 @@ function setRadioLabel(labelSet, parentDiv) {
       }
     });
   });
+  radioContainer.appendChild(childDiv);
 }
 
 function setMultipleImagesSet(imageSet) {

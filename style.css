@@ -35,7 +35,7 @@ body {
   width: 14px;
 }
 
-.percentage-container{
+.percentage-container {
   display: flex;
   gap: 5px;
 }
@@ -403,6 +403,16 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: start;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.parent-radio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
   gap: 5px;
   margin-bottom: 8px;
 }
