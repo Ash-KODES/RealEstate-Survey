@@ -554,6 +554,12 @@ document.getElementsByClassName("close")[0].onclick = closeModal;
 window.changeImage = changeImage;
 
 function submitAnswer(answer) {
+  let thankU = document.getElementById("thank-you");
+  thankU.style.display = "block";
+
+  document.getElementById("survey-container").innerHTML = "";
+  document.getElementById("survey-container").appendChild(thankU);
+
   let questionData = questions[currentQuestion];
   responses[currentQuestion] = {
     question_number: currentQuestion,
