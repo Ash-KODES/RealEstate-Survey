@@ -94,6 +94,15 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "block";
     document.getElementById("parent-radio-container").style.display = "none";
   }
+  else if(question.type === "image-multiple"){
+    setMultipleImagesSet(question.images);
+    document.getElementById("image-container").style.display = "none";
+    document.getElementById("text-answer-container").style.display = "none";
+    document.getElementById("parent-rating-container").style.display = "none";
+    document.getElementById("text-scroll").style.display = "none";
+    document.getElementById("text-radio").style.display = "block";
+    document.getElementById("parent-radio-container").style.display = "none";
+  }
 
   const nextButton = document.getElementById("next-question-button");
   const prevButton = document.getElementById("prev-question-button");
@@ -208,6 +217,59 @@ function setRadioLabel(labelSet, parentDiv) {
     });
   });
 }
+
+function setMultipleImagesSet(imageSet) {
+  const radioContainer = document.getElementById("radio-container");
+  radioContainer.innerHTML = "";
+  let selectedArray = [];
+
+  // Create a container for the images
+  const imagesContainer = document.createElement("div");
+  imagesContainer.classList.add("images-container");
+
+  imageSet.forEach((imagePath, index) => {
+    const imageDiv = document.createElement("div");
+    imageDiv.classList.add("image-item");
+
+    const inputElement = document.createElement("input");
+    inputElement.type = "checkbox";
+    inputElement.id = `image-${index}`;
+    inputElement.classList.add("input-box");
+    inputElement.value = imagePath;
+    inputElement.name = "image-radio";
+
+    const imageElement = document.createElement("img");
+    imageElement.src = imagePath;
+    imageElement.alt = `Image ${index}`;
+    imageElement.classList.add("image-preview");
+
+    // Set larger size
+    imageElement.style.width = "150px";
+    imageElement.style.height = "150px";
+
+    // Event listener for getting selected value as a response
+    inputElement.addEventListener("change", function () {
+      if (this.checked) {
+        // If the checkbox is checked, add it to the array
+        selectedArray.push(this.value);
+      } else {
+        // If the checkbox is unchecked, remove it from the array
+        const index = selectedArray.indexOf(this.value);
+        if (index > -1) {
+          selectedArray.splice(index, 1);
+        }
+      }
+    });
+
+    imageDiv.appendChild(inputElement);
+    imageDiv.appendChild(imageElement);
+
+    imagesContainer.appendChild(imageDiv);
+  });
+
+  radioContainer.appendChild(imagesContainer);
+}
+
 
 function setMultiRadioSet(labelSet) {
   const radioContainer = document.getElementById("radio-container");

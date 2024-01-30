@@ -745,12 +745,10 @@ export const questions = [
   {
     type: "image-multiple",
     images: [
-      "Images/Question1/1.jpg",
-      "Images/Question1/2.jpg",
-      "Images/Question1/5.jpg",
-      "Images/Question1/1.jpg",
-      "Images/Question1/2.jpg",
-      "Images/Question1/5.jpg",
+      "Images/Section3/Question15/1.jpg",
+      "Images/Section3/Question15/2.jpg",
+      "Images/Section3/Question15/3.jpg",
+      "Images/Section3/Question15/4.jpg",
     ],
     text: "Which images stood out to them the most?",
   },
@@ -782,27 +780,39 @@ export const questions = [
   // only likert scale
   {
     type: "image",
-    text: "Does seeing these similar homes make you more or less likely to want to buy them?",
+    rating: [
+      "Does seeing these similar homes make you more or less likely to want to buy them?",
+    ],
   },
   {
     type: "image",
-    text: "If you were to purchase a home like one of the ones shown would you feel a sense of social status or prestige is associated with owning a home like these, based on your friends or family who own them?   (Dont care 1 - Highly care 7)",
+    rating: [
+      "If you were to purchase a home like one of the ones shown would you feel a sense of social status or prestige is associated with owning a home like these, based on your friends or family who own them?   (Dont care 1 - Highly care 7)",
+    ],
   },
   {
     type: "image",
-    text: "How important is it for you to live in a neighbourhood or community that reflects a certain lifestyle or status, as represented by these types of homes?",
+    rating: [
+      "How important is it for you to live in a neighbourhood or community that reflects a certain lifestyle or status, as represented by these types of homes?",
+    ],
   },
   {
     type: "image",
-    text: "How strongly would your friends' or family's opinions about these types of homes affect your decision to buy one?",
+    rating: [
+      "How strongly would your friends' or family's opinions about these types of homes affect your decision to buy one?",
+    ],
   },
   {
     type: "image",
-    text: "Have conversations with friends or family about home types ever changed your perspective or interest in a particular style of home?",
+    rating: [
+      "Have conversations with friends or family about home types ever changed your perspective or interest in a particular style of home?",
+    ],
   },
   {
     type: "image",
-    text: "Do these types of homes represent a lifestyle you aspire to? How strongly does this aspiration influence your interest in them?",
+    rating: [
+      "Do these types of homes represent a lifestyle you aspire to? How strongly does this aspiration influence your interest in them?",
+    ],
   },
   {
     type: "text-radio",
@@ -811,6 +821,12 @@ export const questions = [
   },
   {
     type: "image-multiple",
+    images: [
+      "Images/Section3/Question15/1.jpg",
+      "Images/Section3/Question15/2.jpg",
+      "Images/Section3/Question15/3.jpg",
+      "Images/Section3/Question15/4.jpg",
+    ],
     text: "Which style of homes do you think are safe investments?",
   },
   // other
