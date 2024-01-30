@@ -1813,6 +1813,7 @@ export const questions = [
   // only likert scale
   {
     type: "image",
+    images: [],
     text: "How important is aesthetics in their decision making process?",
   },
   {
@@ -1833,39 +1834,33 @@ export const questions = [
   // only likert scale
   {
     type: "image",
-    rating: [
-      "Does seeing these similar homes make you more or less likely to want to buy them?",
-    ],
+    images: [],
+    text: "Does seeing these similar homes make you more or less likely to want to buy them?",
   },
   {
     type: "image",
-    rating: [
-      "If you were to purchase a home like one of the ones shown would you feel a sense of social status or prestige is associated with owning a home like these, based on your friends or family who own them?   (Dont care 1 - Highly care 7)",
-    ],
+    images: [],
+    text: "If you were to purchase a home like one of the ones shown would you feel a sense of social status or prestige is associated with owning a home like these, based on your friends or family who own them?   (Dont care 1 - Highly care 7)",
   },
   {
     type: "image",
-    rating: [
-      "How important is it for you to live in a neighbourhood or community that reflects a certain lifestyle or status, as represented by these types of homes?",
-    ],
+    images: [],
+    text: "How important is it for you to live in a neighbourhood or community that reflects a certain lifestyle or status, as represented by these types of homes?",
   },
   {
     type: "image",
-    rating: [
-      "How strongly would your friends' or family's opinions about these types of homes affect your decision to buy one?",
-    ],
+    images: [],
+    text: "How strongly would your friends' or family's opinions about these types of homes affect your decision to buy one?",
   },
   {
     type: "image",
-    rating: [
-      "Have conversations with friends or family about home types ever changed your perspective or interest in a particular style of home?",
-    ],
+    images: [],
+    text: "Have conversations with friends or family about home types ever changed your perspective or interest in a particular style of home?",
   },
   {
     type: "image",
-    rating: [
-      "Do these types of homes represent a lifestyle you aspire to? How strongly does this aspiration influence your interest in them?",
-    ],
+    images: [],
+    text: "Do these types of homes represent a lifestyle you aspire to? How strongly does this aspiration influence your interest in them?",
   },
   {
     type: "text-radio",
@@ -1906,7 +1901,13 @@ export const questions = [
     description: ["If yes, please explain"],
   },
   {
-    type: "images",
+    type: "image",
+    images: [
+      "Images/Section3/Question15/1.jpg",
+      "Images/Section3/Question15/2.jpg",
+      "Images/Section3/Question15/3.jpg",
+      "Images/Section3/Question15/4.jpg",
+    ],
     text: "Between given images,in which property you are more intrested in?",
     description: ["please explain,why ?"],
   },

@@ -449,8 +449,8 @@ h3 {
 }
 
 #question-number {
-  position: relative;
-  left: 500px;
+  position : absolute;
+  left: 1100px;
   font-weight: bold;
   font-size: 1.2em;
 }
