@@ -72,8 +72,8 @@ function displayQuestion() {
     if (question.images.length != 0) displayImages(question.images);
     setRating();
     document.getElementById("percentage").style.display = "none";
-
-    document.getElementById("image-container").style.display = "";
+    if (question.images.length != 0)
+      document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "block";
     document.getElementById("text-scroll").style.display = "none";
