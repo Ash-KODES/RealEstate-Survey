@@ -220,6 +220,17 @@ function setRadioLabel(labelSet, parentDiv) {
     childDiv.appendChild(h3);
   }
 
+  if (questions[currentQuestion].description) {
+    let textAreaElement = document.getElementById("text-answer-container");
+    textAreaElement.style.display = "block";
+    textAreaElement.addEventListener("input", function () {
+      selectedValue = this.value;
+      console.log("inside", selectedValue);
+      let selectedArray = [selectedValue];
+      responses[currentQuestion].response = selectedArray;
+    });
+  }
+
   labelSet.forEach((item, index) => {
     const listDiv = document.createElement("div");
     listDiv.classList.add("list-item");
@@ -572,6 +583,13 @@ const setQuestionNumber = (currentQuestion) => {
   questionNumber.innerText = `${currentQuestion}/102`;
 };
 
+//testing
+// window.addEventListener("keydown", function (event) {
+//   if (event.key.toLowerCase() === "arrowright") {
+//     nextQuestion();
+//   }
+// });
+
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
@@ -588,6 +606,12 @@ function submitResponses() {
     sessionid: sessionId,
     ...responses[key],
   }));
+
+  let thankU = document.getElementById("thank-you");
+  thankU.style.display = "block";
+
+  document.getElementById("survey-container").innerHTML = "";
+  document.getElementById("survey-container").appendChild(thankU);
 
   console.log(responseArray);
 
