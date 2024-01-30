@@ -133,15 +133,16 @@ document.getElementById("image-rating").addEventListener("input", function () {
   submitAnswer(this.value); // Capture image question response
 });
 let ratingElement = document.getElementById("rating-container");
+
 function setRating() {
   const rating = questions[currentQuestion]?.text;
   const radio = questions[currentQuestion]?.radiotext?.choices;
+  document.getElementById("parent-radio-container").innerHTML = "";
+  let parentDiv = document.getElementById("parent-rating-container");
+  parentDiv.innerHTML = "";
   if (radio) {
     setRadioLabel(radio, "parent-radio-container");
-  } else if (rating) {
-    let parentDiv = document.getElementById("parent-rating-container");
-    document.getElementById("parent-radio-container").innerHTML = "";
-    parentDiv.innerHTML = "";
+  } else {
     let newRating = ratingElement.cloneNode(true);
     let h3 = document.createElement("h3");
 
@@ -180,6 +181,12 @@ function setRadioLabel(labelSet, parentDiv) {
   radioContainer.innerHTML = "";
   let selectedValue = "";
   let textInput;
+
+  if (parentDiv === "parent-radio-container") {
+    let h3 = document.createElement("h3");
+    h3.innerText = questions[currentQuestion].text;
+    radioContainer.appendChild(h3);
+  }
 
   labelSet.forEach((item, index) => {
     const listDiv = document.createElement("div");
