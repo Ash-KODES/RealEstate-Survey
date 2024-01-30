@@ -136,8 +136,9 @@ let ratingElement = document.getElementById("rating-container");
 function setRating() {
   const rating = questions[currentQuestion]?.text;
   const radio = questions[currentQuestion]?.radiotext?.choices;
-
-  if (rating) {
+  if (radio) {
+    setRadioLabel(radio, "parent-radio-container");
+  } else if (rating) {
     let parentDiv = document.getElementById("parent-rating-container");
     document.getElementById("parent-radio-container").innerHTML = "";
     parentDiv.innerHTML = "";
@@ -152,9 +153,7 @@ function setRating() {
 
     parentDiv.appendChild(divElement);
   }
-  if (radio) {
-    setRadioLabel(radio, "parent-radio-container");
-  }
+
   // const radioQuest = questions[currentQuestion].radiotext.choices;
   // const ratingQuest = questions[currentQuestion].rating;
   // const ratingDiv = document.("rating-container");
