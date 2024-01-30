@@ -69,7 +69,7 @@ function displayQuestion() {
   }
   if (question.type === "image") {
     console.log("here", question.images);
-    displayImages(question.images);
+    if (question.images.length != 0) displayImages(question.images);
     setRating();
     document.getElementById("percentage").style.display = "none";
 
