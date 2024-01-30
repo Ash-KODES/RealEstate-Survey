@@ -169,13 +169,13 @@ function setRating() {
   } else {
     let newRating = ratingElement.cloneNode(true);
     const spanElement = newRating.querySelector("#rating-value");
-    let rating = 4;
+    let currentRating = 4;
     let h3 = document.createElement("h3");
     h3.innerText = rating;
     newRating.addEventListener("change", (e) => {
-      rating = e.target.value;
-      console.log(rating);
-      spanElement.innerText = rating;
+      currentRating = e.target.value;
+      responses[currentQuestion].response = currentRating;
+      spanElement.innerText = currentRating;
     });
 
     let divElement = document.createElement("div");
