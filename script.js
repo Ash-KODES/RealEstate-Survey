@@ -54,7 +54,7 @@ function displayQuestion() {
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
   if (question.type === "image") {
-    console.log("here",question.images);
+    console.log("here", question.images);
     displayImages(question.images);
 
     setRating();
@@ -83,7 +83,6 @@ function displayQuestion() {
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-container").style.display = "none";
     if (question.description) {
-      
       document.getElementById("text-answer-container").style.display = "";
     } else
       document.getElementById("text-answer-container").style.display = "none";
@@ -140,7 +139,7 @@ function setRating() {
 
   if (rating) {
     let parentDiv = document.getElementById("parent-rating-container");
-    document.getElementById('parent-radio-container').innerHTML = "";
+    document.getElementById("parent-radio-container").innerHTML = "";
     parentDiv.innerHTML = "";
     let newRating = ratingElement.cloneNode(true);
     let h3 = document.createElement("h3");
@@ -211,6 +210,8 @@ function setRadioLabel(labelSet, parentDiv) {
 
       // Check if the selected value is "Other"
       if (selectedValue === "Other") {
+        let textAreaElement = document.getElementById("text-answer-container");
+        textAreaElement.style.display = "none";
         selectedValue = ""; // Reset selectedValue
 
         // Remove any existing text input
@@ -238,7 +239,18 @@ function setRadioLabel(labelSet, parentDiv) {
             responses[currentQuestion].response = selectedArray;
           });
         }
+      } else if (selectedValue === "Other (specify)") {
+        let textAreaElement = document.getElementById("text-answer-container");
+        textAreaElement.style.display = "block";
+        textAreaElement.addEventListener("input", function () {
+          selectedValue = this.value;
+          console.log("inside", selectedValue);
+          let selectedArray = [selectedValue];
+          responses[currentQuestion].response = selectedArray;
+        });
       } else {
+        let textAreaElement = document.getElementById("text-answer-container");
+        textAreaElement.style.display = "none";
         // Remove any existing text input
         if (textInput) {
           radioContainer.lastChild.removeChild(textInput);
