@@ -80,13 +80,10 @@ function displayQuestion() {
   } else if (question.type === "text-radio") {
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-container").style.display = "none";
-    if(question.description)
-    {
-     
+    if (question.description) {
       document.getElementById("text-answer-container").style.display = "";
-    }
-    else
-    document.getElementById("text-answer-container").style.display = "none";
+    } else
+      document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
@@ -99,8 +96,7 @@ function displayQuestion() {
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
     document.getElementById("parent-radio-container").style.display = "none";
-  }
-  else if(question.type === "image-multiple"){
+  } else if (question.type === "image-multiple") {
     setMultipleImagesSet(question.images);
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
@@ -108,8 +104,7 @@ function displayQuestion() {
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
     document.getElementById("parent-radio-container").style.display = "none";
-  }
-  else if (question.type === "percentage") {
+  } else if (question.type === "percentage") {
     document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "";
     document.getElementById("parent-rating-container").style.display = "none";
@@ -135,27 +130,48 @@ document.getElementById("image-rating").addEventListener("input", function () {
   document.getElementById("rating-value").innerText = this.value;
   submitAnswer(this.value); // Capture image question response
 });
-
+let ratingElement = document.getElementById("rating-container");
 function setRating() {
-  const radioQuest = questions[currentQuestion].radiotext.choices;
-  const ratingQuest = questions[currentQuestion].rating;
-  const ratingDiv = document.getElementById("rating-container");
-  const parentDiv = document.getElementById("parent-rating-container");
-  const parentRadioElement = document.getElementById("parent-radio-container");
-  parentRadioElement.innerHTML = "";
-  parentDiv.innerHTML = "";
+  const rating = questions[currentQuestion]?.text;
+  const radio = questions[currentQuestion]?.radiotext?.choices;
 
-  parentDiv.style.display = "block";
-  ratingQuest.forEach((item) => {
-    let newRatingDiv = ratingDiv.cloneNode(true);
+  if (rating) {
+    let parentDiv = document.getElementById("parent-rating-container");
+    document.getElementById('parent-radio-container').innerHTML = "";
+    parentDiv.innerHTML = "";
+    let newRating = ratingElement.cloneNode(true);
+    let h3 = document.createElement("h3");
 
-    let questText = document.createElement("h3");
-    questText.innerText = item;
-    parentDiv.appendChild(questText);
-    parentDiv.appendChild(newRatingDiv);
-  });
+    h3.innerText = rating;
 
-  setRadioLabel(radioQuest, "parent-radio-container");
+    let divElement = document.createElement("div");
+    divElement.appendChild(h3);
+    divElement.appendChild(newRating);
+
+    parentDiv.appendChild(divElement);
+  }
+  if (radio) {
+    setRadioLabel(radio, "parent-radio-container");
+  }
+  // const radioQuest = questions[currentQuestion].radiotext.choices;
+  // const ratingQuest = questions[currentQuestion].rating;
+  // const ratingDiv = document.("rating-container");
+  // const parentDiv = document.getElementById("parent-rating-container");
+  // const parentRadioElement = document.getElementById("parent-radio-container");
+  // parentRadioElement.innerHTML = "";
+  // parentDiv.innerHTML = "";
+
+  // parentDiv.style.display = "block";
+  // ratingQuest.forEach((item) => {
+  //   let newRatingDiv = ratingDiv.cloneNode(true);
+
+  //   let questText = document.createElement("h3");
+  //   questText.innerText = item;
+  //   parentDiv.appendChild(questText);
+  //   parentDiv.appendChild(newRatingDiv);
+  // });
+
+  // setRadioLabel(radioQuest, "parent-radio-container");
 }
 
 function setRadioLabel(labelSet, parentDiv) {
@@ -283,7 +299,6 @@ function setMultipleImagesSet(imageSet) {
 
   radioContainer.appendChild(imagesContainer);
 }
-
 
 function setMultiRadioSet(labelSet) {
   const radioContainer = document.getElementById("radio-container");

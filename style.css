@@ -18,6 +18,23 @@ body {
   display: none;
 }
 
+.images-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 14px;
+}
+
+.image-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.input-box {
+  height: 14px;
+  width: 14px;
+}
+
 #waiver-container {
   max-width: 800px;
   margin: 20px auto; /* Center aligned with auto margin */
@@ -281,10 +298,9 @@ button:disabled {
   text-align: center;
 }
 
-h3{
+h3 {
   text-align: start;
 }
-
 
 #worst-label,
 #best-label {
