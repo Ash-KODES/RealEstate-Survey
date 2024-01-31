@@ -457,35 +457,6 @@ function setScrollList(listSet) {
       if (!check) {
         parent.appendChild(inputElement);
       }
-      // let textAreaElement = document.getElementById("text-answer-container");
-      // textAreaElement.style.display = "none";
-      // selectedValue = ""; // Reset selectedValue
-
-      // // Remove any existing text input
-      // if (textInput) {
-      //   childDiv.lastChild.removeChild(textInput);
-      //   textInput = null;
-      // }
-
-      // // Create a new text input
-      // textInput = document.createElement("input");
-      // textInput.type = "text";
-      // textInput.value = "";
-
-      // listDiv.appendChild(textInput);
-
-      // // Add event listener only if it's not already added
-      // if (!textInput.hasEventListener) {
-      //   textInput.hasEventListener = true;
-
-      //   // Event listener for updating selectedValue
-      //   textInput.addEventListener("input", function () {
-      //     selectedValue = this.value;
-      //     console.log("inside", selectedValue);
-      //     let selectedArray = [selectedValue];
-      //     responses[currentQuestion].response = selectedArray;
-      //   });
-      // }
     } else {
       const element = document.getElementById("dynamic-input");
       if (element) {
