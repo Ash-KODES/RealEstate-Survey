@@ -40,13 +40,16 @@ function initializeDefaultResponses() {
   });
 }
 
+// Will store final response object.
 let responses = {};
+// Generating Session UUID for each user.
 const sessionId =
   Date.now().toString(36) + Math.random().toString(36).substring(2);
 
 let currentQuestion = 0;
 let currentImageIndex = 0;
 
+// core function for displaying questions
 function displayQuestion() {
   const question = questions[currentQuestion];
   const questionTextElement = document.getElementById("question-text");
@@ -57,7 +60,7 @@ function displayQuestion() {
   }
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
-  
+
   if (question.type === "percentage") {
     setPercentage();
     document.getElementById("percentage").style.display = "block";
@@ -118,10 +121,6 @@ function displayQuestion() {
     document.getElementById("image-desc").style.display = "none";
     document.getElementById("image-container").style.display = "none";
     document.getElementById("percentage").style.display = "none";
-    // if (question.description) {
-    //   document.getElementById("text-answer-container").style.display = "";
-    // } else
-    //   document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
@@ -182,8 +181,8 @@ document.getElementById("image-rating").addEventListener("input", function () {
   document.getElementById("rating-value").innerText = this.value;
   submitAnswer(this.value); // Capture image question response
 });
-let ratingElement = document.getElementById("rating-container");
 
+let ratingElement = document.getElementById("rating-container");
 function setRating() {
   const rating = questions[currentQuestion]?.text;
   const radio = questions[currentQuestion]?.radiotext?.choices;
@@ -209,26 +208,6 @@ function setRating() {
     divElement.appendChild(newRating);
     parentDiv.appendChild(divElement);
   }
-
-  // const radioQuest = questions[currentQuestion].radiotext.choices;
-  // const ratingQuest = questions[currentQuestion].rating;
-  // const ratingDiv = document.("rating-container");
-  // const parentDiv = document.getElementById("parent-rating-container");
-  // const parentRadioElement = document.getElementById("parent-radio-container");
-  // parentRadioElement.innerHTML = "";
-  // parentDiv.innerHTML = "";
-
-  // parentDiv.style.display = "block";
-  // ratingQuest.forEach((item) => {
-  //   let newRatingDiv = ratingDiv.cloneNode(true);
-
-  //   let questText = document.createElement("h3");
-  //   questText.innerText = item;
-  //   parentDiv.appendChild(questText);
-  //   parentDiv.appendChild(newRatingDiv);
-  // });
-
-  // setRadioLabel(radioQuest, "parent-radio-container");
 }
 
 function setRadioLabel(labelSet, parentDiv) {
@@ -430,7 +409,6 @@ function setMultiRadioSet(labelSet) {
         }
       }
       responses[currentQuestion].response = selectedArray;
-      // console.log("Selected Value:", selectedArray);
     });
 
     listDiv.appendChild(inputElement);
@@ -445,6 +423,7 @@ function setScrollList(listSet) {
   scrollContainer.innerHTML = "";
   scrollContainer.classList.add("scroll-list");
   let selectedValue = "";
+  let textInput;
 
   listSet.forEach((item, index) => {
     const optionElement = document.createElement("option");
@@ -455,19 +434,44 @@ function setScrollList(listSet) {
     scrollContainer.appendChild(optionElement);
   });
 
-  // Remove existing event listener if any
   scrollContainer.removeEventListener("change", handleSelectChange);
-
-  // Add a new event listener
   scrollContainer.addEventListener("change", handleSelectChange);
 
   function handleSelectChange() {
     selectedValue = scrollContainer.value;
-    let selectedArray = [selectedValue];
-    responses[currentQuestion].response = selectedArray;
-    // console.log("Selected Value: ", selectedArray);
+
+    // Check if the selected value is "Other (please specify)"
+    if (selectedValue === "Other (please specify)") {
+      if (textInput) {
+        scrollContainer.parentNode.removeChild(textInput);
+        textInput = null;
+      }
+      textInput = document.createElement("input");
+      textInput.type = "text";
+      textInput.value = "";
+      textInput.placeholder = "Specify other";
+
+      scrollContainer.parentNode.appendChild(textInput);
+      if (!textInput.hasEventListener) {
+        textInput.hasEventListener = true;
+        textInput.addEventListener("input", function () {
+          selectedValue = this.value;
+          let selectedArray = [selectedValue];
+          responses[currentQuestion].response = selectedArray;
+        });
+      }
+    } else {
+      if (textInput) {
+        scrollContainer.parentNode.removeChild(textInput);
+        textInput = null;
+      }
+
+      let selectedArray = [selectedValue];
+      responses[currentQuestion].response = selectedArray;
+    }
   }
 }
+
 
 function displayImages(imageSet) {
   const imageContainer = document.getElementById("image-container");
@@ -623,6 +627,7 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
+// This is for generating section ID
 const sectionID = (currentQuestion) => {
   const sectionIdDiv = document.getElementById("sectionID");
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
@@ -634,6 +639,8 @@ const sectionID = (currentQuestion) => {
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
   else if (currentQuestion < 102) sectionIdDiv.textContent = "Section 5: Other";
 };
+
+// This is for submiting final response object.
 function submitResponses() {
   const responseArray = Object.keys(responses).map((key) => ({
     sessionid: sessionId,
@@ -664,6 +671,7 @@ function submitResponses() {
   });
 }
 
+// This is for submitting initial form
 window.submitWaiver = function () {
   const participantName = document.getElementById("signature").value;
   const agreeTerms = document.getElementById("agree-terms").checked;
