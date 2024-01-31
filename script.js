@@ -442,36 +442,61 @@ function setScrollList(listSet) {
 
     // Check if the selected value is "Other (please specify)"
     if (selectedValue === "Other (please specify)") {
-      if (textInput) {
-        scrollContainer.parentNode.removeChild(textInput);
-        textInput = null;
-      }
-      textInput = document.createElement("input");
-      textInput.type = "text";
-      textInput.value = "";
-      textInput.placeholder = "Specify other";
+      let inputElement = document.createElement("input");
+      inputElement.id = "dynamic-input";
+      const parent = document.getElementById("scroll-container");
+      let inputValue = "";
 
-      scrollContainer.parentNode.appendChild(textInput);
-      if (!textInput.hasEventListener) {
-        textInput.hasEventListener = true;
-        textInput.addEventListener("input", function () {
-          selectedValue = this.value;
-          let selectedArray = [selectedValue];
-          responses[currentQuestion].response = selectedArray;
-        });
+      const check = parent.querySelector("#dynamic-input");
+      inputElement.addEventListener("input", function () {
+        inputValue = this.value;
+        console.log(inputValue);
+
+        
+      });
+      if (!check) {
+        parent.appendChild(inputElement);
       }
+      // let textAreaElement = document.getElementById("text-answer-container");
+      // textAreaElement.style.display = "none";
+      // selectedValue = ""; // Reset selectedValue
+
+      // // Remove any existing text input
+      // if (textInput) {
+      //   childDiv.lastChild.removeChild(textInput);
+      //   textInput = null;
+      // }
+
+      // // Create a new text input
+      // textInput = document.createElement("input");
+      // textInput.type = "text";
+      // textInput.value = "";
+
+      // listDiv.appendChild(textInput);
+
+      // // Add event listener only if it's not already added
+      // if (!textInput.hasEventListener) {
+      //   textInput.hasEventListener = true;
+
+      //   // Event listener for updating selectedValue
+      //   textInput.addEventListener("input", function () {
+      //     selectedValue = this.value;
+      //     console.log("inside", selectedValue);
+      //     let selectedArray = [selectedValue];
+      //     responses[currentQuestion].response = selectedArray;
+      //   });
+      // }
     } else {
-      if (textInput) {
-        scrollContainer.parentNode.removeChild(textInput);
-        textInput = null;
+      const element = document.getElementById("dynamic-input");
+      if (element) {
+        document.getElementById("scroll-container").removeChild(element);
       }
-
-      let selectedArray = [selectedValue];
-      responses[currentQuestion].response = selectedArray;
     }
+
+    let selectedArray = [selectedValue];
+    responses[currentQuestion].response = selectedArray;
   }
 }
-
 
 function displayImages(imageSet) {
   const imageContainer = document.getElementById("image-container");
