@@ -1930,7 +1930,7 @@ export const questions = [
     text: "What is the budget for your next real estate purchase?",
   },
   {
-    type: "text-radio",
+    type: "percentage",
     text: "How much would you consider going over your budget?",
   },
   {

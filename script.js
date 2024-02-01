@@ -73,8 +73,7 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
-  }
-  if (question.type === "image-desc") {
+  } else if (question.type === "image-desc") {
     setImgDesc();
     document.getElementById("image-desc").style.display = "block";
     if (question.images.length != 0) displayImages(question.images);
