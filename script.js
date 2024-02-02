@@ -1,5 +1,6 @@
 import { questions } from "./questions.js";
 
+// for starting survey.
 window.startSurvey = function () {
   document.getElementById("title-page").style.display = "none";
   document.getElementById("waiver-container").style.display = "block";
@@ -8,6 +9,7 @@ window.startSurvey = function () {
   console.log("Here start survey");
 };
 
+// Consent form checks.
 window.consentForm = function () {
   const inputValue = document.getElementById("input-box");
   const isChecked = document.getElementById("check-box");
@@ -64,15 +66,14 @@ function displayQuestion() {
   if (question.type === "percentage") {
     setPercentage();
     document.getElementById("percentage").style.display = "block";
-    document.getElementById("image-container").style.display = "";
+    document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
-  }
-  if (question.type === "image-desc") {
+  } else if (question.type === "image-desc") {
     setImgDesc();
     document.getElementById("image-desc").style.display = "block";
     if (question.images.length != 0) displayImages(question.images);
@@ -210,7 +211,7 @@ function setRating() {
   }
 }
 
-
+// this set radio buttons for text-radio
 function setRadioLabel(labelSet, parentDiv) {
   const radioContainer = document.getElementById(parentDiv);
   radioContainer.innerHTML = "";
@@ -264,7 +265,7 @@ function setRadioLabel(labelSet, parentDiv) {
       selectedValue = this.value;
 
       // Check if the selected value is "Other"
-      if (selectedValue === "Other") {
+      if (selectedValue === "Other" || selectedValue === "Other (specify)") {
         let textAreaElement = document.getElementById("text-answer-container");
         textAreaElement.style.display = "none";
         selectedValue = ""; // Reset selectedValue
@@ -294,15 +295,6 @@ function setRadioLabel(labelSet, parentDiv) {
             responses[currentQuestion].response = selectedArray;
           });
         }
-      } else if (selectedValue === "Other (specify)") {
-        let textAreaElement = document.getElementById("text-answer-container");
-        textAreaElement.style.display = "block";
-        textAreaElement.addEventListener("input", function () {
-          selectedValue = this.value;
-          console.log("inside", selectedValue);
-          let selectedArray = [selectedValue];
-          responses[currentQuestion].response = selectedArray;
-        });
       } else {
         let textAreaElement = document.getElementById("text-answer-container");
         textAreaElement.style.display = "none";
@@ -319,6 +311,7 @@ function setRadioLabel(labelSet, parentDiv) {
   radioContainer.appendChild(childDiv);
 }
 
+// this set images on UI for image-multiple
 function setMultipleImagesSet(imageSet) {
   const radioContainer = document.getElementById("radio-container");
   radioContainer.innerHTML = "";
@@ -371,6 +364,7 @@ function setMultipleImagesSet(imageSet) {
   radioContainer.appendChild(imagesContainer);
 }
 
+// this set radio for text-radio-multiple
 function setMultiRadioSet(labelSet) {
   const radioContainer = document.getElementById("radio-container");
   radioContainer.innerHTML = "";
@@ -419,7 +413,13 @@ function setMultiRadioSet(labelSet) {
   });
 }
 
+// this set scroll list for text-scroll
 function setScrollList(listSet) {
+  let dynamicInput = document.getElementById("dynamic-input");
+  if (dynamicInput) {
+    let parentElement = dynamicInput.parentNode;
+    parentElement.removeChild(dynamicInput);
+  }
   const scrollContainer = document.getElementById("select-list");
   scrollContainer.innerHTML = "";
   scrollContainer.classList.add("scroll-list");
@@ -452,53 +452,23 @@ function setScrollList(listSet) {
       inputElement.addEventListener("input", function () {
         inputValue = this.value;
         console.log(inputValue);
-
-        
+        responses[currentQuestion].response = [inputValue];
       });
       if (!check) {
         parent.appendChild(inputElement);
       }
-      // let textAreaElement = document.getElementById("text-answer-container");
-      // textAreaElement.style.display = "none";
-      // selectedValue = ""; // Reset selectedValue
-
-      // // Remove any existing text input
-      // if (textInput) {
-      //   childDiv.lastChild.removeChild(textInput);
-      //   textInput = null;
-      // }
-
-      // // Create a new text input
-      // textInput = document.createElement("input");
-      // textInput.type = "text";
-      // textInput.value = "";
-
-      // listDiv.appendChild(textInput);
-
-      // // Add event listener only if it's not already added
-      // if (!textInput.hasEventListener) {
-      //   textInput.hasEventListener = true;
-
-      //   // Event listener for updating selectedValue
-      //   textInput.addEventListener("input", function () {
-      //     selectedValue = this.value;
-      //     console.log("inside", selectedValue);
-      //     let selectedArray = [selectedValue];
-      //     responses[currentQuestion].response = selectedArray;
-      //   });
-      // }
     } else {
       const element = document.getElementById("dynamic-input");
       if (element) {
         document.getElementById("scroll-container").removeChild(element);
       }
+      let selectedArray = [selectedValue];
+      responses[currentQuestion].response = selectedArray;
     }
-
-    let selectedArray = [selectedValue];
-    responses[currentQuestion].response = selectedArray;
   }
 }
 
+// this displays images
 function displayImages(imageSet) {
   const imageContainer = document.getElementById("image-container");
   imageContainer.innerHTML = "";
@@ -562,6 +532,7 @@ function updateModalImageInfo(index) {
   imageInfo.innerText = `Image ${index + 1} of ${totalImages}`;
 }
 
+// this is next question handler
 function nextQuestion() {
   const surveyContainer = document.getElementById("survey-container");
   surveyContainer.classList.add("fade-out");
@@ -589,13 +560,14 @@ function nextQuestion() {
 
     setTimeout(() => {
       surveyContainer.classList.remove("fade-in");
-    }, 1);
-  }, 1);
+    }, 200);
+  }, 200);
 }
 
 window.nextQuestion = nextQuestion;
 window.prevQuestion = prevQuestion;
 
+// this is previous question handler
 function prevQuestion() {
   const surveyContainer = document.getElementById("survey-container");
   surveyContainer.classList.add("fade-out");
@@ -612,8 +584,8 @@ function prevQuestion() {
 
     setTimeout(() => {
       surveyContainer.classList.remove("fade-in");
-    }, 1);
-  }, 1);
+    }, 200);
+  }, 200);
 }
 
 document.getElementsByClassName("close")[0].onclick = closeModal;
@@ -634,11 +606,14 @@ function submitAnswer(answer) {
     response: answer,
   };
 }
+
+// this sets question number
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
   questionNumber.innerText = `${currentQuestion}/102`;
 };
 
+// This is for testing purpose
 //testing
 window.addEventListener("keydown", function (event) {
   if (event.key.toLowerCase() === "arrowright") {

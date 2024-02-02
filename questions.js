@@ -122,8 +122,6 @@ export const questions = [
     type: "text-radio-multiple",
     choices: [
       "Australia",
-      "Non-Australia",
-      "Select Continent",
       "Africa",
       "Antarctica",
       "Asia",
@@ -131,7 +129,7 @@ export const questions = [
       "North America",
       "South America",
     ],
-    text: "Country of Birth (Choose one or more that apply):",
+    text: "Country of Birth:",
   },
   {
     type: "text-radio",
@@ -185,12 +183,12 @@ export const questions = [
   {
     type: "text-radio",
     choices: [
-      "Less than 1 year",
-      "1 - 5 years",
-      "5 - 10 years",
-      "10 - 20 years",
-      "20 - 30 years",
-      "30+ years",
+      "Less than 1 year ago",
+      "1 - 5 years ago",
+      "5 - 10 years ago",
+      "10 - 20 years ago",
+      "20 - 30 years ago",
+      "30+ years ago",
     ],
     text: "When did you buy your first property?",
   },
@@ -528,7 +526,7 @@ export const questions = [
       "Images/Section3/Question4/8.jpg",
       "Images/Section3/Question4/9.jpg",
     ],
-    text: "How effectively do you think the space has been utilized in this apartment?",
+    text: "How effectively do you think the space has been utilised in this apartment?",
   },
   {
     type: "image",
@@ -599,7 +597,7 @@ export const questions = [
       "Images/Section3/Question5/9.jpg",
       "Images/Section3/Question5/10.jpg",
     ],
-    text: "How effectively do you think the space has been utilized in this apartment?",
+    text: "How effectively do you think the space has been utilised in this apartment?",
   },
   {
     type: "image",
@@ -678,7 +676,7 @@ export const questions = [
       "Images/Section3/Question6/14.jpg",
       "Images/Section3/Question6/15.jpg",
     ],
-    text: "How effectively do you think the space has been utilized in this apartment?",
+    text: "How effectively do you think the space has been utilised in this apartment?",
   },
   {
     type: "image",
@@ -828,6 +826,12 @@ export const questions = [
       "Images/Section3/Question7/19.jpg",
     ],
     text: "Do you think this townhouse has enough space for you to live in?",
+    radiotext: {
+      choices: [
+        "Yes",
+        "No",
+      ],
+    },
   },
   {
     type: "image",
@@ -945,6 +949,12 @@ export const questions = [
     ],
 
     text: "Do you think this townhouse has enough space for you to live in?",
+    radiotext: {
+      choices: [
+        "Yes",
+        "No",
+      ],
+    },
   },
   {
     type: "image",
@@ -1068,6 +1078,12 @@ export const questions = [
       "Images/Section3/Question9/19.jpg",
     ],
     text: "Do you think this townhouse has enough space for you to live in?",
+    radiotext: {
+      choices: [
+        "Yes",
+        "No",
+      ],
+    },
   },
   {
     type: "image",
@@ -1197,6 +1213,12 @@ export const questions = [
       "Images/Section3/Question10/11.jpg",
     ],
     text: "Does the yard size of this home put you off from purchasing?",
+    radiotext: {
+      choices: [
+        "Yes",
+        "No",
+      ],
+    },
   },
   {
     type: "image",
@@ -1333,6 +1355,12 @@ export const questions = [
       "Images/Section3/Question11/17.jpg",
     ],
     text: "Does the yard size of this home put you off from purchasing?",
+    radiotext: {
+      choices: [
+        "Yes",
+        "No",
+      ],
+    },  
   },
   {
     type: "image",
@@ -1481,6 +1509,12 @@ export const questions = [
       "Images/Section3/Question12/17.jpg",
     ],
     text: "Does the yard size of this home put you off from purchasing?",
+    radiotext: {
+      choices: [
+        "Yes",
+        "No",
+      ],
+    },  
   },
   {
     type: "image",
@@ -1808,18 +1842,18 @@ export const questions = [
   {
     type: "text-radio-multiple",
     choices: ["Style", "Amenities", "Colours ", "Other"],
-    text: "Which elements did they like in the images they chose?",
+    text: "Why did you choose the images in the previous question?",
   },
   // only likert scale
   {
     type: "image",
     images: [],
-    text: "How important is aesthetics in their decision making process?",
+    text: "How important is aesthetics in your decision making process?",
   },
   {
     type: "text-radio",
     choices: ["Property style", "Condition", "Presentation"],
-    text: "Which visual elements affected them the most?",
+    text: "When viewing these properties which visual element affected you the most?",
   },
   {
     type: "text-radio",
@@ -1839,7 +1873,12 @@ export const questions = [
   },
   {
     type: "image",
-    images: [],
+    images: [
+      "Images/Section3/Question15/1.jpg",
+      "Images/Section3/Question15/2.jpg",
+      "Images/Section3/Question15/3.jpg",
+      "Images/Section3/Question15/4.jpg",
+    ],
     text: "If you were to purchase a home like one of the ones shown would you feel a sense of social status or prestige is associated with owning a home like these, based on your friends or family who own them?   (Dont care 1 - Highly care 7)",
   },
   {
@@ -1891,7 +1930,7 @@ export const questions = [
     text: "What is the budget for your next real estate purchase?",
   },
   {
-    type: "text-radio",
+    type: "percentage",
     text: "How much would you consider going over your budget?",
   },
   {

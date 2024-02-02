@@ -38,6 +38,12 @@ body {
 .percentage-container {
   display: flex;
   gap: 5px;
+  align-items: center;
+}
+
+#dynamic-input {
+  width: 200px;
+  height: 20px;
 }
 
 #waiver-container {
