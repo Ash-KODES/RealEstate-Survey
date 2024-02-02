@@ -64,7 +64,7 @@ function displayQuestion() {
   if (question.type === "percentage") {
     setPercentage();
     document.getElementById("percentage").style.display = "block";
-    document.getElementById("image-container").style.display = "";
+    document.getElementById("image-container").style.display = "none";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
@@ -450,9 +450,7 @@ function setScrollList(listSet) {
       const check = parent.querySelector("#dynamic-input");
       inputElement.addEventListener("input", function () {
         inputValue = this.value;
-        console.log(inputValue);
-
-        
+        responses[currentQuestion].response = [inputValue]; 
       });
       if (!check) {
         parent.appendChild(inputElement);

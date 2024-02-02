@@ -38,6 +38,7 @@ body {
 .percentage-container {
   display: flex;
   gap: 5px;
+  align-items: center;
 }
 
 #waiver-container {
@@ -423,6 +424,12 @@ h3 {
   justify-content: center;
   cursor: pointer;
   gap: 8px;
+}
+
+#percent-box {
+  width: 200px;
+  outline: none;
+  height: 25px;
 }
 
 #scroll-container {
