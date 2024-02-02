@@ -210,6 +210,7 @@ function setRating() {
   }
 }
 
+
 function setRadioLabel(labelSet, parentDiv) {
   const radioContainer = document.getElementById(parentDiv);
   radioContainer.innerHTML = "";
