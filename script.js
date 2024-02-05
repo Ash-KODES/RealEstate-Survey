@@ -54,20 +54,20 @@ let currentImageIndex = 0;
 // core function for displaying questions
 function displayQuestion() {
   const question = questions[currentQuestion];
+  setQuestionNumber(currentQuestion + 1);
+  sectionID(currentQuestion);
   const questionTextElement = document.getElementById("question-text");
   if (question.type === "image") {
     questionTextElement.innerText = "";
   } else {
     questionTextElement.innerText = question.text;
   }
-  setQuestionNumber(currentQuestion + 1);
-  sectionID(currentQuestion);
 
   if (question.type === "percentage") {
     setPercentage();
     document.getElementById("percentage").style.display = "block";
     document.getElementById("image-container").style.display = "none";
-    document.getElementById("text-answer-container").style.display = "none";
+    document.getElementById("radio-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "none";
@@ -336,10 +336,6 @@ function setMultipleImagesSet(imageSet) {
     imageElement.src = imagePath;
     imageElement.alt = `Image ${index}`;
     imageElement.classList.add("image-preview");
-
-    // Set larger size
-    imageElement.style.width = "350px";
-    imageElement.style.height = "250px";
 
     // Event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
@@ -610,7 +606,7 @@ function submitAnswer(answer) {
 // this sets question number
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
-  questionNumber.innerText = `${currentQuestion}/102`;
+  questionNumber.innerText = currentQuestion + "/102";
 };
 
 // This is for testing purpose
