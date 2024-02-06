@@ -638,7 +638,7 @@ const sectionID = (currentQuestion) => {
 };
 
 // This is for submiting final response object.
-function submitResponses() {
+async function submitResponses() {
   const responseArray = Object.keys(responses).map((key) => ({
     sessionid: sessionId,
     ...responses[key],
@@ -654,22 +654,28 @@ function submitResponses() {
 
   const endpointUrl = "https://unisaresponsesflask.replit.app/insert-data";
 
-  responseArray.forEach((response) => {
-    fetch(endpointUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(response),
+  await Promise.all(
+    responseArray.map(async (response) => {
+      try {
+        const res = await fetch(endpointUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(response),
+        });
+
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Error:", error));
-  });
+  );
 }
 
 // This is for submitting initial form
-window.submitWaiver = function () {
+window.submitWaiver = async function () {
   const participantName = document.getElementById("signature").value;
   const agreeTerms = document.getElementById("agree-terms").checked;
 
@@ -688,16 +694,20 @@ window.submitWaiver = function () {
   const waiverEndpointUrl =
     "https://unisaresponsesflask.replit.app/insert-waiver";
 
-  fetch(waiverEndpointUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(waiverData),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log("Waiver submitted successfully:", data))
-    .catch((error) => console.error("Error submitting waiver:", error));
+  try {
+    const res = await fetch(waiverEndpointUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(waiverData),
+    });
+
+    const data = await res.json();
+    console.log("Waiver submitted successfully:", data);
+  } catch (error) {
+    console.error("Error submitting waiver:", error);
+  }
 
   document.getElementById("waiver-container").style.display = "none";
   document.getElementById("survey-container").style.display = "block";
