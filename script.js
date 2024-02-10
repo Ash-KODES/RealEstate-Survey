@@ -652,27 +652,24 @@ async function submitResponses() {
 
   console.log(responseArray);
 
-  const endpointUrl = "https://unisaresponsesflask.replit.app/insert-data";
+  const endpointUrl = "http://127.0.0.1:5000/insert-data";
 
-  await Promise.all(
-    responseArray.map(async (response) => {
-      try {
-        const res = await fetch(endpointUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(response),
-        });
+  try {
+    const res = await fetch(endpointUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(responseArray),
+    });
 
-        const data = await res.json();
-        console.log(data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    })
-  );
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
+
 
 // This is for submitting initial form
 window.submitWaiver = async function () {
@@ -691,8 +688,7 @@ window.submitWaiver = async function () {
     agreedToTerms: agreeTerms,
   };
 
-  const waiverEndpointUrl =
-    "https://unisaresponsesflask.replit.app/insert-waiver";
+  const waiverEndpointUrl = "http://127.0.0.1:5000/insert-waiver";
 
   try {
     const res = await fetch(waiverEndpointUrl, {
