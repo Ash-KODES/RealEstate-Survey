@@ -427,7 +427,6 @@ h3 {
 .list-item {
   display: flex;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   gap: 8px;
 }

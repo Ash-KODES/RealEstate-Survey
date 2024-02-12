@@ -163,7 +163,7 @@ function displayQuestion() {
     let inputElement = document.getElementById("text-image-desc");
 
     console.log("hello");
-    inputElement.addEventListener("input", function () {
+    inputElement && inputElement.addEventListener("input", function () {
       res = this.value;
       console.log(this.value);
       responses[currentQuestion].response = res;
@@ -246,12 +246,9 @@ function setRadioLabel(labelSet, parentDiv) {
       radioText = this.value;
       console.log(radioText);
     });
-  }
-  else
-  {
+  } else {
     let textAreaParent = document.getElementById("radio-desc-container");
     textAreaParent.style.display = "none";
-
   }
 
   labelSet.forEach((item, index) => {
@@ -320,12 +317,10 @@ function setRadioLabel(labelSet, parentDiv) {
           textInput = null;
         }
         let selectedArray = [selectedValue];
-        if (selectedValue == "Yes") {
+        if (selectedValue == "Yes" && questions[currentQuestion].description) {
           selectedArray = [radioText];
-          console.log(selectedArray);
         } else {
           selectedArray - [selectedValue];
-          console.log(selectedArray)
         }
 
         responses[currentQuestion].response = selectedArray;
