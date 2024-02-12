@@ -85,7 +85,7 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "image") {
-    console.log("here", question.images);
+    // console.log("here", question.images);
     if (question.images.length != 0) displayImages(question.images);
     setRating();
     document.getElementById("percentage").style.display = "none";
@@ -118,6 +118,7 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "text-radio") {
+    document.getElementById("text-radio").style.display = "block";
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-desc").style.display = "none";
     document.getElementById("image-container").style.display = "none";
@@ -171,6 +172,9 @@ function displayQuestion() {
   function setPercentage() {
     let percentValue = 1;
     let percentInput = document.getElementById("percent-box");
+    if (responses[currentQuestion].response != undefined) {
+      percentInput.value = responses[currentQuestion].response;
+    }
     percentInput.addEventListener("input", function (e) {
       percentValue = e.target.value;
       responses[currentQuestion].response = percentValue;
@@ -658,7 +662,7 @@ const sectionID = (currentQuestion) => {
 };
 
 // This is for submiting final response object.
-function submitResponses() {
+async function submitResponses() {
   const responseArray = Object.keys(responses).map((key) => ({
     sessionid: sessionId,
     ...responses[key],
@@ -672,24 +676,26 @@ function submitResponses() {
 
   console.log(responseArray);
 
-  const endpointUrl = "https://unisaresponsesflask.replit.app/insert-data";
+  const endpointUrl = "http://127.0.0.1:5000/insert-data";
 
-  responseArray.forEach((response) => {
-    fetch(endpointUrl, {
+  try {
+    const res = await fetch(endpointUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(response),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Error:", error));
-  });
+      body: JSON.stringify(responseArray),
+    });
+
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 // This is for submitting initial form
-window.submitWaiver = function () {
+window.submitWaiver = async function () {
   const participantName = document.getElementById("signature").value;
   const agreeTerms = document.getElementById("agree-terms").checked;
 
@@ -705,19 +711,22 @@ window.submitWaiver = function () {
     agreedToTerms: agreeTerms,
   };
 
-  const waiverEndpointUrl =
-    "https://unisaresponsesflask.replit.app/insert-waiver";
+  const waiverEndpointUrl = "http://127.0.0.1:5000/insert-waiver";
 
-  fetch(waiverEndpointUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(waiverData),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log("Waiver submitted successfully:", data))
-    .catch((error) => console.error("Error submitting waiver:", error));
+  try {
+    const res = await fetch(waiverEndpointUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(waiverData),
+    });
+
+    const data = await res.json();
+    console.log("Waiver submitted successfully:", data);
+  } catch (error) {
+    console.error("Error submitting waiver:", error);
+  }
 
   document.getElementById("waiver-container").style.display = "none";
   document.getElementById("survey-container").style.display = "block";
