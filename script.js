@@ -160,12 +160,12 @@ function displayQuestion() {
 
   function setImgDesc() {
     let res = "";
-    let inputElement = document.getElementById("image-desc");
-    if (responses[currentQuestion].response != undefined) {
-      inputElement.value = responses[currentQuestion].response;
-    }
+    let inputElement = document.getElementById("text-image-desc");
+
+    console.log("hello");
     inputElement.addEventListener("input", function () {
       res = this.value;
+      console.log(this.value);
       responses[currentQuestion].response = res;
     });
   }
@@ -223,7 +223,10 @@ function setRadioLabel(labelSet, parentDiv) {
   const radioContainer = document.getElementById(parentDiv);
   radioContainer.innerHTML = "";
   let selectedValue = "";
-  let textInput;
+  let textInput = "";
+  let radioText = "";
+  const radioParent = document.getElementById("radio-container");
+  radioParent.style.display = "block";
 
   const childDiv = document.createElement("div");
   childDiv.classList.add("parent-radio-container");
@@ -235,14 +238,20 @@ function setRadioLabel(labelSet, parentDiv) {
   }
 
   if (questions[currentQuestion].description) {
-    let textAreaElement = document.getElementById("text-answer-container");
-    textAreaElement.style.display = "block";
+    let textAreaParent = document.getElementById("radio-desc-container");
+    textAreaParent.style.display = "block";
+
+    const textAreaElement = document.getElementById("radio-desc-text");
     textAreaElement.addEventListener("input", function () {
-      selectedValue = this.value;
-      console.log("inside", selectedValue);
-      let selectedArray = [selectedValue];
-      responses[currentQuestion].response = selectedArray;
+      radioText = this.value;
+      console.log(radioText);
     });
+  }
+  else
+  {
+    let textAreaParent = document.getElementById("radio-desc-container");
+    textAreaParent.style.display = "none";
+
   }
 
   labelSet.forEach((item, index) => {
@@ -311,6 +320,14 @@ function setRadioLabel(labelSet, parentDiv) {
           textInput = null;
         }
         let selectedArray = [selectedValue];
+        if (selectedValue == "Yes") {
+          selectedArray = [radioText];
+          console.log(selectedArray);
+        } else {
+          selectedArray - [selectedValue];
+          console.log(selectedArray)
+        }
+
         responses[currentQuestion].response = selectedArray;
       }
     });

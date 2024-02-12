@@ -189,22 +189,19 @@ body {
   cursor: pointer;
 }
 
-#text-answer-container {
+#text-answer-container, #radio-desc-container {
   margin: 10px 0;
   padding: 10px; /* Ensure this matches with other containers */
 }
 
-#text-answer,
-#text-answer-container {
-  box-sizing: border-box;
-}
 
-#text-answer {
+#text-answer, #text-image-desc, #radio-desc-text {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1em;
+  box-sizing: border-box;
 }
 
 button {
