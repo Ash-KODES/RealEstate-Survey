@@ -77,7 +77,7 @@ function displayQuestion() {
     setImgDesc();
     document.getElementById("image-desc").style.display = "block";
     if (question.images.length != 0) displayImages(question.images);
-    if (question.images.length != 0)
+    else if (question.images.length != 0)
       document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
@@ -85,7 +85,7 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "image") {
-    console.log("here", question.images);
+    // console.log("here", question.images);
     if (question.images.length != 0) displayImages(question.images);
     setRating();
     document.getElementById("percentage").style.display = "none";
@@ -118,6 +118,7 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
     document.getElementById("parent-radio-container").style.display = "none";
   } else if (question.type === "text-radio") {
+    document.getElementById("text-radio").style.display = "block";
     setRadioLabel(question.choices, "radio-container");
     document.getElementById("image-desc").style.display = "none";
     document.getElementById("image-container").style.display = "none";
@@ -160,6 +161,9 @@ function displayQuestion() {
   function setImgDesc() {
     let res = "";
     let inputElement = document.getElementById("image-desc");
+    if (responses[currentQuestion].response != undefined) {
+      inputElement.value = responses[currentQuestion].response;
+    }
     inputElement.addEventListener("input", function () {
       res = this.value;
       responses[currentQuestion].response = res;
@@ -168,6 +172,9 @@ function displayQuestion() {
   function setPercentage() {
     let percentValue = 1;
     let percentInput = document.getElementById("percent-box");
+    if (responses[currentQuestion].response != undefined) {
+      percentInput.value = responses[currentQuestion].response;
+    }
     percentInput.addEventListener("input", function (e) {
       percentValue = e.target.value;
       responses[currentQuestion].response = percentValue;
@@ -669,7 +676,6 @@ async function submitResponses() {
     console.error("Error:", error);
   }
 }
-
 
 // This is for submitting initial form
 window.submitWaiver = async function () {
