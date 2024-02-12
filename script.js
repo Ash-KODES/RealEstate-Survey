@@ -373,6 +373,8 @@ function setMultipleImagesSet(imageSet) {
           selectedArray.splice(index, 1);
         }
       }
+
+      responses[currentQuestion].response = selectedArray;
     });
 
     imageDiv.appendChild(inputElement);
