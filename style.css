@@ -91,7 +91,7 @@ body {
 #question-container {
   margin-bottom: 20px;
 }
-.question-header{
+.question-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -189,13 +189,15 @@ body {
   cursor: pointer;
 }
 
-#text-answer-container, #radio-desc-container {
+#text-answer-container,
+#radio-desc-container {
   margin: 10px 0;
   padding: 10px; /* Ensure this matches with other containers */
 }
 
-
-#text-answer, #text-image-desc, #radio-desc-text {
+#text-answer,
+#text-image-desc,
+#radio-desc-text {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -473,7 +475,9 @@ h3 {
   width: 350px;
   height: 250px;
 }
-
+#text-image-answer {
+  width: 100%;
+}
 /* Responsive Design CSS */
 @media only screen and (max-width: 768px) {
   #title-page {
@@ -545,22 +549,25 @@ h3 {
     height: 150px;
   }
 
-  .textarea-container{
+  .textarea-container {
     width: 100%;
   }
 
-  #sectionID, #question-number {
+  #sectionID,
+  #question-number {
     font-size: 1em;
   }
 
-  .percentage-container h3{
+  .percentage-container h3 {
     font-size: 1em;
   }
-  
-  #prev-question-button, #next-question-button {
+
+  #prev-question-button,
+  #next-question-button {
     width: 45%;
-    padding : 8px 10px;
+    padding: 8px 10px;
+  }
+  #text-image-answer {
+    width: 100%;
   }
 }
-
-
