@@ -77,7 +77,7 @@ function displayQuestion() {
     setImgDesc();
     document.getElementById("image-desc").style.display = "block";
     if (question.images.length != 0) displayImages(question.images);
-    else if (question.images.length != 0)
+    if (question.images.length != 0)
       document.getElementById("image-container").style.display = "";
     document.getElementById("text-answer-container").style.display = "none";
     document.getElementById("parent-rating-container").style.display = "none";
