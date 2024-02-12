@@ -160,15 +160,15 @@ function displayQuestion() {
 
   function setImgDesc() {
     let res = "";
-    let inputElement = document.getElementById("text-image-desc");
-
+    let InputElement = document.getElementById("text-image-answer");
     console.log("hello");
-    inputElement && inputElement.addEventListener("input", function () {
+    InputElement.addEventListener("input", function () {
       res = this.value;
       console.log(this.value);
-      responses[currentQuestion].response = res;
+      responses[currentQuestion].response = [res];
     });
   }
+
   function setPercentage() {
     let percentValue = 1;
     let percentInput = document.getElementById("percent-box");
@@ -244,7 +244,7 @@ function setRadioLabel(labelSet, parentDiv) {
     const textAreaElement = document.getElementById("radio-desc-text");
     textAreaElement.addEventListener("input", function () {
       radioText = this.value;
-      console.log(radioText);
+      responses[currentQuestion].response = [radioText];
     });
   } else {
     let textAreaParent = document.getElementById("radio-desc-container");
@@ -308,6 +308,17 @@ function setRadioLabel(labelSet, parentDiv) {
             responses[currentQuestion].response = selectedArray;
           });
         }
+      } else if (questions[currentQuestion].description) {
+        if (selectedValue === "Yes") {
+          console.log("here i am", radioText);
+          responses[currentQuestion].response = [radioText];
+          console.log("yes, ", responses[currentQuestion].response);
+        } else {
+          console.log("here i am again", radioText);
+          responses[currentQuestion].response = [selectedValue];
+          console.log("no, ", responses[currentQuestion].response);
+
+        }
       } else {
         let textAreaElement = document.getElementById("text-answer-container");
         textAreaElement.style.display = "none";
@@ -317,12 +328,6 @@ function setRadioLabel(labelSet, parentDiv) {
           textInput = null;
         }
         let selectedArray = [selectedValue];
-        if (selectedValue == "Yes" && questions[currentQuestion].description) {
-          selectedArray = [radioText];
-        } else {
-          selectedArray - [selectedValue];
-        }
-
         responses[currentQuestion].response = selectedArray;
       }
     });
