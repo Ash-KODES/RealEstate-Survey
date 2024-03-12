@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Survey</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://apis.google.com/js/api.js"></script>
+  </head>
+  <body>
+    <div id="title-page">
+      <h1>Welcome to the Real Estate Survey</h1>
+      <p>Thanks for taking the time to share your thoughts on some various properties in South Australia. This survey will take approximately ~20 minutes to complete. For the best experience, please use a desktop browser.</p>
+      <button onclick="startSurvey()">Start Survey</button>
+    </div>
+
+    <div id="waiver-container">
+      <div id="consent-container">
+        <h1>Consent Aggrement</h1>
+        <div class="aggrement-content">
+          <h3 style="text-align: center">PARTICIPANT INFORMATION SHEET</h3>
+          <h4>
+            How do images impact consumer psychology and
+            influence the prices buyers are prepared to offer?
+          </h4>
+          <p>
+            We are conducting a research study to understand how images impact
+            consumer psychology and influence the prices buyers are prepared to
+            offer for real estate. This survey aims to gather data that will
+            help us delve into the intricacies of buyer preferences and
+            decision-making processes in the property market.
+          </p>
+          <p>
+            Our research is grounded in the field of behavioural finance and
+            housing economics. It focuses on the psychological factors that play
+            a significant role in property valuation. Existing literature,
+            including studies by Whittle et al., Lux Martin, and Mohammad, Ali &
+            Jasimin, suggests that human decisions in the housing market are not
+            always based on rational calculations. Instead, they are often
+            swayed by cognitive biases, societal norms, and emotional
+            influences.
+          </p>
+          <p>
+            The hypothesis driving this study is that different groups of buyers
+            will demonstrate distinct preferences for specific types of real
+            estate images. These preferences are thought to be influenced by
+            factors such as lifestyle, life stage, and investment objectives. We
+            anticipate that these preferences will be reflected in how buyers
+            perceive the value of properties and in their willingness to engage
+            or offer higher prices.
+          </p>
+          <p>
+            Your participation in this survey will involve viewing a series of
+            real estate images and providing your perceptions and estimated
+            valuations for these properties. Your contributions are invaluable
+            to our study and will help in advancing our understanding of
+            consumer behaviour in the real estate market. All responses will be
+            kept confidential and will be used solely for the purpose of this
+            research.
+          </p>
+          <p>
+            You may withdraw from the survey at any time during the
+            questionnaire. All information collected as part of this study will
+            be retained for seven years in a secured computer server in the
+            School of Business.
+          </p>
+          <p>
+            This project has been approved by the UniSA Business Ethics
+            Committee Approval Number:(001-2024).<span>
+            </span>
+          </p>
+          <p>
+            If you have any ethical concerns about the project or questions
+            about your rights as a participant please contact
+            <a href="mailto:BIS-Research@unisa.edu.au"
+              >BIS-Research@unisa.edu.au</a
+            >
+            or 61 8 8302 0245.
+          </p>
+          <p>
+            Should you have any questions about this study, please feel free to
+            contact the following persons. Thank you for your time and
+            cooperation.
+          </p>
+          <p>Sincerely</p>
+          <p>Clayton Pilat</p>
+        </div>
+        <input id="signature" placeholder="Your Signature" />
+        <div class="check-container">
+          <input type="checkbox" id="agree-terms" />
+          <h4>I agree to the terms and conditions.</h4>
+        </div>
+        <button onclick="submitWaiver()">Agree And Continue</button>
+      </div>
+    </div>
+
+    <div id="survey-container">
+      <div class="question-header">
+        <span id="sectionID">
+        </span>
+        <span id="question-number"></span>
+     
+      </div>
+      <div id="question-container">
+        <p id="question-text">Question will go here</p>
+      </div>
+      
+      <div id="percentage" style="display: none">
+        <div class="percentage-container">
+          <input id="percent-box" type="number" min="1" max="100" />
+          <h3>Percentage</h3>
+        </div>
+      </div>
+
+      <div id="image-container">
+        <!-- Images will be loaded here by JavaScript -->
+      </div>
+      <div id="text-answer-container" style="display: none">
+        <textarea id="text-answer" rows="4" cols="50"></textarea>
+      </div>
+      <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image" />
+        <div id="image-info">Image 1 of 5</div>
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+        <div id="caption"></div>
+      </div>
+      <div
+        id="parent-rating-container"
+        style="display: none; text-align: center"
+      >
+        <div id="rating-container">
+          <input
+            type="range"
+            id="image-rating"
+            min="1"
+            max="7"
+            value="4"
+            step="1"
+          />
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px;
+            "
+          >
+            <span style="font-size: 0.8em; color: grey">Worst</span>
+            <span style="font-size: 0.8em; color: grey">Best</span>
+          </div>
+          <p>Rating: <span id="rating-value">4</span>/7</p>
+        </div>
+      </div>
+      <div id="parent-radio-container"></div>
+
+      <div id="text-scroll" style="display: none; text-align: center">
+        <div id="scroll-container">
+          <select id="select-list" name="select-list"></select>
+        </div>
+      </div>
+
+      <div id="text-radio" style="display: none; text-align: center">
+        <form id="radio-container"></form>
+        <div id="radio-desc-container" >
+          <textarea rows="5" cols="50" id="radio-desc-text"></textarea>
+        </div>
+      </div>
+      <div id="image-desc" style="display: none;">
+        <div class="textarea-container">
+          <textarea name="" id="text-image-answer" cols="50" rows="10" placeholder="please explain,why ?"></textarea>
+        </div>
+      </div>
+      
+      <div class="button-container">
+        <button id="prev-question-button" onclick="prevQuestion()">
+          Previous Question
+        </button>
+        <button id="next-question-button" onclick="nextQuestion()">
+          Next Question
+        </button>
+      </div> 
+
+
+      </div>
+      <div id="thank-you" style="display: none">
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <h1>Thank You !</h1>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,573 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#survey-container {
+  max-width: 800px;
+  margin: 20px auto; /* Center aligned with auto margin */
+  padding: 20px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: none;
+}
+
+.images-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 14px;
+}
+
+.image-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.input-box {
+  height: 14px;
+  width: 14px;
+}
+
+.percentage-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+#dynamic-input {
+  width: 200px;
+  height: 20px;
+}
+
+#waiver-container {
+  max-width: 800px;
+  margin: 20px auto; /* Center aligned with auto margin */
+  padding: 20px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: none;
+}
+
+#consent-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.aggrement-content {
+  width: 700px;
+
+  height: 400px;
+  overflow: scroll;
+}
+
+.aggrement-content::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
+}
+#signature {
+  width: 250px;
+  outline: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 32px;
+  padding: 0 5px;
+  margin: 10px 0;
+}
+.check-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+#question-container {
+  margin-bottom: 20px;
+}
+.question-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#question-text {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+#image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px; /* Adjust space between main image and thumbnails */
+}
+
+#image-info {
+  color: white;
+  text-align: center;
+  margin-top: 10px; /* Adjust as needed */
+  font-size: 1em;
+}
+
+.main-image {
+  width: 70%; /* Adjust as needed to balance with thumbnails */
+  cursor: pointer;
+  height: auto; /* Maintain aspect ratio */
+}
+
+.thumbnails-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 25%; /* Adjust this to balance with main image */
+  gap: 10px; /* Spacing between thumbnails */
+}
+
+.thumbnail-container {
+  position: relative;
+  width: 100%;
+  flex-grow: 1; /* Thumbnails expand to fill container */
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  object-fit: cover; /* Adjust image to cover the container */
+  border-radius: 5px;
+}
+
+.thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#text-answer-container,
+#radio-desc-container {
+  margin: 10px 0;
+  padding: 10px; /* Ensure this matches with other containers */
+}
+
+#text-answer,
+#text-image-desc,
+#radio-desc-text {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1em;
+  margin: 10px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.next {
+  right: 20px;
+}
+
+.prev {
+  left: 20px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#title-page {
+  text-align: center;
+  padding: 50px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+#title-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#title-page p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+#rating-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  text-align: center;
+}
+
+h3 {
+  text-align: start;
+}
+
+#worst-label,
+#best-label {
+  flex: 1;
+}
+
+#image-rating {
+  flex: 2; /* Adjust the flex-grow value as needed for slider width */
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  /* Continue with your existing styles for #image-rating */
+}
+
+#image-rating:hover {
+  opacity: 1;
+}
+
+#image-rating::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+
+#image-rating::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .main-image,
+  .thumbnail {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  #image-container {
+    flex-direction: column; /* Stack images vertically */
+  }
+
+  .thumbnails-container {
+    width: 100%; /* Thumbnails take full width */
+    flex-direction: row; /* Layout thumbnails in a row */
+    flex-wrap: wrap; /* Wrap thumbnails to new lines as needed */
+    justify-content: space-around; /* Space out thumbnails */
+  }
+
+  .thumbnail-container {
+    width: 30%; /* Each thumbnail takes up around 30% of the width */
+    margin-bottom: 10px; /* Space between rows of thumbnails */
+  }
+
+  .modal-content {
+    width: 90%; /* Adjust modal content size for smaller screens */
+  }
+
+  #survey-container {
+    width: 80%; /* Adjust survey container width for smaller screens */
+    margin: 10px auto; /* Center-align the container */
+    padding: 15px; /* Adjust padding */
+    /* Ensure #survey-container remains hidden until toggled by JavaScript */
+    /* display: none; is already defined outside of media queries */
+  }
+
+  #title-page {
+    width: 80%;
+    padding: 15px; /* Reduce padding in the title page for mobile */
+    margin: 10px auto; /* Adjust margin for the title page */
+  }
+
+  /* Styles for buttons */
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Adjust buttons to be side by side */
+    padding: 10px 0; /* Add some vertical padding */
+  }
+
+  #prev-question-button,
+  #next-question-button {
+    width: 48%; /* Adjust button width for mobile */
+    margin: 5px 0; /* Adjust vertical margin for mobile */
+  }
+}
+
+#radio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.parent-radio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+
+#scroll-container {
+  display: flex;
+  gap: 5px;
+}
+.input-box {
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+#scroll-container {
+  display: flex;
+  padding-left: 10px;
+  margin-bottom: 12px;
+}
+
+.scroll-list {
+  padding: 8px;
+}
+
+.scroll-list::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
+}
+
+#question-number {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#sectionID {
+  position: relative;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.images-container .image-item img {
+  width: 350px;
+  height: 250px;
+}
+#text-image-answer {
+  width: 100%;
+}
+/* Responsive Design CSS */
+@media only screen and (max-width: 768px) {
+  #title-page {
+    text-align: center;
+    padding: 16px;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  #title-page h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  #title-page p {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  #waiver-container {
+    max-width: 400px;
+    margin: 20px auto; /* Center aligned with auto margin */
+    padding: 16px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: none;
+  }
+
+  #consent-container h1 {
+    font-size: 2em;
+  }
+
+  .aggrement-content {
+    width: 100%;
+
+    height: 400px;
+    overflow: scroll;
+  }
+
+  .aggrement-content h3,
+  h4 {
+    font-size: 1em;
+  }
+
+  .scroll-list {
+    padding: 4px;
+    width: 100%;
+  }
+
+  #scroll-container {
+    padding: 0;
+  }
+  .list-item label {
+    text-align: start;
+  }
+
+  .images-container {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 24px;
+  }
+
+  .images-container .image-item img {
+    width: 250px;
+    height: 150px;
+  }
+
+  .textarea-container {
+    width: 100%;
+  }
+
+  #sectionID,
+  #question-number {
+    font-size: 1em;
+  }
+
+  .percentage-container h3 {
+    font-size: 1em;
+  }
+
+  #prev-question-button,
+  #next-question-button {
+    width: 45%;
+    padding: 8px 10px;
+  }
+  #text-image-answer {
+    width: 100%;
+  }
+}
