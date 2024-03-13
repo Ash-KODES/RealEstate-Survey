@@ -1,4 +1,24 @@
 import { questions } from "./questions.js";
+console.log(questions);
+// Removing one random question type
+let removalRange = new Map();
+removalRange.set(0,[12,23]);
+removalRange.set(1,[24,35]);
+removalRange.set(2,[36,50]);
+removalRange.set(3,[51,65]);
+// select random number from 0-3
+let randomIndex = Math.floor(Math.random() * 4);
+let range = removalRange.get(randomIndex);  
+// remove that range from the questions
+questions.splice(randomIndex, range[1]);
+let rangeStart = range[0];
+let rangeEnd = range[1];
+console.log(rangeStart, rangeEnd);
+// Filter out questions excluding the specified range
+let filteredQuestions = questions.filter((_, index) => {
+  return (index < rangeStart || index > rangeEnd);
+});
+console.log(filteredQuestions);
 
 // for starting survey.
 window.startSurvey = function () {
@@ -41,7 +61,7 @@ window.consentForm = function () {
 
 // Initialize default responses for image questions
 function initializeDefaultResponses() {
-  questions.forEach((question, index) => {
+  filteredQuestions.forEach((question, index) => {
     if (question.type === "image") {
       responses[index] = {
         question_number: index,
@@ -67,9 +87,9 @@ const sessionId =
 let currentQuestion = 0;
 let currentImageIndex = 0;
 
-// core function for displaying questions
+// core function for displaying filteredQuestions
 function displayQuestion() {
-  const question = questions[currentQuestion];
+  const question = filteredQuestions[currentQuestion];
   setQuestionNumber(currentQuestion + 1);
   sectionID(currentQuestion);
   const questionTextElement = document.getElementById("question-text");
@@ -168,7 +188,7 @@ function displayQuestion() {
   const nextButton = document.getElementById("next-question-button");
   const prevButton = document.getElementById("prev-question-button");
 
-  if (currentQuestion === questions.length - 1) {
+  if (currentQuestion === filteredQuestions.length - 1) {
     nextButton.innerText = "Submit";
   } else {
     nextButton.innerText = "Next Question";
@@ -208,8 +228,8 @@ document.getElementById("image-rating").addEventListener("input", function () {
 
 let ratingElement = document.getElementById("rating-container");
 function setRating() {
-  const rating = questions[currentQuestion]?.text;
-  const radio = questions[currentQuestion]?.radiotext?.choices;
+  const rating = filteredQuestions[currentQuestion]?.text;
+  const radio = filteredQuestions[currentQuestion]?.radiotext?.choices;
   document.getElementById("parent-radio-container").innerHTML = "";
   let parentDiv = document.getElementById("parent-rating-container");
   parentDiv.innerHTML = "";
@@ -249,11 +269,11 @@ function setRadioLabel(labelSet, parentDiv) {
 
   if (parentDiv === "parent-radio-container") {
     let h3 = document.createElement("h3");
-    h3.innerText = questions[currentQuestion].text;
+    h3.innerText = filteredQuestions[currentQuestion].text;
     childDiv.appendChild(h3);
   }
 
-  if (questions[currentQuestion].description) {
+  if (filteredQuestions[currentQuestion].description) {
     let textAreaParent = document.getElementById("radio-desc-container");
     textAreaParent.style.display = "block";
 
@@ -324,7 +344,7 @@ function setRadioLabel(labelSet, parentDiv) {
             responses[currentQuestion].response = selectedArray;
           });
         }
-      } else if (questions[currentQuestion].description) {
+      } else if (filteredQuestions[currentQuestion].description) {
         if (selectedValue === "Yes") {
           console.log("here i am", radioText);
           responses[currentQuestion].response = [radioText];
@@ -556,7 +576,7 @@ function closeModal() {
 }
 
 function changeImage(step) {
-  const images = questions[currentQuestion].images;
+  const images = filteredQuestions[currentQuestion].images;
   currentImageIndex =
     (currentImageIndex + step + images.length) % images.length;
   updateModalImageInfo(currentImageIndex);
@@ -564,7 +584,7 @@ function changeImage(step) {
 }
 
 function updateModalImageInfo(index) {
-  const totalImages = questions[currentQuestion].images.length;
+  const totalImages = filteredQuestions[currentQuestion].images.length;
   const imageInfo = document.getElementById("image-info");
   imageInfo.innerText = `Image ${index + 1} of ${totalImages}`;
 }
@@ -605,7 +625,7 @@ function nextQuestion() {
   surveyContainer.classList.add("fade-out");
 
   setTimeout(() => {
-    if (questions[currentQuestion].type === "text") {
+    if (filteredQuestions[currentQuestion].type === "text") {
       let textResponse = document.getElementById("text-answer").value;
       submitAnswer(textResponse); // Capture text question response
     }
@@ -615,7 +635,7 @@ function nextQuestion() {
       responses[currentQuestion].datetime = new Date().toISOString();
     }
 
-    if (currentQuestion === questions.length - 1) {
+    if (currentQuestion === filteredQuestions.length - 1) {
       submitResponses();
     } else if (currentQuestion == 29) {
       hideAll();
@@ -646,7 +666,7 @@ function prevQuestion() {
   setTimeout(() => {
     currentQuestion--;
     if (currentQuestion < 0) {
-      currentQuestion = questions.length - 1;
+      currentQuestion = filteredQuestions.length - 1;
     }
     displayQuestion();
 
@@ -670,7 +690,7 @@ function submitAnswer(answer) {
   document.getElementById("survey-container").innerHTML = "";
   document.getElementById("survey-container").appendChild(thankU);
 
-  let questionData = questions[currentQuestion];
+  let questionData = filteredQuestions[currentQuestion];
   responses[currentQuestion] = {
     question_number: currentQuestion,
     question: questionData.text,
