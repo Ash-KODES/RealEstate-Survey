@@ -768,9 +768,9 @@ const setQuestionNumber = (currentQuestion) => {
   } else if (currentQuestion <= 67 - rangeChange) {
     questionNumber.innerText = `${currentQuestion - 12} /${55 - rangeChange}`;
   } else if (currentQuestion <= 77 - rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /12`;
-  } else if (currentQuestion <= 80 - rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 79 + rangeChange} /2`;
+    questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /10`;
+  } else if (currentQuestion <= 82 - rangeChange) {
+    questionNumber.innerText = `${currentQuestion - 77 + rangeChange} /3`;
   }
 };
 
