@@ -9,9 +9,9 @@ removalRange.set(2,[36,50]);
 removalRange.set(3,[51,65]);
 // select random number from 0-3
 let randomIndex = Math.floor(Math.random() * 4);
+console.log(randomIndex);
 let range = removalRange.get(randomIndex);  
 // remove that range from the questions
-questions.splice(randomIndex, range[1]);
 let rangeStart = range[0];
 let rangeEnd = range[1];
 console.log(rangeStart, rangeEnd);
