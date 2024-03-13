@@ -3,14 +3,14 @@ console.log(questions.length);
 console.log(questions);
 // Removing one random question type
 let removalRange = new Map();
-removalRange.set(0,[12,23]);
-removalRange.set(1,[24,35]);
-removalRange.set(2,[36,50]);
-removalRange.set(3,[51,65]);
+removalRange.set(0, [12, 23]);
+removalRange.set(1, [24, 35]);
+removalRange.set(2, [36, 50]);
+removalRange.set(3, [51, 65]);
 // select random number from 0-3
 let randomIndex = Math.floor(Math.random() * 4);
 console.log(randomIndex);
-let range = removalRange.get(randomIndex);  
+let range = removalRange.get(randomIndex);
 // remove that range from the questions
 let rangeStart = range[0];
 let rangeEnd = range[1];
@@ -686,8 +686,13 @@ function nextQuestion() {
 
     if (currentQuestion === filteredQuestions.length - 1) {
       submitResponses();
-    } else if (currentQuestion == 29) {
-      hideAll();
+    } else if (currentQuestion == 7) {
+      currentQuestion++;
+      displayNextSection();
+    } else if (currentQuestion == 11) {
+      currentQuestion++;
+      displayNextSection();
+    } else if (currentQuestion == 66) {
       currentQuestion++;
       displayNextSection();
     } else {
