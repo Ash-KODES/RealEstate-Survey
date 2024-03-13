@@ -294,6 +294,26 @@ button:disabled {
   border-radius: 10px;
 }
 
+#section-page {
+  text-align: center;
+  padding: 50px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+#section-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#section-page p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
 #title-page h1 {
   font-size: 2em;
   margin-bottom: 20px;
@@ -392,6 +412,12 @@ h3 {
     width: 80%;
     padding: 15px; /* Reduce padding in the title page for mobile */
     margin: 10px auto; /* Adjust margin for the title page */
+  }
+
+  #section-page {
+    width: 80%;
+    padding: 15px; /* Reduce padding in the title page for mobile */
+    margin: 10px auto; 
   }
 
   /* Styles for buttons */

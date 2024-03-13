@@ -9,6 +9,22 @@ window.startSurvey = function () {
   console.log("Here start survey");
 };
 
+//for hide all divs
+function hideAll() {
+  const quest = [
+    document.getElementById("percentage"),
+    document.getElementById("image-container"),
+    document.getElementById("radio-container"),
+    document.getElementById("parent-rating-container"),
+    document.getElementById("text-scroll"),
+    document.getElementById("text-radio"),
+    document.getElementById("parent-radio-container"),
+    document.getElementById("text-answer-container"),
+  ];
+
+  quest.map((item) => (item.style.display = "none"));
+}
+
 // Consent form checks.
 window.consentForm = function () {
   const inputValue = document.getElementById("input-box");
@@ -317,7 +333,6 @@ function setRadioLabel(labelSet, parentDiv) {
           console.log("here i am again", radioText);
           responses[currentQuestion].response = [selectedValue];
           console.log("no, ", responses[currentQuestion].response);
-
         }
       } else {
         let textAreaElement = document.getElementById("text-answer-container");
@@ -554,8 +569,38 @@ function updateModalImageInfo(index) {
   imageInfo.innerText = `Image ${index + 1} of ${totalImages}`;
 }
 
+// for Display Next Section Page
+function displayNextSection() {
+  const page = document.getElementById("section-page");
+  page.style.display = "block";
+  document.getElementById("survey-container").style.display = "none";
+  const button = page.querySelector("button");
+
+  const buttonClickHandler = () => {
+    page.style.display = "none";
+    button.removeEventListener("click", buttonClickHandler);
+    document.getElementById("survey-container").style.display = "block";
+    displayQuestion();
+  };
+  button.addEventListener("click", buttonClickHandler);
+}
+
+// function to random pic three digits
+function pickRandomDigits() {
+  const arr = [];
+  while (arr.length != 3) {
+    const val = Math.floor(Math.random() * 4) + 1;
+    if (!arr.includes(val)) {
+      arr.push(val);
+    }
+  }
+  console.log(arr);
+}
+
+pickRandomDigits();
 // this is next question handler
 function nextQuestion() {
+  console.log(currentQuestion);
   const surveyContainer = document.getElementById("survey-container");
   surveyContainer.classList.add("fade-out");
 
@@ -572,6 +617,10 @@ function nextQuestion() {
 
     if (currentQuestion === questions.length - 1) {
       submitResponses();
+    } else if (currentQuestion == 29) {
+      hideAll();
+      currentQuestion++;
+      displayNextSection();
     } else {
       currentQuestion++;
       displayQuestion();
@@ -632,7 +681,12 @@ function submitAnswer(answer) {
 // this sets question number
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
-  questionNumber.innerText = currentQuestion + "/102";
+
+  if (currentQuestion <= 30) {
+    questionNumber.innerText = currentQuestion + "/30";
+  } else if (currentQuestion <= 80) {
+    questionNumber.innerText = `${currentQuestion - 30} /50`;
+  }
 };
 
 // This is for testing purpose
