@@ -14,7 +14,7 @@ let range = removalRange.get(randomIndex);
 // remove that range from the questions
 let rangeStart = range[0];
 let rangeEnd = range[1];
-let rangeChange = rangeEnd - rangeStart+1;
+let rangeChange = rangeEnd - rangeStart + 1;
 console.log(rangeStart, rangeEnd);
 // Filter out questions excluding the specified range
 let filteredQuestions = questions.filter((_, index) => {
@@ -644,11 +644,20 @@ function updateModalImageInfo(index) {
 }
 
 // for Display Next Section Page
-function displayNextSection() {
+function displayNextSection(sectionNo, title, desc) {
   const page = document.getElementById("section-page");
   page.style.display = "block";
   document.getElementById("survey-container").style.display = "none";
   const button = page.querySelector("button");
+
+  const section = document.getElementById("section-no");
+  section.innerText = sectionNo;
+
+  const sectionTitle = document.getElementById("section-title");
+  sectionTitle.innerText = title;
+
+  const sectionDesc = document.getElementById("section-desc");
+  sectionDesc.innerText = desc;
 
   const buttonClickHandler = () => {
     page.style.display = "none";
@@ -678,18 +687,19 @@ function nextQuestion() {
 
     if (currentQuestion === filteredQuestions.length - 1) {
       submitResponses();
-    } else if(currentQuestion==0){
+    } else if (currentQuestion == 7) {
       currentQuestion++;
-      displayNextSection();
-    }else if (currentQuestion == 7) {
-      currentQuestion++;
-      displayNextSection();
+      displayNextSection(2, "Investor Profile", "select Investor Profile");
     } else if (currentQuestion == 11) {
       currentQuestion++;
-      displayNextSection();
-    } else if (currentQuestion == 66-rangeChange) {
+      displayNextSection(3, "Image Presentation and Perception");
+    } else if (currentQuestion == 66 - rangeChange) {
       currentQuestion++;
-      displayNextSection();
+      displayNextSection(
+        4,
+        "Cognitive Biases and Heuristics",
+        "select Cognitive Biases and Heuristics"
+      );
     } else {
       currentQuestion++;
       displayQuestion();
@@ -755,12 +765,12 @@ const setQuestionNumber = (currentQuestion) => {
     questionNumber.innerText = currentQuestion + "/8";
   } else if (currentQuestion <= 12) {
     questionNumber.innerText = `${currentQuestion - 8} /4`;
-  } else if (currentQuestion <= 67-rangeChange) {
+  } else if (currentQuestion <= 67 - rangeChange) {
     questionNumber.innerText = `${currentQuestion - 12} /${55 - rangeChange}`;
-  } else if (currentQuestion <= 79-rangeChange) {
+  } else if (currentQuestion <= 79 - rangeChange) {
     questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /12`;
-  } else if (currentQuestion <= 80-rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 79 + rangeChange } /2`;
+  } else if (currentQuestion <= 80 - rangeChange) {
+    questionNumber.innerText = `${currentQuestion - 79 + rangeChange} /2`;
   }
 };
 
@@ -785,11 +795,12 @@ const sectionID = (currentQuestion) => {
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
   else if (currentQuestion < 12)
     sectionIdDiv.textContent = "Section 2: Investor Profile";
-  else if (currentQuestion < 67-rangeChange)
+  else if (currentQuestion < 67 - rangeChange)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
-  else if (currentQuestion < 79-rangeChange)
+  else if (currentQuestion < 79 - rangeChange)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 81-rangeChange) sectionIdDiv.textContent = "Section 5: Other";
+  else if (currentQuestion < 81 - rangeChange)
+    sectionIdDiv.textContent = "Section 5: Other";
 };
 
 // This is for submiting final response object.
@@ -862,5 +873,5 @@ window.submitWaiver = async function () {
   document.getElementById("waiver-container").style.display = "none";
   document.getElementById("survey-container").style.display = "block";
   initializeDefaultResponses();
-  displayQuestion();
+  displayNextSection(1, "Demographics", "Select Demographics");
 };
