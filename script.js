@@ -787,9 +787,9 @@ const sectionID = (currentQuestion) => {
     sectionIdDiv.textContent = "Section 2: Investor Profile";
   else if (currentQuestion < 67)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
-  else if (currentQuestion < 92)
+  else if (currentQuestion < 79)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 102) sectionIdDiv.textContent = "Section 5: Other";
+  else if (currentQuestion < 81) sectionIdDiv.textContent = "Section 5: Other";
 };
 
 // This is for submiting final response object.
