@@ -1,4 +1,5 @@
 export const questions = [
+  // section 1 : Demographics
   {
     type: "text-radio",
     choices: [

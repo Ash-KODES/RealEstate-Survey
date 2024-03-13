@@ -1,4 +1,5 @@
 import { questions } from "./questions.js";
+console.log(questions.length);
 console.log(questions);
 // Removing one random question type
 let removalRange = new Map();
@@ -16,7 +17,9 @@ let rangeEnd = range[1];
 console.log(rangeStart, rangeEnd);
 // Filter out questions excluding the specified range
 let filteredQuestions = questions.filter((_, index) => {
-  return (index < rangeStart || index > rangeEnd);
+  let isTrue = index < rangeStart || index > rangeEnd;
+  console.log(isTrue);
+  return isTrue;
 });
 console.log(filteredQuestions);
 
@@ -702,10 +705,16 @@ function submitAnswer(answer) {
 const setQuestionNumber = (currentQuestion) => {
   const questionNumber = document.getElementById("question-number");
 
-  if (currentQuestion <= 30) {
-    questionNumber.innerText = currentQuestion + "/30";
+  if (currentQuestion <= 8) {
+    questionNumber.innerText = currentQuestion + "/8";
   } else if (currentQuestion <= 80) {
-    questionNumber.innerText = `${currentQuestion - 30} /50`;
+    questionNumber.innerText = `${currentQuestion - 8} /4`;
+  } else if (currentQuestion <= 80) {
+    questionNumber.innerText = `${currentQuestion - 12} /55`;
+  } else if (currentQuestion <= 80) {
+    questionNumber.innerText = `${currentQuestion - 67} /12`;
+  } else if (currentQuestion <= 80) {
+    questionNumber.innerText = `${currentQuestion - 79} /2`;
   }
 };
 
