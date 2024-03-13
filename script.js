@@ -678,7 +678,10 @@ function nextQuestion() {
 
     if (currentQuestion === filteredQuestions.length - 1) {
       submitResponses();
-    } else if (currentQuestion == 7) {
+    } else if(currentQuestion==0){
+      currentQuestion++;
+      displayNextSection();
+    }else if (currentQuestion == 7) {
       currentQuestion++;
       displayNextSection();
     } else if (currentQuestion == 11) {
@@ -752,11 +755,11 @@ const setQuestionNumber = (currentQuestion) => {
     questionNumber.innerText = currentQuestion + "/8";
   } else if (currentQuestion <= 12) {
     questionNumber.innerText = `${currentQuestion - 8} /4`;
-  } else if (currentQuestion <= 67) {
+  } else if (currentQuestion <= 67-rangeChange) {
     questionNumber.innerText = `${currentQuestion - 12} /${55 - rangeChange}`;
-  } else if (currentQuestion <= 79) {
+  } else if (currentQuestion <= 79-rangeChange) {
     questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /12`;
-  } else if (currentQuestion <= 80) {
+  } else if (currentQuestion <= 80-rangeChange) {
     questionNumber.innerText = `${currentQuestion - 79 + rangeChange } /2`;
   }
 };
