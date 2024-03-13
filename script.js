@@ -234,6 +234,10 @@ document.getElementById("image-rating").addEventListener("input", function () {
 
 let ratingElement = document.getElementById("rating-container");
 function setRating() {
+  if (filteredQuestions[currentQuestion].housetype) {
+    responses[currentQuestion].housetype =
+      filteredQuestions[currentQuestion].housetype;
+  }
   const rating = filteredQuestions[currentQuestion]?.text;
   const radio = filteredQuestions[currentQuestion]?.radiotext?.choices;
   document.getElementById("parent-radio-container").innerHTML = "";
@@ -250,6 +254,7 @@ function setRating() {
     newRating.addEventListener("change", (e) => {
       currentRating = e.target.value;
       responses[currentQuestion].response = currentRating;
+
       spanElement.innerText = currentRating;
     });
 
