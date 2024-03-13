@@ -753,11 +753,11 @@ const setQuestionNumber = (currentQuestion) => {
 
   if (currentQuestion <= 8) {
     questionNumber.innerText = currentQuestion + "/8";
-  } else if (currentQuestion <= 80) {
+  } else if (currentQuestion <= 12) {
     questionNumber.innerText = `${currentQuestion - 8} /4`;
-  } else if (currentQuestion <= 80) {
+  } else if (currentQuestion <= 67) {
     questionNumber.innerText = `${currentQuestion - 12} /55`;
-  } else if (currentQuestion <= 80) {
+  } else if (currentQuestion <= 79) {
     questionNumber.innerText = `${currentQuestion - 67} /12`;
   } else if (currentQuestion <= 80) {
     questionNumber.innerText = `${currentQuestion - 79} /2`;
@@ -785,7 +785,7 @@ const sectionID = (currentQuestion) => {
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
   else if (currentQuestion < 12)
     sectionIdDiv.textContent = "Section 2: Investor Profile";
-  else if (currentQuestion < 84)
+  else if (currentQuestion < 67)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
   else if (currentQuestion < 92)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
