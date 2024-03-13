@@ -654,19 +654,6 @@ function displayNextSection() {
   button.addEventListener("click", buttonClickHandler);
 }
 
-// function to random pic three digits
-function pickRandomDigits() {
-  const arr = [];
-  while (arr.length != 3) {
-    const val = Math.floor(Math.random() * 4) + 1;
-    if (!arr.includes(val)) {
-      arr.push(val);
-    }
-  }
-  console.log(arr);
-}
-
-pickRandomDigits();
 // this is next question handler
 function nextQuestion() {
   console.log(currentQuestion);
