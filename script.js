@@ -14,6 +14,7 @@ let range = removalRange.get(randomIndex);
 // remove that range from the questions
 let rangeStart = range[0];
 let rangeEnd = range[1];
+let rangeChange = rangeEnd - rangeStart+1;
 console.log(rangeStart, rangeEnd);
 // Filter out questions excluding the specified range
 let filteredQuestions = questions.filter((_, index) => {
@@ -21,7 +22,6 @@ let filteredQuestions = questions.filter((_, index) => {
   console.log(isTrue);
   return isTrue;
 });
-console.log(filteredQuestions);
 
 // for starting survey.
 window.startSurvey = function () {
@@ -684,7 +684,7 @@ function nextQuestion() {
     } else if (currentQuestion == 11) {
       currentQuestion++;
       displayNextSection();
-    } else if (currentQuestion == 66) {
+    } else if (currentQuestion == 66-rangeChange) {
       currentQuestion++;
       displayNextSection();
     } else {
@@ -753,11 +753,11 @@ const setQuestionNumber = (currentQuestion) => {
   } else if (currentQuestion <= 12) {
     questionNumber.innerText = `${currentQuestion - 8} /4`;
   } else if (currentQuestion <= 67) {
-    questionNumber.innerText = `${currentQuestion - 12} /55`;
+    questionNumber.innerText = `${currentQuestion - 12} /${55 - rangeChange}`;
   } else if (currentQuestion <= 79) {
-    questionNumber.innerText = `${currentQuestion - 67} /12`;
+    questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /12`;
   } else if (currentQuestion <= 80) {
-    questionNumber.innerText = `${currentQuestion - 79} /2`;
+    questionNumber.innerText = `${currentQuestion - 79 + rangeChange } /2`;
   }
 };
 
@@ -782,11 +782,11 @@ const sectionID = (currentQuestion) => {
   if (currentQuestion < 8) sectionIdDiv.textContent = "Section 1: Demographics";
   else if (currentQuestion < 12)
     sectionIdDiv.textContent = "Section 2: Investor Profile";
-  else if (currentQuestion < 67)
+  else if (currentQuestion < 67-rangeChange)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
-  else if (currentQuestion < 79)
+  else if (currentQuestion < 79-rangeChange)
     sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 81) sectionIdDiv.textContent = "Section 5: Other";
+  else if (currentQuestion < 81-rangeChange) sectionIdDiv.textContent = "Section 5: Other";
 };
 
 // This is for submiting final response object.
