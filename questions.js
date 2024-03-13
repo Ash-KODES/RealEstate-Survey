@@ -1528,4 +1528,16 @@ export const questions = [
     choices: ["Up to 80%", "Up to 85%", "Up to 90%", "Up to 95%", "Up to 100%"],
     text: "What is the maximum loan to value ratio you would consider taking on with a home loan?",
   },
+
+  {
+    type: "single-images",
+
+      images: [
+        "Images/Section3/Question1/1.jpg",
+        "Images/Section3/Question4/4.jpg",
+        "Images/Section3/Question7/3.jpg",
+        "Images/Section3/Question10/1.jpg",
+      ],
+    text: "What is the maximum loan to value ratio you would consider taking on with a home loan?",
+  },
 ];

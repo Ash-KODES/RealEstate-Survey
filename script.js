@@ -43,6 +43,7 @@ function hideAll() {
     document.getElementById("text-radio"),
     document.getElementById("parent-radio-container"),
     document.getElementById("text-answer-container"),
+    document.getElementById("single-images"),
   ];
 
   quest.map((item) => (item.style.display = "none"));
@@ -186,8 +187,10 @@ function displayQuestion() {
     document.getElementById("text-scroll").style.display = "none";
     document.getElementById("text-radio").style.display = "block";
     document.getElementById("parent-radio-container").style.display = "none";
+  } else if (question.type === "single-images") {
+    hideAll();
+    setSingleImageSet(question.images);
   }
-
   const nextButton = document.getElementById("next-question-button");
   const prevButton = document.getElementById("prev-question-button");
 
@@ -371,6 +374,49 @@ function setRadioLabel(labelSet, parentDiv) {
     });
   });
   radioContainer.appendChild(childDiv);
+}
+
+// function to select single images
+function setSingleImageSet(imageSet) {
+  const mainContainer = document.getElementById("single-images");
+  mainContainer.style.display = "block";
+  mainContainer.innerHTML = "";
+  let selectedImage = "";
+  const parent = document.createElement("div");
+  parent.classList.add("single-images");
+
+  // now add a radio options
+  imageSet.map((item) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.classList.add("image-item");
+
+    const radioElement = document.createElement("input");
+    radioElement.type = "radio";
+    radioElement.name = "single-image";
+    radioElement.id = item;
+    radioElement.value = item;
+    parent.appendChild(radioElement);
+
+    radioElement.addEventListener("change", function () {
+      selectedImage = this.value;
+      responses[currentQuestion].response = selectedImage;
+    });
+
+    // for label
+    const labelElment = document.createElement("label");
+    labelElment.setAttribute("for", item);
+    const imgElement = document.createElement("img");
+    imgElement.src = item;
+    imgElement.classList.add("image-preview");
+
+    labelElment.appendChild(imgElement);
+    optionDiv.appendChild(radioElement);
+    optionDiv.appendChild(labelElment);
+
+    parent.appendChild(optionDiv);
+  });
+
+  mainContainer.appendChild(parent);
 }
 
 // this set images on UI for image-multiple
