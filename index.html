@@ -92,11 +92,18 @@
         <input id="signature" placeholder="Your Signature" />
         <div class="check-container">
           <input type="checkbox" id="agree-terms" />
-          <h4>I agree to the terms and conditions.</h4>
+          <label for="agree-terms">I agree to the terms and conditions.</label>
         </div>
         <button onclick="submitWaiver()">Agree And Continue</button>
       </div>
     </div>
+
+    <div id="section-page" style="display: none;">
+      <h1>Section <span id="section-no">2</span> : <span id="section-title">Image Descripton</span></h1>
+      <p>"<span id="section-desc">In this section we are asking for your immediate reaction to the images you are being shown. Please do not 'over think' what you are being asked. Please just give your first reaction to the image.</span>"</p>
+      <button>Start Section</button>
+    </div>
+
 
     <div id="survey-container">
       <div class="question-header">
@@ -118,6 +125,9 @@
 
       <div id="image-container">
         <!-- Images will be loaded here by JavaScript -->
+      </div>
+      <div id="single-images">
+
       </div>
       <div id="text-answer-container" style="display: none">
         <textarea id="text-answer" rows="4" cols="50"></textarea>
@@ -194,6 +204,8 @@
           <h1>Thank You !</h1>
         </div>
       </div>
+
+     
     </div>
     <script type="module" src="script.js"></script>
   </body>
