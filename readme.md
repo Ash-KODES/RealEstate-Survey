@@ -8,10 +8,14 @@ Questions for the survey are managed through a JavaScript file named `questions.
 2. Locate the question you wish to edit.
 3. Make the necessary changes directly within the object representing the question.
 
+
 ## Adding Questions
 
-To add new questions to the survey, you will need to modify the `questions.js` file by inserting a new object that defines the question. Our framework currently supports several types of questions, including:
+`questions.js` file consist of an array of object. where each object describe a section itself. each object contains questions array belongs to particular section.
 
+To add a new question, simply add a new object to the questions array under the appropriate section, following the same structure as existing questions. If you need to add a new section, create a new object with the section and questions keys, then add it to the questions array.
+
+when adding a new question remember to add any of the following types.
 - Text input (`text`)
 - Single choice radio buttons (`text-radio`)
 - Multiple choice checkboxes (`text-radio-multiple`)

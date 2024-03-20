@@ -1,27 +1,42 @@
 import { questions } from "./questions.js";
-console.log(questions.length);
-console.log(questions);
-// Removing one random question type
-let removalRange = new Map();
-removalRange.set(0, [12, 23]);
-removalRange.set(1, [24, 35]);
-removalRange.set(2, [36, 50]);
-removalRange.set(3, [51, 65]);
-// select random number from 0-3
-let randomIndex = Math.floor(Math.random() * 4);
-console.log(randomIndex);
-let range = removalRange.get(randomIndex);
-// remove that range from the questions
-let rangeStart = range[0];
-let rangeEnd = range[1];
-let rangeChange = rangeEnd - rangeStart + 1;
-console.log(rangeStart, rangeEnd);
-// Filter out questions excluding the specified range
-let filteredQuestions = questions.filter((_, index) => {
-  let isTrue = index < rangeStart || index > rangeEnd;
-  console.log(isTrue);
-  return isTrue;
-});
+// Will store final response object.
+let responses = {};
+
+function randomQuestion() {
+  const arrayLength = questions[2].questions.length;
+
+  const limit = Math.ceil(arrayLength / 4);
+  let removalRange = new Map();
+  for (let i = 0; i < 4; i++) {
+    if (i < 3) {
+      removalRange.set(i, [i * limit, (i + 1) * limit - 1]);
+    } else {
+      removalRange.set(i, [i * limit, arrayLength - 1]);
+    }
+  }
+
+  let randomIndex = Math.floor(Math.random() * 4);
+  let range = removalRange.get(randomIndex);
+
+  // // remove that range from the questions
+  let rangeStart = range[0];
+  let rangeEnd = range[1];
+  // // Filter out questions excluding the specified range
+
+  return questions.map((item) => {
+    if (item.section == 3) {
+      const selectedQuestions = item.questions.filter((_, index) => {
+        const flag = index < rangeStart || index > rangeEnd;
+        return flag;
+      });
+      return { ...item, questions: selectedQuestions };
+    } else {
+      return item;
+    }
+  });
+}
+const filteredQuestions = randomQuestion();
+console.log(filteredQuestions);
 
 // for starting survey.
 window.startSurvey = function () {
@@ -29,7 +44,6 @@ window.startSurvey = function () {
   document.getElementById("waiver-container").style.display = "block";
 
   initializeDefaultResponses(); // Initialize default responses for image question
-  console.log("Here start survey");
 };
 
 //for hide all divs
@@ -66,38 +80,87 @@ window.consentForm = function () {
 
 // Initialize default responses for image questions
 function initializeDefaultResponses() {
-  filteredQuestions.forEach((question, index) => {
-    if (question.type === "image") {
-      responses[index] = {
-        question_number: index,
-        question: question.text,
-        response: 4, // Default value for the slider
-      };
-    } else {
-      responses[index] = {
-        question_number: index,
-        question: question.text,
-        response: [],
-      };
-    }
+  let resIdx = 0;
+  filteredQuestions.map((item, section) => {
+    item.questions.map((que, idx) => {
+      if (que.type === "image") {
+        responses[resIdx] = {
+          question_number: resIdx,
+          question: que.text,
+          response: 4,
+        };
+      } else {
+        responses[resIdx] = {
+          question_number: resIdx,
+          question: que.text,
+          response: [],
+        };
+      }
+      resIdx++;
+    });
   });
+  // filteredQuestions.forEach((question, index) => {
+  //   if (question.type === "image") {
+  //     responses[index] = {
+  //       question_number: index,
+  //       question: question.text,
+  //       response: 4, // Default value for the slider
+  //     };
+  //   } else {
+  //     responses[index] = {
+  //       question_number: index,
+  //       question: question.text,
+  //       response: [],
+  //     };
+  //   }
+  // });
 }
 
-// Will store final response object.
-let responses = {};
 // Generating Session UUID for each user.
 const sessionId =
   Date.now().toString(36) + Math.random().toString(36).substring(2);
 
 let currentQuestion = 0;
+let sectionQuestionIdx = 0;
+let sectionIdx = 0;
 let currentImageIndex = 0;
+let endOfQuestion =
+  filteredQuestions.flatMap((obj) => obj.questions).length - 1;
+const sectionMsg = [
+  {
+    title: "Demographics",
+    desc: "In this section, we aim to gather some basic demographic information about you. This information is crucial for our study as it helps us understand the diverse backgrounds and perspectives of our participants. We assure you that all responses will be kept confidential and used solely for research purposes.",
+  },
+  {
+    title: "Investor Profile",
+    desc: "In this section, we aim to understand your investment profile as it relates to real estate. Your responses will help us gain insights into the motivations and behaviors of different types of property investors. This information is vital for our research on how images influence buyer decisions in the property market.",
+  },
+  {
+    title: "Image Presentation and Perception",
+    desc: "In this section, we are asking for your immediate reaction to the images you are being shown. Please do not 'overthink' what you are being asked. Just give your first reaction to the image. Your spontaneous responses are crucial for understanding the immediate impact of visual elements on your property preferences and decision-making process.You will be presented with a series of images depicting different types of houses. Please click on the images and scroll through to view them all. As you view each image, consider how it influences your perception of the property and your willingness to purchase it.",
+  },
+  {
+    title: "The role of creative factors in decision making",
+    desc: "This section explores how creative factors influence your property preferences and purchasing decisions. We will present you with a series of images and questions to understand how certain visual elements and societal factors impact your choices.You will be asked to select images that make you more likely to purchase a home, explain your selections, and rate the importance of aesthetics in your decision-making process. Additionally, we will delve into how property style, condition, presentation, and perceived space affect your preferences.",
+  },
+  {
+    title: "Others",
+    desc: "Select Others",
+  },
+];
 
 // core function for displaying filteredQuestions
 function displayQuestion() {
-  const question = filteredQuestions[currentQuestion];
-  setQuestionNumber(currentQuestion + 1);
-  sectionID(currentQuestion);
+  const question = filteredQuestions[sectionIdx].questions[sectionQuestionIdx];
+  document.getElementById(
+    "sectionID"
+  ).innerText = `section ${filteredQuestions[sectionIdx].section} : ${sectionMsg[sectionIdx].title}`;
+  document.getElementById("question-number").innerText = `${
+    sectionQuestionIdx + 1
+  } / ${filteredQuestions[sectionIdx].questions.length} `;
+
   const questionTextElement = document.getElementById("question-text");
+  console.log(question.text);
   if (question.type === "image") {
     questionTextElement.innerText = "";
   } else {
@@ -114,7 +177,6 @@ function displayQuestion() {
     if (question.images.length != 0) displayImages(question.images);
     if (question.images.length != 0)
       document.getElementById("image-container").style.display = "";
-
   } else if (question.type === "image") {
     hideAll();
     setRating();
@@ -123,9 +185,7 @@ function displayQuestion() {
     if (question.images.length != 0)
       document.getElementById("image-container").style.display = "";
     document.getElementById("text-radio").style.display = "none";
-  }
-
-  else if (question.type === "text-scroll") {
+  } else if (question.type === "text-scroll") {
     hideAll();
     setScrollList(question.choices);
   } else if (question.type === "text-radio") {
@@ -137,48 +197,48 @@ function displayQuestion() {
   } else if (question.type === "image-multiple") {
     hideAll();
     setMultipleImagesSet(question.images);
-
   } else if (question.type === "single-images") {
     hideAll();
     setSingleImageSet(question.images);
   }
+
   const nextButton = document.getElementById("next-question-button");
   const prevButton = document.getElementById("prev-question-button");
 
-  if (currentQuestion === filteredQuestions.length - 1) {
+  if (currentQuestion === endOfQuestion) {
     nextButton.innerText = "Submit";
   } else {
     nextButton.innerText = "Next Question";
   }
 
-  function setImgDesc() {
-    document.getElementById("image-desc").style.display = "block";
-
-    let res = "";
-    let InputElement = document.getElementById("text-image-answer");
-    console.log("hello");
-    InputElement.addEventListener("input", function () {
-      res = this.value;
-      console.log(this.value);
-      responses[currentQuestion].response = [res];
-    });
-  }
-
-  function setPercentage() {
-    document.getElementById("percentage").style.display = "block";
-    let percentValue = 1;
-    let percentInput = document.getElementById("percent-box");
-    if (responses[currentQuestion].response != undefined) {
-      percentInput.value = responses[currentQuestion].response;
-    }
-    percentInput.addEventListener("input", function (e) {
-      percentValue = e.target.value;
-      responses[currentQuestion].response = percentValue;
-    });
-  }
-
   prevButton.disabled = currentQuestion === 0;
   nextButton.disabled = false;
+}
+
+function setImgDesc() {
+  document.getElementById("image-desc").style.display = "block";
+
+  let res = "";
+  let InputElement = document.getElementById("text-image-answer");
+  console.log("hello");
+  InputElement.addEventListener("input", function () {
+    res = this.value;
+    console.log(this.value);
+    responses[currentQuestion].response = [res];
+  });
+}
+
+function setPercentage() {
+  document.getElementById("percentage").style.display = "block";
+  let percentValue = 1;
+  let percentInput = document.getElementById("percent-box");
+  if (responses[currentQuestion].response != undefined) {
+    percentInput.value = responses[currentQuestion].response;
+  }
+  percentInput.addEventListener("input", function (e) {
+    percentValue = e.target.value;
+    responses[currentQuestion].response = percentValue;
+  });
 }
 
 document.getElementById("image-rating").addEventListener("input", function () {
@@ -191,16 +251,20 @@ function setRating() {
   document.getElementById("parent-rating-container").style.display = "block";
   document.getElementById("parent-radio-container").style.display = "block";
 
-  if (filteredQuestions[currentQuestion].housetype) {
+  if (filteredQuestions[sectionIdx].questions[sectionQuestionIdx].housetype) {
     responses[currentQuestion].housetype =
-      filteredQuestions[currentQuestion].housetype;
+      filteredQuestions[sectionIdx].questions[sectionQuestionIdx].housetype;
   }
-  const rating = filteredQuestions[currentQuestion]?.text;
-  const radio = filteredQuestions[currentQuestion]?.radiotext?.choices;
+  const rating =
+    filteredQuestions[sectionIdx].questions[sectionQuestionIdx]?.text;
+  const radio =
+    filteredQuestions[sectionIdx].questions[sectionQuestionIdx]?.radiotext
+      ?.choices;
   document.getElementById("parent-radio-container").innerHTML = "";
   let parentDiv = document.getElementById("parent-rating-container");
   parentDiv.innerHTML = "";
   if (radio) {
+    console.log(radio);
     setRadioLabel(radio, "parent-radio-container");
   } else {
     let newRating = ratingElement.cloneNode(true);
@@ -239,11 +303,12 @@ function setRadioLabel(labelSet, parentDiv) {
 
   if (parentDiv === "parent-radio-container") {
     let h3 = document.createElement("h3");
-    h3.innerText = filteredQuestions[currentQuestion].text;
+    h3.innerText =
+      filteredQuestions[sectionIdx].questions[sectionQuestionIdx].text;
     childDiv.appendChild(h3);
   }
 
-  if (filteredQuestions[currentQuestion].description) {
+  if (filteredQuestions[sectionIdx].questions[sectionQuestionIdx].description) {
     let textAreaParent = document.getElementById("radio-desc-container");
     textAreaParent.style.display = "block";
 
@@ -314,7 +379,9 @@ function setRadioLabel(labelSet, parentDiv) {
             responses[currentQuestion].response = selectedArray;
           });
         }
-      } else if (filteredQuestions[currentQuestion].description) {
+      } else if (
+        filteredQuestions[sectionIdx].questions[sectionQuestionIdx].description
+      ) {
         if (selectedValue === "Yes") {
           console.log("here i am", radioText);
           responses[currentQuestion].response = [radioText];
@@ -439,7 +506,7 @@ function setMultipleImagesSet(imageSet) {
 // this set radio for text-radio-multiple
 function setMultiRadioSet(labelSet) {
   document.getElementById("text-radio").style.display = "block";
-  document.getElementById('radio-container').style.display = "block";
+  document.getElementById("radio-container").style.display = "block";
   const radioContainer = document.getElementById("radio-container");
   radioContainer.innerHTML = "";
   let selectedValue = "";
@@ -634,12 +701,14 @@ function displayNextSection(sectionNo, title, desc) {
 
 // this is next question handler
 function nextQuestion() {
-  console.log(currentQuestion);
   const surveyContainer = document.getElementById("survey-container");
   surveyContainer.classList.add("fade-out");
 
   setTimeout(() => {
-    if (filteredQuestions[currentQuestion].type === "text") {
+    if (
+      filteredQuestions[sectionIdx].questions[sectionQuestionIdx].type ===
+      "text"
+    ) {
       let textResponse = document.getElementById("text-answer").value;
       submitAnswer(textResponse); // Capture text question response
     }
@@ -649,35 +718,24 @@ function nextQuestion() {
       responses[currentQuestion].datetime = new Date().toISOString();
     }
 
-    if (currentQuestion === filteredQuestions.length - 1) {
+    if (currentQuestion === endOfQuestion) {
       submitResponses();
-    } else if (currentQuestion == 7) {
+    } else {
       currentQuestion++;
-      displayNextSection(2, "Investor Profile", "In this section, we aim to understand your investment profile as it relates to real estate. Your responses will help us gain insights into the motivations and behaviors of different types of property investors. This information is vital for our research on how images influence buyer decisions in the property market.");
-    } else if (currentQuestion == 11) {
-      currentQuestion++;
-      displayNextSection(
-        3,
-        "Image Presentation and Perception",
-        "In this section, we are asking for your immediate reaction to the images you are being shown. Please do not 'overthink' what you are being asked. Just give your first reaction to the image. Your spontaneous responses are crucial for understanding the immediate impact of visual elements on your property preferences and decision-making process.You will be presented with a series of images depicting different types of houses. Please click on the images and scroll through to view them all. As you view each image, consider how it influences your perception of the property and your willingness to purchase it."
-      );
-    } else if (currentQuestion == 65 - rangeChange) {
-      currentQuestion++;
-      displayNextSection(
-        4,
-        "The role of creative factors in decision making",
-        "This section explores how creative factors influence your property preferences and purchasing decisions. We will present you with a series of images and questions to understand how certain visual elements and societal factors impact your choices.You will be asked to select images that make you more likely to purchase a home, explain your selections, and rate the importance of aesthetics in your decision-making process. Additionally, we will delve into how property style, condition, presentation, and perceived space affect your preferences."
-      );
-    } else if(currentQuestion == 76 - rangeChange){
-      currentQuestion++;
-      displayNextSection(
-        5,
-        "Others",
-        "Select Others"
-      )
-    }else {
-      currentQuestion++;
-      displayQuestion();
+      sectionQuestionIdx++;
+      if (
+        sectionQuestionIdx == filteredQuestions[sectionIdx].questions.length
+      ) {
+        sectionIdx++;
+        sectionQuestionIdx = 0;
+        displayNextSection(
+          filteredQuestions[sectionIdx].section,
+          sectionMsg[sectionIdx].title,
+          sectionMsg[sectionIdx].desc
+        );
+      } else {
+        displayQuestion();
+      }
     }
 
     surveyContainer.classList.remove("fade-out");
@@ -699,6 +757,12 @@ function prevQuestion() {
 
   setTimeout(() => {
     currentQuestion--;
+    if (sectionQuestionIdx == 0) {
+      sectionIdx--;
+      sectionQuestionIdx = filteredQuestions[sectionIdx].questions.length - 1;
+    } else {
+      sectionQuestionIdx--;
+    }
     if (currentQuestion < 0) {
       currentQuestion = filteredQuestions.length - 1;
     }
@@ -732,23 +796,6 @@ function submitAnswer(answer) {
   };
 }
 
-// this sets question number
-const setQuestionNumber = (currentQuestion) => {
-  const questionNumber = document.getElementById("question-number");
-
-  if (currentQuestion <= 8) {
-    questionNumber.innerText = currentQuestion + "/8";
-  } else if (currentQuestion <= 12) {
-    questionNumber.innerText = `${currentQuestion - 8} /4`;
-  } else if (currentQuestion <= 67 - rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 12} /${55 - rangeChange}`;
-  } else if (currentQuestion <= 76 - rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /10`;
-  } else if (currentQuestion <= 82 - rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 76 + rangeChange} /3`;
-  }
-};
-
 // This is for testing purpose
 //testing
 window.addEventListener("keydown", function (event) {
@@ -773,7 +820,8 @@ const sectionID = (currentQuestion) => {
   else if (currentQuestion < 67 - rangeChange)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
   else if (currentQuestion < 76 - rangeChange)
-    sectionIdDiv.textContent = "Section 4: The role of creative factors in decision making";
+    sectionIdDiv.textContent =
+      "Section 4: The role of creative factors in decision making";
 };
 
 // This is for submiting final response object.
@@ -810,7 +858,8 @@ async function submitResponses() {
 }
 
 // This is for submitting initial form
-window.submitWaiver = function () { // Removed async keyword
+window.submitWaiver = function () {
+  // Removed async keyword
   const participantName = document.getElementById("signature").value;
   const agreeTerms = document.getElementById("agree-terms").checked;
 
@@ -826,13 +875,18 @@ window.submitWaiver = function () { // Removed async keyword
     agreedToTerms: agreeTerms,
   };
 
-  const waiverEndpointUrl = "https://unisaresponsesflask.replit.app/insert-waiver";
+  const waiverEndpointUrl =
+    "https://unisaresponsesflask.replit.app/insert-waiver";
 
   // Immediately move to the next page
   document.getElementById("waiver-container").style.display = "none";
   document.getElementById("survey-container").style.display = "block";
   initializeDefaultResponses();
-  displayNextSection(1, "Demographics", "In this section, we aim to gather some basic demographic information about you. This information is crucial for our study as it helps us understand the diverse backgrounds and perspectives of our participants. We assure you that all responses will be kept confidential and used solely for research purposes.");
+  displayNextSection(
+    filteredQuestions[sectionIdx].section,
+    sectionMsg[sectionIdx].title,
+    sectionMsg[sectionIdx].desc
+  );
 
   // Submit the form data in the background
   (async () => {
@@ -852,4 +906,3 @@ window.submitWaiver = function () { // Removed async keyword
     }
   })(); // Immediately invoke the async function
 };
-

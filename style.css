@@ -8,7 +8,18 @@ body {
   box-sizing: border-box;
 }
 
-#survey-container {
+.image-preview {
+  width: 350px;
+  height: 250px;
+}
+.single-images {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+
+#survey-container, #section-page {
   max-width: 800px;
   margin: 20px auto; /* Center aligned with auto margin */
   padding: 20px;
@@ -323,7 +334,7 @@ h3 {
 
 #image-rating {
   flex: 2; /* Adjust the flex-grow value as needed for slider width */
-  -webkit-appearance: none;
+  --webkit-appearance: none;
   width: 100%;
   height: 15px;
   border-radius: 5px;
@@ -380,7 +391,7 @@ h3 {
     width: 90%; /* Adjust modal content size for smaller screens */
   }
 
-  #survey-container {
+  #survey-container, #section-page {
     width: 80%; /* Adjust survey container width for smaller screens */
     margin: 10px auto; /* Center-align the container */
     padding: 15px; /* Adjust padding */
