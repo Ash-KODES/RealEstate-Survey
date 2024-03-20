@@ -1444,7 +1444,7 @@ export const questions = [
   },
   // Section 4: Cognitive Biases and Heuristics
   {
-    type: "image-multiple",
+    type: "single-images",
     images: [
       "Images/Section3/Question2/3.jpg",
       "Images/Section3/Question6/3.jpg",

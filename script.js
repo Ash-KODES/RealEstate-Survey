@@ -653,20 +653,20 @@ function nextQuestion() {
       submitResponses();
     } else if (currentQuestion == 7) {
       currentQuestion++;
-      displayNextSection(2, "Investor Profile", "select Investor Profile");
+      displayNextSection(2, "Investor Profile", "In this section, we aim to understand your investment profile as it relates to real estate. Your responses will help us gain insights into the motivations and behaviors of different types of property investors. This information is vital for our research on how images influence buyer decisions in the property market.");
     } else if (currentQuestion == 11) {
       currentQuestion++;
       displayNextSection(
         3,
         "Image Presentation and Perception",
-        "Select Image Presentation and Perception"
+        "In this section, we are asking for your immediate reaction to the images you are being shown. Please do not 'overthink' what you are being asked. Just give your first reaction to the image. Your spontaneous responses are crucial for understanding the immediate impact of visual elements on your property preferences and decision-making process.You will be presented with a series of images depicting different types of houses. Please click on the images and scroll through to view them all. As you view each image, consider how it influences your perception of the property and your willingness to purchase it."
       );
-    } else if (currentQuestion == 66 - rangeChange) {
+    } else if (currentQuestion == 65 - rangeChange) {
       currentQuestion++;
       displayNextSection(
         4,
-        "Cognitive Biases and Heuristics",
-        "select Cognitive Biases and Heuristics"
+        "The role of creative factors in decision making",
+        "This section explores how creative factors influence your property preferences and purchasing decisions. We will present you with a series of images and questions to understand how certain visual elements and societal factors impact your choices.You will be asked to select images that make you more likely to purchase a home, explain your selections, and rate the importance of aesthetics in your decision-making process. Additionally, we will delve into how property style, condition, presentation, and perceived space affect your preferences."
       );
     } else if(currentQuestion == 76 - rangeChange){
       currentQuestion++;
@@ -742,10 +742,10 @@ const setQuestionNumber = (currentQuestion) => {
     questionNumber.innerText = `${currentQuestion - 8} /4`;
   } else if (currentQuestion <= 67 - rangeChange) {
     questionNumber.innerText = `${currentQuestion - 12} /${55 - rangeChange}`;
-  } else if (currentQuestion <= 77 - rangeChange) {
+  } else if (currentQuestion <= 76 - rangeChange) {
     questionNumber.innerText = `${currentQuestion - 67 + rangeChange} /10`;
   } else if (currentQuestion <= 82 - rangeChange) {
-    questionNumber.innerText = `${currentQuestion - 77 + rangeChange} /3`;
+    questionNumber.innerText = `${currentQuestion - 76 + rangeChange} /3`;
   }
 };
 
@@ -772,10 +772,8 @@ const sectionID = (currentQuestion) => {
     sectionIdDiv.textContent = "Section 2: Investor Profile";
   else if (currentQuestion < 67 - rangeChange)
     sectionIdDiv.textContent = "Section 3: Image presentation and perception";
-  else if (currentQuestion < 77 - rangeChange)
-    sectionIdDiv.textContent = "Section 4: Cognitive Biases and Heuristics";
-  else if (currentQuestion < 81 - rangeChange)
-    sectionIdDiv.textContent = "Section 5: Other";
+  else if (currentQuestion < 76 - rangeChange)
+    sectionIdDiv.textContent = "Section 4: The role of creative factors in decision making";
 };
 
 // This is for submiting final response object.
@@ -793,7 +791,7 @@ async function submitResponses() {
 
   console.log(responseArray);
 
-  const endpointUrl = "http://127.0.0.1:5000/insert-data";
+  const endpointUrl = "https://unisaresponsesflask.replit.app/insert-data";
 
   try {
     const res = await fetch(endpointUrl, {
@@ -812,7 +810,7 @@ async function submitResponses() {
 }
 
 // This is for submitting initial form
-window.submitWaiver = async function () {
+window.submitWaiver = function () { // Removed async keyword
   const participantName = document.getElementById("signature").value;
   const agreeTerms = document.getElementById("agree-terms").checked;
 
@@ -828,25 +826,30 @@ window.submitWaiver = async function () {
     agreedToTerms: agreeTerms,
   };
 
-  const waiverEndpointUrl = "http://127.0.0.1:5000/insert-waiver";
+  const waiverEndpointUrl = "https://unisaresponsesflask.replit.app/insert-waiver";
 
-  try {
-    const res = await fetch(waiverEndpointUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(waiverData),
-    });
-
-    const data = await res.json();
-    console.log("Waiver submitted successfully:", data);
-  } catch (error) {
-    console.error("Error submitting waiver:", error);
-  }
-
+  // Immediately move to the next page
   document.getElementById("waiver-container").style.display = "none";
   document.getElementById("survey-container").style.display = "block";
   initializeDefaultResponses();
-  displayNextSection(1, "Demographics", "Select Demographics");
+  displayNextSection(1, "Demographics", "In this section, we aim to gather some basic demographic information about you. This information is crucial for our study as it helps us understand the diverse backgrounds and perspectives of our participants. We assure you that all responses will be kept confidential and used solely for research purposes.");
+
+  // Submit the form data in the background
+  (async () => {
+    try {
+      const res = await fetch(waiverEndpointUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(waiverData),
+      });
+
+      const data = await res.json();
+      console.log("Waiver submitted successfully:", data);
+    } catch (error) {
+      console.error("Error submitting waiver:", error);
+    }
+  })(); // Immediately invoke the async function
 };
+
