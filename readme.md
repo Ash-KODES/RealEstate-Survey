@@ -10,7 +10,7 @@ Questions for the survey are managed through a JavaScript file named `questions.
 
 
 ## Adding Questions
-
+Just add the question in question.js script in a perticular section in the below format and you are good to go.
 `questions.js` file consist of an array of object. where each object describe a section itself. each object contains questions array belongs to particular section.
 
 To add a new question, simply add a new object to the questions array under the appropriate section, following the same structure as existing questions. If you need to add a new section, create a new object with the section and questions keys, then add it to the questions array.
