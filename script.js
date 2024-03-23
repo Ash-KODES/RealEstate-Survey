@@ -780,6 +780,8 @@ function submitAnswer(answer) {
     question_number: currentQuestion,
     question: questionData.text,
     response: answer,
+    hometype : questionData?.housetype || null,
+    home : questionData?.home || null
   };
 }
 
