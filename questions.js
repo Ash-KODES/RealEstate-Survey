@@ -228,6 +228,7 @@ export const questions = [
         ],
         text: "How appealing is the exterior and front yard of this home?",
         housetype: "Single-Family Detached Homes",
+        home: 1,
       },
       {
         type: "image",
@@ -250,6 +251,7 @@ export const questions = [
         ],
         text: "Rate how family-friendly this home appears, considering space, layout",
         housetype: "Single-Family Detached Homes",
+        home: 1,
       },
       {
         type: "image",
@@ -272,6 +274,7 @@ export const questions = [
         ],
         text: "Based on both your preferences and your financial position, how likely are you to buy a home in this style?",
         housetype: "Single-Family Detached Homes",
+        home: 1,
       },
       {
         type: "image",
@@ -304,6 +307,7 @@ export const questions = [
           ],
         },
         housetype: "Single-Family Detached Homes",
+        home: 1,
       },
       {
         type: "image",
@@ -330,6 +334,7 @@ export const questions = [
         ],
         text: "How appealing is the exterior and front yard of this home?",
         housetype: "Single-Family Detached Homes",
+        home: 2,
       },
       {
         type: "image",
@@ -356,6 +361,7 @@ export const questions = [
         ],
         text: "Rate how family-friendly this home appears, considering space, layout",
         housetype: "Single-Family Detached Homes",
+        home: 2,
       },
       {
         type: "image",
@@ -382,6 +388,7 @@ export const questions = [
         ],
         text: "Based on both your preferences and your financial position, how likely are you to buy a home in this style?",
         housetype: "Single-Family Detached Homes",
+        home: 2,
       },
       {
         type: "image",
@@ -418,6 +425,7 @@ export const questions = [
           ],
         },
         housetype: "Single-Family Detached Homes",
+        home: 2,
       },
       {
         type: "image",
@@ -445,6 +453,7 @@ export const questions = [
         ],
         text: "How appealing is the exterior and front yard of this home?",
         housetype: "Single-Family Detached Homes",
+        home: 3,
       },
       {
         type: "image",
@@ -472,6 +481,7 @@ export const questions = [
         ],
         text: "Rate how family-friendly this home appears, considering space, layout",
         housetype: "Single-Family Detached Homes",
+        home: 3,
       },
       {
         type: "image",
@@ -499,6 +509,7 @@ export const questions = [
         ],
         text: "Based on both your preferences and your financial position, how likely are you to buy a home in this style?",
         housetype: "Single-Family Detached Homes",
+        home: 3,
       },
       {
         type: "image",
@@ -536,6 +547,7 @@ export const questions = [
           ],
         },
         housetype: "Single-Family Detached Homes",
+        home: 3,
       },
       // Urban Apartments:
       {
@@ -553,6 +565,7 @@ export const questions = [
         ],
         text: "How easy would it be to live in this apartment based on its layout?",
         housetype: "Urban Apartments",
+        home: 4,
       },
       {
         type: "image",
@@ -569,6 +582,7 @@ export const questions = [
         ],
         text: "Rate the amount of natural light you perceive in this apartment from the images.",
         housetype: "Urban Apartments",
+        home: 4,
       },
       {
         type: "image",
@@ -585,6 +599,7 @@ export const questions = [
         ],
         text: "How appealing is the view from this apartment, based on the images?",
         housetype: "Urban Apartments",
+        home: 4,
       },
       {
         type: "image",
@@ -611,6 +626,7 @@ export const questions = [
           ],
         },
         housetype: "Urban Apartments",
+        home: 4,
       },
       {
         type: "image",
@@ -628,6 +644,7 @@ export const questions = [
         ],
         text: "How easy would it be to live in this apartment based on its layout?",
         housetype: "Urban Apartments",
+        home: 5,
       },
       {
         type: "image",
@@ -645,6 +662,7 @@ export const questions = [
         ],
         text: "Rate the amount of natural light you perceive in this apartment from the images.",
         housetype: "Urban Apartments",
+        home: 5,
       },
       {
         type: "image",
@@ -662,6 +680,7 @@ export const questions = [
         ],
         text: "How appealing is the view from this apartment, based on the images?",
         housetype: "Urban Apartments",
+        home: 5,
       },
       {
         type: "image",
@@ -689,6 +708,7 @@ export const questions = [
           ],
         },
         housetype: "Urban Apartments",
+        home: 5,
       },
       {
         type: "image",
@@ -711,6 +731,7 @@ export const questions = [
         ],
         text: "How easy would it be to live in this apartment based on its layout?",
         housetype: "Urban Apartments",
+        home: 6,
       },
       {
         type: "image",
@@ -733,6 +754,7 @@ export const questions = [
         ],
         text: "Rate the amount of natural light you perceive in this apartment from the images.",
         housetype: "Urban Apartments",
+        home: 6,
       },
       {
         type: "image",
@@ -755,6 +777,7 @@ export const questions = [
         ],
         text: "How appealing is the view from this apartment, based on the images?",
         housetype: "Urban Apartments",
+        home: 6,
       },
       {
         type: "image",
@@ -787,6 +810,7 @@ export const questions = [
           ],
         },
         housetype: "Urban Apartments",
+        home: 6,
       },
       // Townhouses:
       {
@@ -814,6 +838,7 @@ export const questions = [
         ],
         text: "Rate the quality and appeal of any outdoor space (e.g., garden, patio) associated with the townhouse",
         housetype: "Townhouses",
+        home: 7,
       },
       {
         type: "image",
@@ -840,6 +865,7 @@ export const questions = [
         ],
         text: "How do you rate the interior design of the townhouse based on the images?",
         housetype: "Townhouses",
+        home: 7,
       },
       {
         type: "image",
@@ -869,6 +895,7 @@ export const questions = [
           choices: ["Yes", "No"],
         },
         housetype: "Townhouses",
+        home: 7,
       },
       {
         type: "image",
@@ -895,6 +922,7 @@ export const questions = [
         ],
         text: "How likely are you to buy a townhouse house in this style?",
         housetype: "Townhouses",
+        home: 7,
       },
       {
         type: "image",
@@ -931,6 +959,7 @@ export const questions = [
           ],
         },
         housetype: "Townhouses",
+        home: 7,
       },
       {
         type: "image",
@@ -950,6 +979,7 @@ export const questions = [
         ],
         text: "Rate the quality and appeal of any outdoor space (e.g., garden, patio) associated with the townhouse",
         housetype: "Townhouses",
+        home: 8,
       },
       {
         type: "image",
@@ -969,6 +999,7 @@ export const questions = [
         ],
         text: "How do you rate the interior design of the townhouse based on the images?",
         housetype: "Townhouses",
+        home: 8,
       },
       {
         type: "image",
@@ -991,6 +1022,7 @@ export const questions = [
           choices: ["Yes", "No"],
         },
         housetype: "Townhouses",
+        home: 8,
       },
       {
         type: "image",
@@ -1010,6 +1042,7 @@ export const questions = [
         ],
         text: "How likely are you to buy a townhouse house in this style?",
         housetype: "Townhouses",
+        home: 8,
       },
       {
         type: "image",
@@ -1039,6 +1072,7 @@ export const questions = [
           ],
         },
         housetype: "Townhouses",
+        home: 8,
       },
       {
         type: "image",
@@ -1065,6 +1099,7 @@ export const questions = [
         ],
         text: "Rate the quality and appeal of any outdoor space (e.g., garden, patio) associated with the townhouse",
         housetype: "Townhouses",
+        home: 9,
       },
       {
         type: "image",
@@ -1091,6 +1126,7 @@ export const questions = [
         ],
         text: "How do you rate the interior design of the townhouse based on the images?",
         housetype: "Townhouses",
+        home: 9,
       },
       {
         type: "image",
@@ -1120,6 +1156,7 @@ export const questions = [
           choices: ["Yes", "No"],
         },
         housetype: "Townhouses",
+        home: 9,
       },
       {
         type: "image",
@@ -1146,6 +1183,7 @@ export const questions = [
         ],
         text: "How likely are you to buy a townhouse house in this style?",
         housetype: "Townhouses",
+        home: 9,
       },
       {
         type: "image",
@@ -1182,6 +1220,7 @@ export const questions = [
           ],
         },
         housetype: "Townhouses",
+        home: 9,
       },
       // Modern/Contemporary Homes:
       {
@@ -1198,6 +1237,7 @@ export const questions = [
         ],
         text: "Rate how well this home incorporates modern design elements",
         housetype: "Modern/Contemporary Homes",
+        home: 13,
       },
       {
         type: "image",
@@ -1213,6 +1253,7 @@ export const questions = [
         ],
         text: "How effectively does this home use minimalism and space?",
         housetype: "Modern/Contemporary Homes",
+        home: 13,
       },
       {
         type: "image",
@@ -1228,6 +1269,7 @@ export const questions = [
         ],
         text: "How well do you think the design of this home allows for natural light and air flow?",
         housetype: "Modern/Contemporary Homes",
+        home: 13,
       },
       {
         type: "image",
@@ -1243,6 +1285,7 @@ export const questions = [
         ],
         text: "How likely are you to buy a house in this style?",
         housetype: "Modern/Contemporary Homes",
+        home: 13,
       },
       {
         type: "image",
@@ -1268,6 +1311,7 @@ export const questions = [
           ],
         },
         housetype: "Modern/Contemporary Homes",
+        home: 13,
       },
       {
         type: "image",
@@ -1284,6 +1328,7 @@ export const questions = [
         ],
         text: "Rate how well this home incorporates modern design elements",
         housetype: "Modern/Contemporary Homes",
+        home: 14,
       },
       {
         type: "image",
@@ -1300,6 +1345,7 @@ export const questions = [
         ],
         text: "How effectively does this home use minimalism and space?",
         housetype: "Modern/Contemporary Homes",
+        home: 14,
       },
       {
         type: "image",
@@ -1316,6 +1362,7 @@ export const questions = [
         ],
         text: "How well do you think the design of this home allows for natural light and air flow?",
         housetype: "Modern/Contemporary Homes",
+        home: 14,
       },
       {
         type: "image",
@@ -1332,6 +1379,7 @@ export const questions = [
         ],
         text: "How likely are you to buy a house in this style?",
         housetype: "Modern/Contemporary Homes",
+        home: 14,
       },
       {
         type: "image",
@@ -1358,6 +1406,7 @@ export const questions = [
           ],
         },
         housetype: "Modern/Contemporary Homes",
+        home: 14,
       },
       {
         type: "image",
@@ -1375,6 +1424,7 @@ export const questions = [
         ],
         text: "Rate how well this home incorporates modern design elements",
         housetype: "Modern/Contemporary Homes",
+        home: 15,
       },
       {
         type: "image",
@@ -1392,6 +1442,7 @@ export const questions = [
         ],
         text: "How effectively does this home use minimalism and space?",
         housetype: "Modern/Contemporary Homes",
+        home: 15,
       },
       {
         type: "image",
@@ -1409,6 +1460,7 @@ export const questions = [
         ],
         text: "How well do you think the design of this home allows for natural light and air flow?",
         housetype: "Modern/Contemporary Homes",
+        home: 15,
       },
       {
         type: "image",
@@ -1426,6 +1478,7 @@ export const questions = [
         ],
         text: "How likely are you to buy a house in this style?",
         housetype: "Modern/Contemporary Homes",
+        home: 15,
       },
       {
         type: "image",
@@ -1453,6 +1506,7 @@ export const questions = [
           ],
         },
         housetype: "Modern/Contemporary Homes",
+        home: 15,
       },
     ],
   },

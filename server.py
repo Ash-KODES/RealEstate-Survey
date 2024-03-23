@@ -58,7 +58,7 @@ def insert_data():
         cursor = conn.cursor()
 
         # Define the SQL INSERT statement
-        sql_insert = "INSERT INTO dbo.SurveyResponses (sessionid, datetime, question_number, question, response) VALUES (%(sessionid)s, %(datetime)s, %(question_number)s, %(question)s, %(response)s)"
+        sql_insert = "INSERT INTO dbo.SurveyResponses (sessionid, datetime, question_number, question, response ,hometype,home) VALUES (%(sessionid)s, %(datetime)s, %(question_number)s, %(question)s, %(response)s ,%(hometype)s, %(home)s)"
         # Iterate over the array and insert each response
         for response in data:
             sessionid = response.get('sessionid')
@@ -66,13 +66,15 @@ def insert_data():
             question_number = response.get('question_number')
             question = response.get('question')
             response_text = response.get('response')
+            hometype = response.get('hometype')
+            home = response.get('home')
             # since the response is a list, we need to convert it to a string
             if isinstance(response_text, list):
                 response_text = ', '.join(response_text)
 
             try:
                 # Execute the INSERT statement with the parsed data
-                cursor.execute(sql_insert, {"sessionid": sessionid, "datetime": datetime, "question_number": question_number, "question": question, "response": response_text})
+                cursor.execute(sql_insert, {"sessionid": sessionid, "datetime": datetime, "question_number": question_number, "question": question, "response": response_text, "hometype": hometype, "home": home})
                 conn.commit()  # Commit changes to the database
                 # print(type(sessionid), type(datetime), type(question_number), type(question), type(response_text))
 

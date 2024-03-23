@@ -99,21 +99,6 @@ function initializeDefaultResponses() {
       resIdx++;
     });
   });
-  // filteredQuestions.forEach((question, index) => {
-  //   if (question.type === "image") {
-  //     responses[index] = {
-  //       question_number: index,
-  //       question: question.text,
-  //       response: 4, // Default value for the slider
-  //     };
-  //   } else {
-  //     responses[index] = {
-  //       question_number: index,
-  //       question: question.text,
-  //       response: [],
-  //     };
-  //   }
-  // });
 }
 
 // Generating Session UUID for each user.
@@ -254,6 +239,8 @@ function setRating() {
   if (filteredQuestions[sectionIdx].questions[sectionQuestionIdx].housetype) {
     responses[currentQuestion].housetype =
       filteredQuestions[sectionIdx].questions[sectionQuestionIdx].housetype;
+    responses[currentQuestion].home =
+      filteredQuestions[sectionIdx].questions[sectionQuestionIdx].home;
   }
   const rating =
     filteredQuestions[sectionIdx].questions[sectionQuestionIdx]?.text;
@@ -830,6 +817,8 @@ async function submitResponses() {
     sessionid: sessionId,
     ...responses[key],
   }));
+
+  console.log(responseArray);
 
   let thankU = document.getElementById("thank-you");
   thankU.style.display = "block";
