@@ -366,6 +366,11 @@ h3 {
   cursor: pointer;
 }
 @media (max-width: 600px) {
+  .single-images {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+    gap: 12px;
+  }
   .main-image,
   .thumbnail {
     width: 100%; /* Full width for smaller screens */
@@ -491,6 +496,12 @@ h3 {
 }
 /* Responsive Design CSS */
 @media only screen and (max-width: 768px) {
+  .single-images {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+    gap: 12px;
+  }
+
   #title-page {
     text-align: center;
     padding: 16px;
