@@ -66,7 +66,7 @@ def insert_data():
             question_number = response.get('question_number')
             question = response.get('question')
             response_text = response.get('response')
-            hometype = response.get('hometype')
+            hometype=response.get('housetype')
             home = response.get('home')
             # since the response is a list, we need to convert it to a string
             if isinstance(response_text, list):
