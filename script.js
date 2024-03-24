@@ -3,17 +3,13 @@ import { questions } from "./questions.js";
 let responses = {};
 
 function randomQuestion() {
-  const arrayLength = questions[2].questions.length;
-
-  const limit = Math.ceil(arrayLength / 4);
+  // Randomly select a range of questions to remove
   let removalRange = new Map();
-  for (let i = 0; i < 4; i++) {
-    if (i < 3) {
-      removalRange.set(i, [i * limit, (i + 1) * limit - 1]);
-    } else {
-      removalRange.set(i, [i * limit, arrayLength - 1]);
-    }
-  }
+
+  removalRange.set(0, [0, 11]);
+  removalRange.set(1, [12, 23]);
+  removalRange.set(2, [24, 38]);
+  removalRange.set(3, [39, 53]);
 
   let randomIndex = Math.floor(Math.random() * 4);
   let range = removalRange.get(randomIndex);
