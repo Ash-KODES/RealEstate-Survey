@@ -19,7 +19,8 @@ body {
   gap: 12px;
 }
 
-#survey-container, #section-page {
+#survey-container,
+#section-page {
   max-width: 800px;
   margin: 20px auto; /* Center aligned with auto margin */
   padding: 20px;
@@ -396,7 +397,8 @@ h3 {
     width: 90%; /* Adjust modal content size for smaller screens */
   }
 
-  #survey-container, #section-page {
+  #survey-container,
+  #section-page {
     width: 80%; /* Adjust survey container width for smaller screens */
     margin: 10px auto; /* Center-align the container */
     padding: 15px; /* Adjust padding */
@@ -566,7 +568,8 @@ h3 {
     gap: 24px;
   }
 
-  .images-container .image-item img {
+  .images-container .image-item img,
+  .image-preview {
     width: 250px;
     height: 150px;
   }
