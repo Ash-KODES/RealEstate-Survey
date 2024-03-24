@@ -644,7 +644,7 @@ function closeModal() {
 }
 
 function changeImage(step) {
-  const images = filteredQuestions[currentQuestion].images;
+  const images = filteredQuestions[2].questions[currentQuestion-11].images;
   currentImageIndex =
     (currentImageIndex + step + images.length) % images.length;
   updateModalImageInfo(currentImageIndex);
@@ -652,7 +652,7 @@ function changeImage(step) {
 }
 
 function updateModalImageInfo(index) {
-  const totalImages = filteredQuestions[currentQuestion].images.length;
+  const totalImages = filteredQuestions[2].questions[currentQuestion-11].images?.length;
   const imageInfo = document.getElementById("image-info");
   imageInfo.innerText = `Image ${index + 1} of ${totalImages}`;
 }
