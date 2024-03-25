@@ -622,6 +622,7 @@ function displayImages(imageSet) {
     if (i === thumbnailCount - 1 && imageSet.length > 4) {
       const overlay = document.createElement("div");
       overlay.className = "thumbnail-overlay";
+      overlay.onclick = () => openModal(imageSet[0], 0);
       overlay.innerText = `+${imageSet.length - 4}`;
       thumbContainer.appendChild(overlay);
     }
