@@ -298,9 +298,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -416,9 +416,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -538,9 +538,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -617,9 +617,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -699,9 +699,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -801,9 +801,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -950,9 +950,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -1063,9 +1063,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -1211,9 +1211,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -1302,9 +1302,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -1397,9 +1397,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
@@ -1497,9 +1497,9 @@ export const questions = [
         text: "If you had to guess, how much do you think this home might be worth?",
         radiotext: {
           choices: [
-            "Less than 200k",
-            "200 - 300k",
-            "300 - 500k",
+            "Less than 300k",
+            "300 - 400k",
+            "400 - 500k",
             "500 - 800k",
             "800 - 1 million",
             "1 million +",
