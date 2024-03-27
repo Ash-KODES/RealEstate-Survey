@@ -14,11 +14,13 @@ export const questions = [
           "65+",
         ],
         text: "What is your Age?",
+        uuid: "123e4567-e89b-12d3-a456-426614174000",
       },
       {
         type: "text-radio",
         choices: ["male", "female", "Non-binary", "Prefer not to answer"],
         text: "What is your gender?",
+        uuid: "123e4567-e89b-12d3-a456-426614174001",
       },
       {
         type: "text-scroll",
@@ -68,6 +70,7 @@ export const questions = [
           "Other Labourers",
         ],
         text: "What is your occupation?",
+        uuid: "123e4567-e89b-12d3-a456-426614174002",
       },
       {
         type: "text-scroll",
@@ -94,6 +97,7 @@ export const questions = [
           "$416,000 or more",
         ],
         text: "Annual Household Income:",
+        uuid: "123e4567-e89b-12d3-a456-426614174003",
       },
       {
         type: "text-scroll",
@@ -110,6 +114,7 @@ export const questions = [
           "Prefer not to answer",
         ],
         text: "Highest Level of Education Completed:",
+        uuid: "123e4567-e89b-12d3-a456-426614174004",
       },
       {
         type: "text-radio",
@@ -121,6 +126,7 @@ export const questions = [
           "Prefer not to answer",
         ],
         text: "Do you have any dependents",
+        uuid: "123e4567-e89b-12d3-a456-426614174005",
       },
       {
         type: "text-radio",
@@ -134,6 +140,7 @@ export const questions = [
           "South America",
         ],
         text: "Continent of Birth:",
+        uuid: "123e4567-e89b-12d3-a456-426614174006",
       },
       {
         type: "text-radio",
@@ -146,6 +153,7 @@ export const questions = [
           "Other (specify)",
         ],
         text: "What is your current housing status?",
+        uuid: "123e4567-e89b-12d3-a456-426614174007",
       },
     ],
   },
@@ -166,6 +174,7 @@ export const questions = [
           "Other",
         ],
         text: "If you were to purchase your next property, what would be the reason?",
+        uuid: "123e4567-e89b-12d3-a456-426614174008",
       },
       {
         type: "text-radio",
@@ -177,6 +186,7 @@ export const questions = [
           "Undecided/unsure",
         ],
         text: "When do you think you will purchase your next property?",
+        uuid: "123e4567-e89b-12d3-a456-426614174009",
       },
       {
         type: "text-radio",
@@ -188,6 +198,7 @@ export const questions = [
           "Own one property for residence and one for a holiday home",
         ],
         text: "How many properties do you currently own?",
+        uuid: "123e4567-e89b-12d3-a456-426614174010",
       },
       {
         type: "text-radio",
@@ -200,6 +211,7 @@ export const questions = [
           "30+ years ago",
         ],
         text: "When did you buy your first property?",
+        uuid: "123e4567-e89b-12d3-a456-426614174011",
       },
     ],
   },
@@ -229,6 +241,7 @@ export const questions = [
         text: "How appealing is the exterior and front yard of this home?",
         housetype: "Single-Family Detached Homes",
         home: 1,
+        uuid: "123e4567-e89b-12d3-a456-426614174012",
       },
       {
         type: "image",
@@ -252,6 +265,7 @@ export const questions = [
         text: "Rate how family-friendly this home appears, considering space, layout",
         housetype: "Single-Family Detached Homes",
         home: 1,
+        uuid: "123e4567-e89b-12d3-a456-426614174013",
       },
       {
         type: "image",
@@ -275,6 +289,7 @@ export const questions = [
         text: "Based on both your preferences and your financial position, how likely are you to buy a home in this style?",
         housetype: "Single-Family Detached Homes",
         home: 1,
+        uuid: "123e4567-e89b-12d3-a456-426614174014",
       },
       {
         type: "image",
@@ -308,6 +323,7 @@ export const questions = [
         },
         housetype: "Single-Family Detached Homes",
         home: 1,
+        uuid: "123e4567-e89b-12d3-a456-426614174015",
       },
       {
         type: "image",
@@ -335,6 +351,7 @@ export const questions = [
         text: "How appealing is the exterior and front yard of this home?",
         housetype: "Single-Family Detached Homes",
         home: 2,
+        uuid: "123e4567-e89b-12d3-a456-426614174016",
       },
       {
         type: "image",
@@ -362,6 +379,7 @@ export const questions = [
         text: "Rate how family-friendly this home appears, considering space, layout",
         housetype: "Single-Family Detached Homes",
         home: 2,
+        uuid: "123e4567-e89b-12d3-a456-426614174017",
       },
       {
         type: "image",
@@ -389,6 +407,7 @@ export const questions = [
         text: "Based on both your preferences and your financial position, how likely are you to buy a home in this style?",
         housetype: "Single-Family Detached Homes",
         home: 2,
+        uuid: "123e4567-e89b-12d3-a456-426614174018",
       },
       {
         type: "image",
@@ -426,6 +445,7 @@ export const questions = [
         },
         housetype: "Single-Family Detached Homes",
         home: 2,
+        uuid: "123e4567-e89b-12d3-a456-426614174019",
       },
       {
         type: "image",
@@ -454,6 +474,7 @@ export const questions = [
         text: "How appealing is the exterior and front yard of this home?",
         housetype: "Single-Family Detached Homes",
         home: 3,
+        uuid: "123e4567-e89b-12d3-a456-426614174020",
       },
       {
         type: "image",
@@ -482,6 +503,7 @@ export const questions = [
         text: "Rate how family-friendly this home appears, considering space, layout",
         housetype: "Single-Family Detached Homes",
         home: 3,
+        uuid: "123e4567-e89b-12d3-a456-426614174021",
       },
       {
         type: "image",
@@ -510,6 +532,7 @@ export const questions = [
         text: "Based on both your preferences and your financial position, how likely are you to buy a home in this style?",
         housetype: "Single-Family Detached Homes",
         home: 3,
+        uuid: "123e4567-e89b-12d3-a456-426614174022",
       },
       {
         type: "image",
@@ -548,6 +571,7 @@ export const questions = [
         },
         housetype: "Single-Family Detached Homes",
         home: 3,
+        uuid: "123e4567-e89b-12d3-a456-426614174023",
       },
       // Urban Apartments:
       {
@@ -566,6 +590,7 @@ export const questions = [
         text: "How easy would it be to live in this apartment based on its layout?",
         housetype: "Urban Apartments",
         home: 4,
+        uuid: "123e4567-e89b-12d3-a456-426614174024",
       },
       {
         type: "image",
@@ -583,6 +608,7 @@ export const questions = [
         text: "Rate the amount of natural light you perceive in this apartment from the images.",
         housetype: "Urban Apartments",
         home: 4,
+        uuid: "123e4567-e89b-12d3-a456-426614174025",
       },
       {
         type: "image",
@@ -600,6 +626,7 @@ export const questions = [
         text: "How appealing is the view from this apartment, based on the images?",
         housetype: "Urban Apartments",
         home: 4,
+        uuid: "123e4567-e89b-12d3-a456-426614174026",
       },
       {
         type: "image",
@@ -627,6 +654,7 @@ export const questions = [
         },
         housetype: "Urban Apartments",
         home: 4,
+        uuid: "123e4567-e89b-12d3-a456-426614174027",
       },
       {
         type: "image",
@@ -645,6 +673,7 @@ export const questions = [
         text: "How easy would it be to live in this apartment based on its layout?",
         housetype: "Urban Apartments",
         home: 5,
+        uuid: "123e4567-e89b-12d3-a456-426614174028",
       },
       {
         type: "image",
@@ -663,6 +692,7 @@ export const questions = [
         text: "Rate the amount of natural light you perceive in this apartment from the images.",
         housetype: "Urban Apartments",
         home: 5,
+        uuid: "123e4567-e89b-12d3-a456-426614174029",
       },
       {
         type: "image",
@@ -681,6 +711,7 @@ export const questions = [
         text: "How appealing is the view from this apartment, based on the images?",
         housetype: "Urban Apartments",
         home: 5,
+        uuid: "123e4567-e89b-12d3-a456-426614174030",
       },
       {
         type: "image",
@@ -709,6 +740,7 @@ export const questions = [
         },
         housetype: "Urban Apartments",
         home: 5,
+        uuid: "123e4567-e89b-12d3-a456-426614174031",
       },
       {
         type: "image",
@@ -732,6 +764,7 @@ export const questions = [
         text: "How easy would it be to live in this apartment based on its layout?",
         housetype: "Urban Apartments",
         home: 6,
+        uuid: "123e4567-e89b-12d3-a456-426614174032",
       },
       {
         type: "image",
@@ -755,6 +788,7 @@ export const questions = [
         text: "Rate the amount of natural light you perceive in this apartment from the images.",
         housetype: "Urban Apartments",
         home: 6,
+        uuid: "123e4567-e89b-12d3-a456-426614174033",
       },
       {
         type: "image",
@@ -778,6 +812,7 @@ export const questions = [
         text: "How appealing is the view from this apartment, based on the images?",
         housetype: "Urban Apartments",
         home: 6,
+        uuid: "123e4567-e89b-12d3-a456-426614174034",
       },
       {
         type: "image",
@@ -811,6 +846,7 @@ export const questions = [
         },
         housetype: "Urban Apartments",
         home: 6,
+        uuid: "123e4567-e89b-12d3-a456-426614174035",
       },
       // Townhouses:
       {
@@ -838,6 +874,7 @@ export const questions = [
         text: "Rate the quality and appeal of any outdoor space (e.g., garden, patio) associated with the townhouse",
         housetype: "Townhouses",
         home: 7,
+        uuid: "123e4567-e89b-12d3-a456-426614174037",
       },
       {
         type: "image",
@@ -864,6 +901,7 @@ export const questions = [
         text: "How do you rate the interior design of the townhouse based on the images?",
         housetype: "Townhouses",
         home: 7,
+        uuid: "123e4567-e89b-12d3-a456-426614174038",
       },
       {
         type: "image",
@@ -893,6 +931,7 @@ export const questions = [
         },
         housetype: "Townhouses",
         home: 7,
+        uuid: "123e4567-e89b-12d3-a456-426614174039",
       },
       {
         type: "image",
@@ -919,6 +958,7 @@ export const questions = [
         text: "How likely are you to buy a townhouse house in this style?",
         housetype: "Townhouses",
         home: 7,
+        uuid: "123e4567-e89b-12d3-a456-426614174040",
       },
       {
         type: "image",
@@ -955,6 +995,7 @@ export const questions = [
         },
         housetype: "Townhouses",
         home: 7,
+        uuid: "123e4567-e89b-12d3-a456-426614174042",
       },
       {
         type: "image",
@@ -975,6 +1016,7 @@ export const questions = [
         text: "Rate the quality and appeal of any outdoor space (e.g., garden, patio) associated with the townhouse",
         housetype: "Townhouses",
         home: 8,
+        uuid: "123e4567-e89b-12d3-a456-426614174043",
       },
       {
         type: "image",
@@ -995,6 +1037,7 @@ export const questions = [
         text: "How do you rate the interior design of the townhouse based on the images?",
         housetype: "Townhouses",
         home: 8,
+        uuid: "123e4567-e89b-12d3-a456-426614174044",
       },
       {
         type: "image",
@@ -1018,6 +1061,7 @@ export const questions = [
         },
         housetype: "Townhouses",
         home: 8,
+        uuid: "123e4567-e89b-12d3-a456-426614174045",
       },
       {
         type: "image",
@@ -1038,6 +1082,7 @@ export const questions = [
         text: "How likely are you to buy a townhouse house in this style?",
         housetype: "Townhouses",
         home: 8,
+        uuid: "123e4567-e89b-12d3-a456-426614174046",
       },
       {
         type: "image",
@@ -1068,6 +1113,7 @@ export const questions = [
         },
         housetype: "Townhouses",
         home: 8,
+        uuid: "123e4567-e89b-12d3-a456-426614174047",
       },
       {
         type: "image",
@@ -1095,6 +1141,7 @@ export const questions = [
         text: "Rate the quality and appeal of any outdoor space (e.g., garden, patio) associated with the townhouse",
         housetype: "Townhouses",
         home: 9,
+        uuid: "123e4567-e89b-12d3-a456-426614174048",
       },
       {
         type: "image",
@@ -1122,6 +1169,7 @@ export const questions = [
         text: "How do you rate the interior design of the townhouse based on the images?",
         housetype: "Townhouses",
         home: 9,
+        uuid: "123e4567-e89b-12d3-a456-426614174049",
       },
       {
         type: "image",
@@ -1152,6 +1200,7 @@ export const questions = [
         },
         housetype: "Townhouses",
         home: 9,
+        uuid: "123e4567-e89b-12d3-a456-426614174050",
       },
       {
         type: "image",
@@ -1179,6 +1228,7 @@ export const questions = [
         text: "How likely are you to buy a townhouse house in this style?",
         housetype: "Townhouses",
         home: 9,
+        uuid: "123e4567-e89b-12d3-a456-426614174051",
       },
       {
         type: "image",
@@ -1216,6 +1266,7 @@ export const questions = [
         },
         housetype: "Townhouses",
         home: 9,
+        uuid: "123e4567-e89b-12d3-a456-426614174052",
       },
       // Modern/Contemporary Homes:
       {
@@ -1233,6 +1284,7 @@ export const questions = [
         text: "Rate how well this home incorporates modern design elements",
         housetype: "Modern/Contemporary Homes",
         home: 13,
+        uuid: "123e4567-e89b-12d3-a456-426614174053",
       },
       {
         type: "image",
@@ -1249,6 +1301,7 @@ export const questions = [
         text: "How effectively does this home use minimalism and space?",
         housetype: "Modern/Contemporary Homes",
         home: 13,
+        uuid: "123e4567-e89b-12d3-a456-426614174054",
       },
       {
         type: "image",
@@ -1265,6 +1318,7 @@ export const questions = [
         text: "How well do you think the design of this home allows for natural light and air flow?",
         housetype: "Modern/Contemporary Homes",
         home: 13,
+        uuid: "123e4567-e89b-12d3-a456-426614174055",
       },
       {
         type: "image",
@@ -1281,6 +1335,7 @@ export const questions = [
         text: "How likely are you to buy a house in this style?",
         housetype: "Modern/Contemporary Homes",
         home: 13,
+        uuid: "123e4567-e89b-12d3-a456-426614174056",
       },
       {
         type: "image",
@@ -1307,6 +1362,7 @@ export const questions = [
         },
         housetype: "Modern/Contemporary Homes",
         home: 13,
+        uuid: "123e4567-e89b-12d3-a456-426614174057",
       },
       {
         type: "image",
@@ -1324,6 +1380,7 @@ export const questions = [
         text: "Rate how well this home incorporates modern design elements",
         housetype: "Modern/Contemporary Homes",
         home: 14,
+        uuid: "123e4567-e89b-12d3-a456-426614174058",
       },
       {
         type: "image",
@@ -1341,6 +1398,7 @@ export const questions = [
         text: "How effectively does this home use minimalism and space?",
         housetype: "Modern/Contemporary Homes",
         home: 14,
+        uuid: "123e4567-e89b-12d3-a456-426614174059",
       },
       {
         type: "image",
@@ -1358,6 +1416,7 @@ export const questions = [
         text: "How well do you think the design of this home allows for natural light and air flow?",
         housetype: "Modern/Contemporary Homes",
         home: 14,
+        uuid: "123e4567-e89b-12d3-a456-426614174060",
       },
       {
         type: "image",
@@ -1375,6 +1434,7 @@ export const questions = [
         text: "How likely are you to buy a house in this style?",
         housetype: "Modern/Contemporary Homes",
         home: 14,
+        uuid: "123e4567-e89b-12d3-a456-426614174061",
       },
       {
         type: "image",
@@ -1402,6 +1462,7 @@ export const questions = [
         },
         housetype: "Modern/Contemporary Homes",
         home: 14,
+        uuid: "123e4567-e89b-12d3-a456-426614174062",
       },
       {
         type: "image",
@@ -1419,6 +1480,7 @@ export const questions = [
         text: "Rate how well this home incorporates modern design elements",
         housetype: "Modern/Contemporary Homes",
         home: 15,
+        uuid: "123e4567-e89b-12d3-a456-426614174063",
       },
       {
         type: "image",
@@ -1436,6 +1498,7 @@ export const questions = [
         text: "How effectively does this home use minimalism and space?",
         housetype: "Modern/Contemporary Homes",
         home: 15,
+        uuid: "123e4567-e89b-12d3-a456-4266141740164",
       },
       {
         type: "image",
@@ -1453,6 +1516,7 @@ export const questions = [
         text: "How well do you think the design of this home allows for natural light and air flow?",
         housetype: "Modern/Contemporary Homes",
         home: 15,
+        uuid: "123e4567-e89b-12d3-a456-426614174065",
       },
       {
         type: "image",
@@ -1470,6 +1534,7 @@ export const questions = [
         text: "How likely are you to buy a house in this style?",
         housetype: "Modern/Contemporary Homes",
         home: 15,
+        uuid: "123e4567-e89b-12d3-a456-426614174066",
       },
       {
         type: "image",
@@ -1497,6 +1562,7 @@ export const questions = [
         },
         housetype: "Modern/Contemporary Homes",
         home: 15,
+        uuid: "123e4567-e89b-12d3-a456-426614174067",
       },
     ],
   },
@@ -1512,18 +1578,21 @@ export const questions = [
           "Images/Section3/Question9/5.jpg",
           "Images/Section3/Question11/3.jpg",
         ],
+        uuid: "123e4567-e89b-12d3-a456-426614174070",
         text: "If you could only choose one of the following options, which image would make you more likely to wish to purchase the home concerned?",
       },
       {
         type: "text-radio-multiple",
         choices: ["Style", "Amenities", "Colours ", "Space", "Other"],
         text: "Why did you choose the images in the previous question?",
+        uuid: "123e4567-e89b-12d3-a456-426614174071",
       },
       // only likert scale
       {
         type: "image",
         images: [],
         text: "How important is aesthetics in your decision making process?",
+        uuid: "123e4567-e89b-12d3-a456-426614174072",
       },
       {
         type: "text-radio",
@@ -1533,37 +1602,44 @@ export const questions = [
           "Presentation",
           "Perceived Space",
         ],
+        uuid: "123e4567-e89b-12d3-a456-426614174073",
         text: "When viewing these properties throughout this survey which visual element affected you the most?",
       },
       {
         type: "text-radio",
         choices: ["Yes", "No"],
+        uuid: "123e4567-e89b-12d3-a456-426614174074",
         text: "Do you think that seeing certain types of property on TV shows or in magazines makes it more likely  to want to buy them?",
       },
       // only likert scale
       {
         type: "image",
         images: [],
+        uuid: "123e4567-e89b-12d3-a456-426614174075",
         text: "To what extent do you agree with this statement: Owning an attractive or prestigious property adds to a person's social status",
       },
       {
         type: "image",
         images: [],
+        uuid: "123e4567-e89b-12d3-a456-426614174076",
         text: "To what extent do you agree with this statement: Living in the right neighbourhood is an important aspect of social status",
       },
       {
         type: "image",
         images: [],
+        uuid: "123e4567-e89b-12d3-a456-426614174077",
         text: "To what extent do you agree with this statement: I would tend not to buy a property that did not uphold my status with friends and family",
       },
       {
         type: "image",
         images: [],
+        uuid: "123e4567-e89b-12d3-a456-426614174078",
         text: "How strongly would your friends' or family's opinions about these types of homes affect your decision to buy one?",
       },
       {
         type: "text-radio",
         choices: ["Yes", "No"],
+        uuid: "123e4567-e89b-12d3-a456-426614174079",
         text: "Have conversations with friends or family about home types ever changed your perspective or interest in a particular style of home?",
       },
       {
@@ -1574,6 +1650,7 @@ export const questions = [
           "Images/Section3/Question7/3.jpg",
           "Images/Section3/Question10/1.jpg",
         ],
+        uuid: "123e4567-e89b-12d3-a456-426614174080",
         text: "Which style of homes do you think are safe investments?",
       },
       {
@@ -1586,6 +1663,7 @@ export const questions = [
           "800 - 1 million",
           "1 million +",
         ],
+        uuid: "123e4567-e89b-12d3-a456-426614174081",
         text: "What is the budget for your next real estate purchase?",
       },
       {
@@ -1597,6 +1675,7 @@ export const questions = [
           "Up to 95%",
           "Up to 100%",
         ],
+        uuid: "123e4567-e89b-12d3-a456-426614174082",
         text: "What is the maximum loan to value ratio you would consider taking on with a home loan?",
       },
     ],
