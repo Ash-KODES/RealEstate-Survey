@@ -168,19 +168,19 @@ function displayQuestion() {
     document.getElementById("text-radio").style.display = "none";
   } else if (question.type === "text-scroll") {
     hideAll();
-    setScrollList(question.choices,question.uuid);
+    setScrollList(question.choices, question.uuid);
   } else if (question.type === "text-radio") {
     hideAll();
-    setRadioLabel(question.choices, "radio-container",question.uuid);
+    setRadioLabel(question.choices, "radio-container", question.uuid);
   } else if (question.type === "text-radio-multiple") {
     hideAll();
-    setMultiRadioSet(question.choices,question.uuid);
+    setMultiRadioSet(question.choices, question.uuid);
   } else if (question.type === "image-multiple") {
     hideAll();
-    setMultipleImagesSet(question.images,question.uuid);
+    setMultipleImagesSet(question.images, question.uuid);
   } else if (question.type === "single-images") {
     hideAll();
-    setSingleImageSet(question.images,question.uuid);
+    setSingleImageSet(question.images, question.uuid);
   }
 
   const nextButton = document.getElementById("next-question-button");
@@ -213,11 +213,11 @@ function setPercentage(uuid) {
   document.getElementById("percentage").style.display = "block";
   let percentValue = 1;
   let percentInput = document.getElementById("percent-box");
-  
+
   if (responses[currentQuestion].response != undefined) {
     percentInput.value = responses[currentQuestion].response;
   }
-  if(localStorage.getItem(uuid)){
+  if (localStorage.getItem(uuid)) {
     percentInput.value = localStorage.getItem(uuid);
   }
   percentInput.addEventListener("input", function (e) {
@@ -253,7 +253,7 @@ function setRating(uuid) {
   parentDiv.innerHTML = "";
   if (radio) {
     console.log(radio);
-    setRadioLabel(radio, "parent-radio-container",uuid);
+    setRadioLabel(radio, "parent-radio-container", uuid);
   } else {
     let newRating = ratingElement.cloneNode(true);
     const spanElement = newRating.querySelector("#rating-value");
@@ -261,13 +261,13 @@ function setRating(uuid) {
     if (localStorage.getItem(uuid)) {
       // Convert the stored value to a number
       currentRating = parseInt(localStorage.getItem(uuid), 10);
-      spanElement.innerText = currentRating;  
+      spanElement.innerText = currentRating;
     }
     console.log("current rating", currentRating);
     let h3 = document.createElement("h3");
     h3.innerText = rating;
     newRating.addEventListener("change", (e) => {
-      currentRating = parseInt(e.target.value, 10); 
+      currentRating = parseInt(e.target.value, 10);
       responses[currentQuestion].response = currentRating;
       localStorage.setItem(uuid, currentRating);
       spanElement.innerText = currentRating;
@@ -282,7 +282,7 @@ function setRating(uuid) {
 }
 
 // this set radio buttons for text-radio
-function setRadioLabel(labelSet, parentDiv , uuid) {
+function setRadioLabel(labelSet, parentDiv, uuid) {
   document.getElementById("text-radio").style.display = "block";
   document.getElementById("text-radio").style.display = "block";
   const radioContainer = document.getElementById(parentDiv);
@@ -319,7 +319,7 @@ function setRadioLabel(labelSet, parentDiv , uuid) {
   }
 
   labelSet.forEach((item, index) => {
-    console.log("labelset")
+    console.log("labelset");
     const listDiv = document.createElement("div");
     listDiv.classList.add("list-item");
 
@@ -340,7 +340,7 @@ function setRadioLabel(labelSet, parentDiv , uuid) {
     listDiv.appendChild(labelElement);
 
     childDiv.appendChild(listDiv);
-    if(localStorage.getItem(uuid) === item){
+    if (localStorage.getItem(uuid) === item) {
       inputElement.checked = true;
     }
     // event listener for getting selected value as a response
@@ -405,12 +405,12 @@ function setRadioLabel(labelSet, parentDiv , uuid) {
       }
     });
   });
-  
+
   radioContainer.appendChild(childDiv);
 }
 
 // function to select single images
-function setSingleImageSet(imageSet,uuid) {
+function setSingleImageSet(imageSet, uuid) {
   const mainContainer = document.getElementById("single-images");
   mainContainer.style.display = "block";
   mainContainer.innerHTML = "";
@@ -431,7 +431,7 @@ function setSingleImageSet(imageSet,uuid) {
     parent.appendChild(radioElement);
 
     if (localStorage.getItem(uuid) === item) {
-      radioElement.checked = true; 
+      radioElement.checked = true;
     }
     radioElement.addEventListener("change", function () {
       selectedImage = this.value;
@@ -457,7 +457,7 @@ function setSingleImageSet(imageSet,uuid) {
 }
 
 // this set images on UI for image-multiple
-function setMultipleImagesSet(imageSet,uuid) {
+function setMultipleImagesSet(imageSet, uuid) {
   document.getElementById("text-radio").style.display = "block";
   document.getElementById("radio-container").style.display = "block";
   const radioContainer = document.getElementById("radio-container");
@@ -483,7 +483,16 @@ function setMultipleImagesSet(imageSet,uuid) {
     imageElement.src = imagePath;
     imageElement.alt = `Image ${index}`;
     imageElement.classList.add("image-preview");
-
+    if (localStorage.getItem(uuid)) {
+      const storedValue = localStorage.getItem(uuid);
+      const storedArray = storedValue.split(",");
+      console.log("storedValue", storedArray);
+      storedArray.forEach((element) => {
+        if (element === imagePath) {
+          inputElement.checked = true;
+        }
+      });
+    }
     // Event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
       if (this.checked) {
@@ -498,6 +507,7 @@ function setMultipleImagesSet(imageSet,uuid) {
       }
 
       responses[currentQuestion].response = selectedArray;
+      localStorage.setItem(uuid, selectedArray);
     });
 
     imageDiv.appendChild(inputElement);
@@ -510,7 +520,7 @@ function setMultipleImagesSet(imageSet,uuid) {
 }
 
 // this set radio for text-radio-multiple
-function setMultiRadioSet(labelSet) {
+function setMultiRadioSet(labelSet, uuid) {
   document.getElementById("text-radio").style.display = "block";
   document.getElementById("radio-container").style.display = "block";
   const radioContainer = document.getElementById("radio-container");
@@ -535,7 +545,16 @@ function setMultiRadioSet(labelSet) {
     labelElement.setAttribute("for", item);
     labelElement.innerText = item;
     labelElement.style.cursor = "pointer";
-
+    if (localStorage.getItem(uuid)) {
+      const storedValue = localStorage.getItem(uuid);
+      const storedArray = storedValue.split(",");
+      console.log("storedValue", storedArray);
+      storedArray.forEach((element) => {
+        if(element === item){
+          inputElement.checked = true;
+        }
+      });
+    }
     // event listener for getting selected value as a response
     inputElement.addEventListener("change", function () {
       selectedValue = this.value;
@@ -551,6 +570,8 @@ function setMultiRadioSet(labelSet) {
         }
       }
       responses[currentQuestion].response = selectedArray;
+      localStorage.setItem(uuid, selectedArray);
+      console.log("selectedArray", selectedArray);
     });
 
     listDiv.appendChild(inputElement);
@@ -561,7 +582,7 @@ function setMultiRadioSet(labelSet) {
 }
 
 // this set scroll list for text-scroll
-function setScrollList(listSet,uuid) {
+function setScrollList(listSet, uuid) {
   document.getElementById("text-scroll").style.display = "block";
   let dynamicInput = document.getElementById("dynamic-input");
   if (dynamicInput) {
@@ -583,7 +604,7 @@ function setScrollList(listSet,uuid) {
     scrollContainer.appendChild(optionElement);
   });
   listSet.forEach((item, index) => {
-    if(localStorage.getItem(uuid) === item){
+    if (localStorage.getItem(uuid) === item) {
       scrollContainer.value = item;
     }
   });
@@ -605,7 +626,6 @@ function setScrollList(listSet,uuid) {
         console.log(inputValue);
         responses[currentQuestion].response = [inputValue];
         localStorage.setItem(uuid, inputValue);
-        
       });
       if (!check) {
         parent.appendChild(inputElement);
@@ -674,7 +694,7 @@ function closeModal() {
 }
 
 function changeImage(step) {
-  const images = filteredQuestions[2].questions[currentQuestion-11].images;
+  const images = filteredQuestions[2].questions[currentQuestion - 11].images;
   currentImageIndex =
     (currentImageIndex + step + images.length) % images.length;
   updateModalImageInfo(currentImageIndex);
@@ -682,7 +702,8 @@ function changeImage(step) {
 }
 
 function updateModalImageInfo(index) {
-  const totalImages = filteredQuestions[2].questions[currentQuestion-11].images?.length;
+  const totalImages =
+    filteredQuestions[2].questions[currentQuestion - 11].images?.length;
   const imageInfo = document.getElementById("image-info");
   imageInfo.innerText = `Image ${index + 1} of ${totalImages}`;
 }
@@ -806,8 +827,8 @@ function submitAnswer(answer) {
     question_number: currentQuestion,
     question: questionData.text,
     response: answer,
-    hometype : questionData?.housetype || null,
-    home : questionData?.home || null
+    hometype: questionData?.housetype || null,
+    home: questionData?.home || null,
   };
 }
 
