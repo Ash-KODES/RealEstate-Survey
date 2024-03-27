@@ -253,7 +253,7 @@ function setRating(uuid) {
   parentDiv.innerHTML = "";
   if (radio) {
     console.log(radio);
-    setRadioLabel(radio, "parent-radio-container");
+    setRadioLabel(radio, "parent-radio-container",uuid);
   } else {
     let newRating = ratingElement.cloneNode(true);
     const spanElement = newRating.querySelector("#rating-value");
@@ -311,7 +311,6 @@ function setRadioLabel(labelSet, parentDiv , uuid) {
     textAreaElement.addEventListener("input", function () {
       radioText = this.value;
       localStorage.setItem(uuid, radioText);
-      console.log("j vala")
       responses[currentQuestion].response = [radioText];
     });
   } else {
