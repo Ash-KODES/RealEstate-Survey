@@ -7,9 +7,9 @@ function randomQuestion() {
   let removalRange = new Map();
 
   removalRange.set(0, [0, 11]);
-  removalRange.set(1, [12, 23]);
-  removalRange.set(2, [24, 38]);
-  removalRange.set(3, [39, 53]);
+  removalRange.set(1, [12, 26]);
+  removalRange.set(2, [27, 41]);
+  removalRange.set(3, [42, 56]);
 
   let randomIndex = Math.floor(Math.random() * 4);
   let range = removalRange.get(randomIndex);
