@@ -6,10 +6,10 @@ function randomQuestion() {
   // Randomly select a range of questions to remove
   let removalRange = new Map();
 
-  removalRange.set(0, [0, 11]);
-  removalRange.set(1, [12, 26]);
-  removalRange.set(2, [27, 41]);
-  removalRange.set(3, [42, 56]);
+  removalRange.set(0, [0, 11]); // 11
+  removalRange.set(1, [12, 27]); // 15
+  removalRange.set(2, [28, 43]); // 15
+  removalRange.set(3, [44, 59]); //15
 
   let randomIndex = Math.floor(Math.random() * 4);
   let range = removalRange.get(randomIndex);
